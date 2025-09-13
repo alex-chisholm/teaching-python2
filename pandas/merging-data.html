@@ -265,7 +265,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="7795d24c" class="cell" data-execution_count="2">
+<div id="03486668" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>luggage_df <span class="op">=</span> pd.read_csv(<span class="st">"../data/titanic_luggage.csv"</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>luggage_df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
@@ -370,7 +370,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="left-join" class="level2">
 <h2 class="anchored" data-anchor-id="left-join">Left Join</h2>
 <p>Let’s try adding data from passengers table into meals table using a left join. A left join is the most common approach and keeps all records from the left table, adding new info from the right table if a connection can be made to a given record.</p>
-<div id="cddf8285" class="cell" data-execution_count="3">
+<div id="290df7ee" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>luggage_combo_df <span class="op">=</span> pd.merge(left <span class="op">=</span> luggage_df, right <span class="op">=</span> passengers_df, on <span class="op">=</span> <span class="st">"passenger_id"</span>, how <span class="op">=</span> <span class="st">"left"</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>luggage_combo_df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
@@ -617,10 +617,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>This works and we could do like find average luggage weight by something new from the passenger dataset such as class.</p>
-<div id="52ee1af6" class="cell" data-execution_count="4">
+<div id="ff56d7ad" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>luggage_combo_df.groupby(<span class="st">"class"</span>)[<span class="st">"weight_kgs"</span>].mean()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/jh/vdccym5962j7k7gdnt8z2w1h0000gn/T/ipykernel_17845/3239628133.py:1: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
+<pre><code>/var/folders/jh/vdccym5962j7k7gdnt8z2w1h0000gn/T/ipykernel_18425/3239628133.py:1: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
   luggage_combo_df.groupby("class")["weight_kgs"].mean()</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="4">
@@ -636,7 +636,7 @@ Name: weight_kgs, dtype: float64</code></pre>
 <ol type="1">
 <li>Make the calculations and reset the index to help with eventual merging.</li>
 </ol>
-<div id="bc0ad92c" class="cell" data-execution_count="5">
+<div id="b7c8e80c" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>luggage_summary_df <span class="op">=</span> luggage_df.groupby(<span class="st">"passenger_id"</span>).agg(</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    luggage_count<span class="op">=</span>(<span class="st">"bag_number"</span>, <span class="st">"count"</span>),</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    luggage_mean_weight<span class="op">=</span>(<span class="st">"weight_kgs"</span>, <span class="st">"mean"</span>),</span>
@@ -746,7 +746,7 @@ Name: weight_kgs, dtype: float64</code></pre>
 <ol start="2" type="1">
 <li>Merge the summaries into <code>passengers_df</code></li>
 </ol>
-<div id="7448a682" class="cell" data-execution_count="6">
+<div id="d22176bd" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>pd.merge(left<span class="op">=</span>passengers_df, right <span class="op">=</span> luggage_summary_df, on <span class="op">=</span> <span class="st">"passenger_id"</span>, how <span class="op">=</span> <span class="st">"left"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <div>

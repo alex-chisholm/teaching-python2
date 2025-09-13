@@ -284,7 +284,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="categorical" class="level2">
 <h2 class="anchored" data-anchor-id="categorical">Categorical</h2>
 <p>We could pass the entire DataFrame into <code>value_counts</code> and use two categorical variables.</p>
-<div id="8753dba7" class="cell" data-execution_count="2">
+<div id="7e1bd0a5" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>passengers_df.value_counts([<span class="st">"sex"</span>, <span class="st">"class"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>sex     class 
@@ -304,7 +304,7 @@ Name: count, dtype: int64</code></pre>
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">.crosstab()</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">.crosstab(margins=True)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">.crosstab(normalize=True)</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<div id="4d7f2e4e" class="cell" data-execution_count="3">
+<div id="6e025cab" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pd.crosstab(index <span class="op">=</span> passengers_df[<span class="st">"sex"</span>], columns <span class="op">=</span> passengers_df[<span class="st">"class"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <div>
@@ -346,7 +346,7 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<div id="33c16f00" class="cell" data-execution_count="4">
+<div id="b9733c00" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>pd.crosstab(index <span class="op">=</span> passengers_df[<span class="st">"sex"</span>], columns <span class="op">=</span> passengers_df[<span class="st">"class"</span>], margins<span class="op">=</span><span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <div>
@@ -402,7 +402,7 @@ Name: count, dtype: int64</code></pre>
 <section id="percent-of-total" class="level3">
 <h3 class="anchored" data-anchor-id="percent-of-total">Percent of Total</h3>
 <p>All values sum to 100%</p>
-<div id="9be67704" class="cell" data-execution_count="5">
+<div id="82ae6819" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pd.crosstab(index <span class="op">=</span> passengers_df[<span class="st">"sex"</span>], columns <span class="op">=</span> passengers_df[<span class="st">"class"</span>], normalize<span class="op">=</span><span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <div>
@@ -446,7 +446,7 @@ Name: count, dtype: int64</code></pre>
 <section id="row-percents" class="level3">
 <h3 class="anchored" data-anchor-id="row-percents">Row Percents</h3>
 <p>Rows sum to 100%</p>
-<div id="08da39c8" class="cell" data-execution_count="6">
+<div id="23b7372a" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>pd.crosstab(index <span class="op">=</span> passengers_df[<span class="st">"sex"</span>], columns <span class="op">=</span> passengers_df[<span class="st">"class"</span>], normalize<span class="op">=</span><span class="st">"index"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <div>
@@ -490,7 +490,7 @@ Name: count, dtype: int64</code></pre>
 <section id="column-percents" class="level3">
 <h3 class="anchored" data-anchor-id="column-percents">Column Percents</h3>
 <p>Columns sum to 100%</p>
-<div id="73b3b0c2" class="cell" data-execution_count="7">
+<div id="dfd7f9c7" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>pd.crosstab(index <span class="op">=</span> passengers_df[<span class="st">"sex"</span>], columns <span class="op">=</span> passengers_df[<span class="st">"class"</span>], normalize<span class="op">=</span><span class="st">"columns"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <div>
@@ -541,7 +541,7 @@ Name: count, dtype: int64</code></pre>
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href="">.plot.bar()</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href="">.plot.barh()</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false" href="">sns.heatmap()</a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
-<div id="f9294de1" class="cell" data-execution_count="8">
+<div id="6f1aa32a" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>pd.crosstab(index <span class="op">=</span> passengers_df[<span class="st">"sex"</span>], columns <span class="op">=</span> passengers_df[<span class="st">"class"</span>]).plot.bar()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -553,7 +553,7 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 <div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
-<div id="12b096d6" class="cell" data-execution_count="9">
+<div id="3bdcfd9f" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>pd.crosstab(index <span class="op">=</span> passengers_df[<span class="st">"sex"</span>], columns <span class="op">=</span> passengers_df[<span class="st">"class"</span>]).plot.barh()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -565,7 +565,7 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 <div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
-<div id="0c45cb03" class="cell" data-execution_count="10">
+<div id="6646ddcc" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>ct <span class="op">=</span> pd.crosstab(passengers_df[<span class="st">"sex"</span>], passengers_df[<span class="st">"class"</span>])</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>sns.heatmap(ct, annot<span class="op">=</span><span class="va">True</span>, fmt<span class="op">=</span><span class="st">'d'</span>, cmap<span class="op">=</span><span class="st">'Blues'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -583,7 +583,7 @@ Name: count, dtype: int64</code></pre>
 <section id="more-than-two-variables" class="level3">
 <h3 class="anchored" data-anchor-id="more-than-two-variables">More than two variables</h3>
 <p>You can pass in more than one variable to either the index argument (e.g., rows) or the columns argument.</p>
-<div id="0966c60a" class="cell" data-execution_count="11">
+<div id="548d56e4" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>pd.crosstab(index <span class="op">=</span> [passengers_df[<span class="st">"sex"</span>], passengers_df[<span class="st">"class"</span>]], </span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>            columns <span class="op">=</span> passengers_df[<span class="st">"embark_town"</span>], </span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>            margins <span class="op">=</span> <span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -679,7 +679,7 @@ Name: count, dtype: int64</code></pre>
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" href="">Single .corr()</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false" href="">Correlation Matrix</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" role="tab" aria-controls="tabset-3-3" aria-selected="false" href="">Correlation Matrix heatmap</a></li></ul>
 <div class="tab-content">
 <div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
-<div id="9cb6f8f4" class="cell" data-execution_count="12">
+<div id="528e9e6b" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>passengers_df[<span class="st">"age"</span>].corr(passengers_df[<span class="st">"fare"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>np.float64(0.09606669176903891)</code></pre>
@@ -687,7 +687,7 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 <div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
-<div id="af33d436" class="cell" data-execution_count="13">
+<div id="5b4d7a65" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>passengers_df.corr(numeric_only<span class="op">=</span><span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <div>
@@ -753,7 +753,7 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 <div id="tabset-3-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-3-tab">
-<div id="efcd950f" class="cell" data-execution_count="14">
+<div id="e4c142ea" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add class codes that might be relevant</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>passengers_df[<span class="st">"class_codes"</span>] <span class="op">=</span> passengers_df[<span class="st">"class"</span>].cat.codes</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>corr_matrix <span class="op">=</span> passengers_df.corr(numeric_only<span class="op">=</span><span class="va">True</span>)</span>
@@ -780,7 +780,7 @@ Name: count, dtype: int64</code></pre>
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true" href="">.scatter()</a></li></ul>
 <div class="tab-content">
 <div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
-<div id="b3b8e619" class="cell" data-execution_count="15">
+<div id="f0bb4833" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>passengers_df.plot.scatter(x <span class="op">=</span> <span class="st">"age"</span>, y <span class="op">=</span> <span class="st">"fare"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -798,7 +798,7 @@ Name: count, dtype: int64</code></pre>
 <section id="mixed" class="level2">
 <h2 class="anchored" data-anchor-id="mixed">Mixed</h2>
 <p>What if we wanted to explore the categorical <code>embark_town</code> variable with the numeric <code>age</code> and <code>fare</code> variables?</p>
-<div id="7ba269eb" class="cell" data-execution_count="16">
+<div id="5a9fbfa4" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>passengers_df[[<span class="st">"embark_town"</span>, <span class="st">"age"</span>, <span class="st">"fare"</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <div>
@@ -893,7 +893,7 @@ Name: count, dtype: int64</code></pre>
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true" href="">.groupby()</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false" href="">.groupby().agg([list])</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-3" role="tab" aria-controls="tabset-5-3" aria-selected="false" href="">.groupby().agg([dictionary])</a></li></ul>
 <div class="tab-content">
 <div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
-<div id="48c7821c" class="cell" data-execution_count="17">
+<div id="e7ea6c3a" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>passengers_df.groupby(<span class="st">"embark_town"</span>)[[<span class="st">"age"</span>, <span class="st">"fare"</span>]].mean()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <div>
@@ -936,7 +936,7 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 <div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
-<div id="d95c584b" class="cell" data-execution_count="18">
+<div id="ee6f26df" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>passengers_df.groupby(<span class="st">"embark_town"</span>)[[<span class="st">"age"</span>, <span class="st">"fare"</span>]].agg([<span class="st">"mean"</span>, <span class="st">"max"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
 <div>
@@ -994,7 +994,7 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 <div id="tabset-5-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-3-tab">
-<div id="9de45191" class="cell" data-execution_count="19">
+<div id="6cd85389" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>passengers_df.groupby(<span class="st">"embark_town"</span>).agg({</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"passenger_id"</span>: <span class="st">"count"</span>,</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"fare"</span>: <span class="st">"sum"</span>,</span>
@@ -1067,7 +1067,7 @@ Name: count, dtype: int64</code></pre>
 <section id="visualization-2" class="level3">
 <h3 class="anchored" data-anchor-id="visualization-2">Visualization</h3>
 <p>You can also visualize the result from a <code>groupby()</code> workflow. For instance,</p>
-<div id="15ecbb54" class="cell" data-execution_count="20">
+<div id="6f3d9daa" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> passengers_df.groupby(<span class="st">"embark_town"</span>)[[<span class="st">"age"</span>, <span class="st">"fare"</span>]].mean()</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>results</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
@@ -1113,7 +1113,7 @@ Name: count, dtype: int64</code></pre>
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true" href="">All results</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false" href="">Subset of results</a></li></ul>
 <div class="tab-content">
 <div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
-<div id="a22a2a33" class="cell" data-execution_count="21">
+<div id="09a7b155" class="cell" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>results.plot.bar()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -1125,7 +1125,7 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 <div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
-<div id="0f3f6dfe" class="cell" data-execution_count="22">
+<div id="4137ad6d" class="cell" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>results[<span class="st">"age"</span>].plot.bar()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>

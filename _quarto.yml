@@ -10,12 +10,9 @@ book:
     - part: "Python Fundamentals"
       chapters:
       - python-fundamentals/basics.qmd
-      - python-fundamentals/str.qmd
-      - python-fundamentals/number.qmd
-      - python-fundamentals/bool.qmd
       - python-fundamentals/type-functions.qmd
       - python-fundamentals/list-functions.qmd
-    - part: "Pandas"
+    - part: "EDA with Pandas"
       chapters:
       - pandas/project-setup.qmd
       - pandas/dataframe.qmd

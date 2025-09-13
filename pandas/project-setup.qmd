@@ -1,5 +1,7 @@
 # Project Setup  {.unnumbered}
 
+This section works through an Exploratory Data Analysis (EDA) of the Titanic dataset using the [pandas](https://pandas.pydata.org/) package.
+ 
 ```{python}
 import pandas as pd
 import numpy as np # np.where()

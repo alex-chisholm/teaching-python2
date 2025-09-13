@@ -1,5 +1,7 @@
 # Preface {.unnumbered}
 
-This set of Python reference guides is based on material covered in the Fall 2025 semester class Python Programming II for Data Analysis.
+This is a set of Python reference guides based on material covered in the Fall 2025 semester of Python Programming II for Data Analysis.
 
-Created with [Quarto](https://quarto.org/docs/books).
+* Created with [Quarto](https://quarto.org/docs/books). 
+* Developed in [Positron](https://positron.posit.co/).
+* Source code available on [GitHub](https://github.com/alex-chisholm/teaching-python2).

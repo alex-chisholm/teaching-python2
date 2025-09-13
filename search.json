@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Python Programming II for Data Analysis",
     "section": "",
-    "text": "Preface\nThis set of Python reference guides is based on material covered in the Fall 2025 semester class Python Programming II for Data Analysis.\nCreated with Quarto.",
+    "text": "Preface\nThis is a set of Python reference guides based on material covered in the Fall 2025 semester of Python Programming II for Data Analysis.\nCreated with Quarto. Developed in Positron.",
     "crumbs": [
       "Preface"
     ]
@@ -25,7 +25,7 @@
     "href": "python-fundamentals/basics.html#strings",
     "title": "General Overview",
     "section": "Strings",
-    "text": "Strings\nText data is stored as strings and enclosed in quotes.\n\ncountry = \"Netherlands\"\nprint(country)\n\nNetherlands\n\n\nWe can use the type() function to see that Python stores it as a string.\n\ntype(country)\n\nstr\n\n\nPython has many built-in tools to work with strings using functions or methods:\n\nMethod: call using dot notation (e.g., country.upper())\nFunction: call with the variable as an argument (e.g., type(country))\n\n\nCommon String Methods\n\nCases\n\ncountry.upper()\n\n'NETHERLANDS'\n\n\n\ncountry.lower()\n\n'netherlands'\n\n\n\ncity = \"den haag\"\ncity.title()\n\n'Den Haag'\n\n\n\ncity.capitalize()\n\n'Den haag'\n\n\n\n\nEvaluating Strings\n\ncountry.startswith(\"Neth\")\n\nTrue\n\n\n\ncountry.endswith(\"land\")\n\nFalse\n\n\n\ncountry.isalpha()  \n\nTrue\n\n\n\ncountry.isdigit()  \n\nFalse",
+    "text": "Strings\nText data is stored as strings and enclosed in quotes.\n\nBasic String OperationsCase MethodsString Testing\n\n\n\ncountry = \"Netherlands\"\nprint(country)\nprint(f\"Type: {type(country)}\")\nprint(f\"Length: {len(country)}\")\n\nNetherlands\nType: &lt;class 'str'&gt;\nLength: 11\n\n\n\n\n\ncountry = \"Netherlands\"\ncity = \"den haag\"\n\nprint(f\"Upper: {country.upper()}\")\nprint(f\"Lower: {country.lower()}\")\nprint(f\"Title: {city.title()}\")\nprint(f\"Capitalize: {city.capitalize()}\")\n\nUpper: NETHERLANDS\nLower: netherlands\nTitle: Den Haag\nCapitalize: Den haag\n\n\n\n\n\ncountry = \"Netherlands\"\n\nprint(f\"Starts with 'Neth': {country.startswith('Neth')}\")\nprint(f\"Ends with 'lands': {country.endswith('lands')}\")\nprint(f\"Is alphabetic: {country.isalpha()}\")\nprint(f\"Is digit: {country.isdigit()}\")\n\nStarts with 'Neth': True\nEnds with 'lands': True\nIs alphabetic: True\nIs digit: False",
     "crumbs": [
       "Python Fundamentals",
       "General Overview"
@@ -36,7 +36,7 @@
     "href": "python-fundamentals/basics.html#numbers-integers-and-floats",
     "title": "General Overview",
     "section": "Numbers (Integers and Floats)",
-    "text": "Numbers (Integers and Floats)\n\nNote: Integers (whole numbers) and Floats (decimals) have nearly identical treatment in Python.\n\n\ngdp_capita = 50000\nprint(gdp_capita)\n\n50000\n\n\n\ngdp_capita_float = 50000.00\ngdp_capita == gdp_capita_float\n\nTrue\n\n\n\ntype(gdp_capita)\n\nint\n\n\n\ntype(gdp_capita_float)\n\nfloat\n\n\n\nBasic math\n\ngdp_capita + 5000    # 55000 (addition)\ngdp_capita - 5000    # 45000 (subtraction)\ngdp_capita * 2       # 100000 (multiplication)\ngdp_capita / 1000    # 50.0 (division)\ngdp_capita // 1000   # 50 (floor division)\ngdp_capita % 1000    # 0 (remainder/modulo)\ngdp_capita ** 2      # 2500000000 (exponentiation)\n\n2500000000\n\n\n\n# Math functions\nabs(gdp_capita)      # 50000 (absolute value)\nround(gdp_capita, -3) # 50000 (round to nearest thousand)\nmin(gdp_capita, 60000) # 50000 (minimum of values)\nmax(gdp_capita, 40000) # 50000 (maximum of values)\nsum([gdp_capita, 45000, 55000]) # 150000\n\n150000\n\n\n\nimport math\n\nmath.sqrt(gdp_capita)    # 223.6 (square root)\nmath.log10(gdp_capita)   # 4.699 (base-10 logarithm)\nmath.ceil(gdp_capita/3)  # 16667 (ceiling division)\n\n16667\n\n\n\n# Type conversion\nstr(gdp_capita)      # \"50000\" (convert to string)\nfloat(gdp_capita)    # 50000.0 (convert to float)\nlen(str(gdp_capita)) # 5 (number of digits)\n\n5",
+    "text": "Numbers (Integers and Floats)\n\nNote: Integers (whole numbers) and Floats (decimals) have nearly identical treatment in Python.\n\n\nBasic NumbersBasic MathBuilt-in FunctionsMath ModuleType Conversion\n\n\n\ngdp_capita = 50000\ngdp_capita_float = 50000.00\n\nprint(f\"Integer: {gdp_capita} (type: {type(gdp_capita)})\")\nprint(f\"Float: {gdp_capita_float} (type: {type(gdp_capita_float)})\")\nprint(f\"Equal? {gdp_capita == gdp_capita_float}\")\n\nInteger: 50000 (type: &lt;class 'int'&gt;)\nFloat: 50000.0 (type: &lt;class 'float'&gt;)\nEqual? True\n\n\n\n\n\ngdp_capita = 50000\n\nprint(f\"Addition: {gdp_capita + 5000}\")\nprint(f\"Subtraction: {gdp_capita - 5000}\")\nprint(f\"Multiplication: {gdp_capita * 2}\")\nprint(f\"Division: {gdp_capita / 1000}\")\nprint(f\"Floor division: {gdp_capita // 1000}\")\nprint(f\"Modulo: {gdp_capita % 1000}\")\nprint(f\"Exponentiation: {gdp_capita ** 2}\")\n\nAddition: 55000\nSubtraction: 45000\nMultiplication: 100000\nDivision: 50.0\nFloor division: 50\nModulo: 0\nExponentiation: 2500000000\n\n\n\n\n\ngdp_capita = 50000\n\nprint(f\"Absolute value: {abs(gdp_capita)}\")\nprint(f\"Round to nearest thousand: {round(gdp_capita, -3)}\")\nprint(f\"Minimum: {min(gdp_capita, 60000)}\")\nprint(f\"Maximum: {max(gdp_capita, 40000)}\")\nprint(f\"Sum: {sum([gdp_capita, 45000, 55000])}\")\n\nAbsolute value: 50000\nRound to nearest thousand: 50000\nMinimum: 50000\nMaximum: 50000\nSum: 150000\n\n\n\n\n\nimport math\ngdp_capita = 50000\n\nprint(f\"Square root: {math.sqrt(gdp_capita):.1f}\")\nprint(f\"Log base 10: {math.log10(gdp_capita):.3f}\")\nprint(f\"Ceiling division: {math.ceil(gdp_capita/3)}\")\n\nSquare root: 223.6\nLog base 10: 4.699\nCeiling division: 16667\n\n\n\n\n\ngdp_capita = 50000\n\nprint(f\"To string: '{str(gdp_capita)}'\")\nprint(f\"To float: {float(gdp_capita)}\")\nprint(f\"Number of digits: {len(str(gdp_capita))}\")\n\nTo string: '50000'\nTo float: 50000.0\nNumber of digits: 5",
     "crumbs": [
       "Python Fundamentals",
       "General Overview"
@@ -47,7 +47,7 @@
     "href": "python-fundamentals/basics.html#booleans",
     "title": "General Overview",
     "section": "Booleans",
-    "text": "Booleans\nBoolean values represent True or False and are essential for conditional logic and data filtering.\n\nis_european = True\nis_landlocked = False\n\nprint(f\"European: {is_european}\")\nprint(f\"Type: {type(is_european)}\")\n\nEuropean: True\nType: &lt;class 'bool'&gt;\n\n\n\n# Boolean operations\nprint(f\"Both conditions: {is_european and is_landlocked}\")\nprint(f\"Either condition: {is_european or is_landlocked}\")\nprint(f\"Not European: {not is_european}\")\n\nBoth conditions: False\nEither condition: True\nNot European: False",
+    "text": "Booleans\nBoolean values represent True or False and are essential for conditional logic and data filtering.\n\nBasic BooleansBoolean Operations\n\n\n\nis_european = True\nis_landlocked = False\n\nprint(f\"European: {is_european}\")\nprint(f\"Type: {type(is_european)}\")\n\nEuropean: True\nType: &lt;class 'bool'&gt;\n\n\n\n\n\nis_european = True\nis_landlocked = False\n\nprint(f\"Both conditions: {is_european and is_landlocked}\")\nprint(f\"Either condition: {is_european or is_landlocked}\")\nprint(f\"Not European: {not is_european}\")\n\nBoth conditions: False\nEither condition: True\nNot European: False",
     "crumbs": [
       "Python Fundamentals",
       "General Overview"
@@ -58,315 +58,29 @@
     "href": "python-fundamentals/basics.html#null-values",
     "title": "General Overview",
     "section": "Null values",
-    "text": "Null values\n\nmy_null = None\ntype(my_null)\n\nNoneType\n\n\n\n# Checking for None values (important for data cleaning)\nif my_null is None:\n    print(\"Value is None\")\n\n# Using None in comparisons\nvalues = [1, 2, None, 4, 5]\nclean_values = [x for x in values if x is not None]\nprint(clean_values)\n\nValue is None\n[1, 2, 4, 5]",
+    "text": "Null values\n\nBasic NoneNone Checking\n\n\n\nmy_null = None\nprint(f\"Type: {type(my_null)}\")\n\nType: &lt;class 'NoneType'&gt;\n\n\n\n\n\nmy_null = None\n\nif my_null is None:\n    print(\"Value is None\")\n\n# Using None in comparisons\nvalues = [1, 2, None, 4, 5]\nclean_values = [x for x in values if x is not None]\nprint(f\"Clean values: {clean_values}\")\n\nValue is None\nClean values: [1, 2, 4, 5]",
     "crumbs": [
       "Python Fundamentals",
       "General Overview"
     ]
   },
   {
-    "objectID": "python-fundamentals/basics.html#creating-lists",
-    "href": "python-fundamentals/basics.html#creating-lists",
+    "objectID": "python-fundamentals/basics.html#operators-reference",
+    "href": "python-fundamentals/basics.html#operators-reference",
     "title": "General Overview",
-    "section": "Creating Lists",
-    "text": "Creating Lists\n\n# Empty list\ncountries = []\n\n# List with initial values\neuropean_countries = ['Netherlands', 'France', 'Germany', 'Spain']\nprint(european_countries)\n\n['Netherlands', 'France', 'Germany', 'Spain']\n\n\n\n# Mixed data types\nmixed_list = ['Netherlands', 50000, True, None]\nprint(mixed_list)\n\n['Netherlands', 50000, True, None]",
+    "section": "Operators Reference",
+    "text": "Operators Reference\n\n\n\n\n\n\n\n\n\nOperator\nDescription\nExample\nResult\n\n\n\n\n==\nEqual to\n5 == 5\nTrue\n\n\n!=\nNot equal to\n5 != 3\nTrue\n\n\n&lt;\nLess than\n3 &lt; 5\nTrue\n\n\n&gt;\nGreater than\n7 &gt; 4\nTrue\n\n\n&lt;=\nLess than or equal to\n5 &lt;= 5\nTrue\n\n\n&gt;=\nGreater than or equal to\n6 &gt;= 4\nTrue\n\n\nin\nMembership test\n'a' in 'cat'\nTrue\n\n\nnot in\nNegative membership test\n'x' not in 'cat'\nTrue\n\n\nis\nIdentity test\nx is None\nTrue (if x is None)\n\n\nis not\nNegative identity test\nx is not None\nTrue (if x is not None)\n\n\nand\nLogical AND\nTrue and False\nFalse\n\n\nor\nLogical OR\nTrue or False\nTrue\n\n\nnot\nLogical NOT\nnot True\nFalse\n\n\n\n\nBasic If StatementsIf-Else StatementsIf-Elif-ElseTernary Operator\n\n\n\nmonthly_spend = 6000 \nmonthly_budget = 5000\n\nif monthly_spend &gt; monthly_budget:\n    print(\"Careful, you're spending more than you are earning!\")\n\n# Store the outcome as a variable\nlosing_money = monthly_spend &gt; monthly_budget\nprint(f\"Losing money? {losing_money}\")\n\nif losing_money:\n    print(\"Careful, you are losing money\")\n\nCareful, you're spending more than you are earning!\nLosing money? True\nCareful, you are losing money\n\n\n\n\n\nmonthly_spend = 4000\nmonthly_budget = 5000\n\nif monthly_spend &gt; monthly_budget:\n    guidance = \"Stop spending money you don't have\"\nelse:\n    guidance = \"You're doing alright. Keep it up!\"\n\nprint(guidance)\n\nYou're doing alright. Keep it up!\n\n\n\n\n\nmonthly_spend = 10000\nmonthly_budget = 10000\n\nif monthly_spend &gt; monthly_budget:\n    guidance = \"Stop spending money you don't have\"\nelif monthly_spend &lt; monthly_budget:\n    guidance = \"You're doing alright. Keep it up!\"\nelse:\n    guidance = \"Money in, money out!\"\n\nprint(guidance)\n\nMoney in, money out!\n\n\n\n\n\nmonthly_spend = 6000\nmonthly_budget = 5000\n\n# Ternary operator (conditional expression)\nlosing_money = True if monthly_spend &gt; monthly_budget else False\nprint(f\"Losing money? {losing_money}\")\n\n# More practical example\nstatus = \"Over budget\" if monthly_spend &gt; monthly_budget else \"Within budget\"\nprint(f\"Budget status: {status}\")\n\nLosing money? True\nBudget status: Over budget",
     "crumbs": [
       "Python Fundamentals",
       "General Overview"
     ]
   },
   {
-    "objectID": "python-fundamentals/basics.html#common-list-operations",
-    "href": "python-fundamentals/basics.html#common-list-operations",
+    "objectID": "python-fundamentals/basics.html#return-vs.-print",
+    "href": "python-fundamentals/basics.html#return-vs.-print",
     "title": "General Overview",
-    "section": "Common List Operations",
-    "text": "Common List Operations\n\nAdding items\n\ncountries = ['Netherlands', 'France']\ncountries.append('Germany')  # Add to end\nprint(countries)\n\n['Netherlands', 'France', 'Germany']\n\n\n\ncountries.insert(1, 'Belgium')  # Insert at specific position\nprint(countries)\n\n['Netherlands', 'Belgium', 'France', 'Germany']\n\n\n\ncountries.extend(['Spain', 'Italy'])  # Add multiple items\nprint(countries)\n\n['Netherlands', 'Belgium', 'France', 'Germany', 'Spain', 'Italy']\n\n\n\n\nAccessing items\n\nprint(countries[0])    # First item\nprint(countries[-1])   # Last item\nprint(countries[1:3])  # Slice from index 1 to 2\n\nNetherlands\nItaly\n['Belgium', 'France']\n\n\n\n\nModifying and removing items\n\ncountries[0] = 'Holland'  # Replace item\nprint(countries)\n\n['Holland', 'Belgium', 'France', 'Germany', 'Spain', 'Italy']\n\n\n\ncountries.remove('Belgium')  # Remove first occurrence\nprint(countries)\n\n['Holland', 'France', 'Germany', 'Spain', 'Italy']\n\n\n\npopped = countries.pop()  # Remove and return last item\nprint(f\"Removed: {popped}\")\nprint(countries)\n\nRemoved: Italy\n['Holland', 'France', 'Germany', 'Spain']",
-    "crumbs": [
-      "Python Fundamentals",
-      "General Overview"
-    ]
-  },
-  {
-    "objectID": "python-fundamentals/basics.html#common-list-functions-and-methods",
-    "href": "python-fundamentals/basics.html#common-list-functions-and-methods",
-    "title": "General Overview",
-    "section": "Common List Functions and Methods",
-    "text": "Common List Functions and Methods\n\nnumbers = [3, 1, 4, 1, 5, 9, 2, 6]\n\n# Built-in functions\nprint(f\"Length: {len(numbers)}\")\nprint(f\"Sum: {sum(numbers)}\")\nprint(f\"Min: {min(numbers)}\")\nprint(f\"Max: {max(numbers)}\")\n\nLength: 8\nSum: 31\nMin: 1\nMax: 9\n\n\n\n# List methods\nprint(f\"Count of 1: {numbers.count(1)}\")\nprint(f\"Index of 4: {numbers.index(4)}\")\n\nnumbers.sort()  # Sort in place\nprint(f\"Sorted: {numbers}\")\n\nnumbers.reverse()  # Reverse in place\nprint(f\"Reversed: {numbers}\")\n\nCount of 1: 2\nIndex of 4: 2\nSorted: [1, 1, 2, 3, 4, 5, 6, 9]\nReversed: [9, 6, 5, 4, 3, 2, 1, 1]\n\n\n\nList comprehensions\n\n# Create a list of squares\nsquares = [x**2 for x in range(1, 6)]\nprint(squares)\n\n[1, 4, 9, 16, 25]\n\n\n\n# Filter and transform\nwords = ['apple', 'banana', 'cherry', 'date']\nlong_words = [word.upper() for word in words if len(word) &gt; 5]\nprint(long_words)\n\n['BANANA', 'CHERRY']",
-    "crumbs": [
-      "Python Fundamentals",
-      "General Overview"
-    ]
-  },
-  {
-    "objectID": "python-fundamentals/basics.html#retrieve-single-value",
-    "href": "python-fundamentals/basics.html#retrieve-single-value",
-    "title": "General Overview",
-    "section": "Retrieve single value",
-    "text": "Retrieve single value\n\ncurrencies['US']\n\n'Dollar'",
-    "crumbs": [
-      "Python Fundamentals",
-      "General Overview"
-    ]
-  },
-  {
-    "objectID": "python-fundamentals/basics.html#add-a-new-item",
-    "href": "python-fundamentals/basics.html#add-a-new-item",
-    "title": "General Overview",
-    "section": "Add a new item",
-    "text": "Add a new item\n\ncurrencies['MX'] = 'Peso'\ncurrencies\n\n{'US': 'Dollar', 'NL': 'Euro', 'JP': 'Yen', 'MX': 'Peso'}",
-    "crumbs": [
-      "Python Fundamentals",
-      "General Overview"
-    ]
-  },
-  {
-    "objectID": "python-fundamentals/basics.html#delete-an-item",
-    "href": "python-fundamentals/basics.html#delete-an-item",
-    "title": "General Overview",
-    "section": "Delete an item",
-    "text": "Delete an item\n\ndel currencies['MX']\ncurrencies\n\n{'US': 'Dollar', 'NL': 'Euro', 'JP': 'Yen'}",
-    "crumbs": [
-      "Python Fundamentals",
-      "General Overview"
-    ]
-  },
-  {
-    "objectID": "python-fundamentals/basics.html#get-a-value-of-a-specific-key",
-    "href": "python-fundamentals/basics.html#get-a-value-of-a-specific-key",
-    "title": "General Overview",
-    "section": "Get a value of a specific key",
-    "text": "Get a value of a specific key\n\nIf the key does not exist, Python returns None type.\n\n\ncurrencies.get('US')\n\n'Dollar'\n\n\n\nprint(currencies.get('BR'))\n\nNone\n\n\nYou can pass a default value if it is not there.\n\ncurrencies.get('ZZ', 'Not in our dictionary')\n\n'Not in our dictionary'",
-    "crumbs": [
-      "Python Fundamentals",
-      "General Overview"
-    ]
-  },
-  {
-    "objectID": "python-fundamentals/basics.html#get-all-keys",
-    "href": "python-fundamentals/basics.html#get-all-keys",
-    "title": "General Overview",
-    "section": "Get all keys",
-    "text": "Get all keys\n\ncurrencies.keys()\n\ndict_keys(['US', 'NL', 'JP'])",
-    "crumbs": [
-      "Python Fundamentals",
-      "General Overview"
-    ]
-  },
-  {
-    "objectID": "python-fundamentals/basics.html#get-all-values",
-    "href": "python-fundamentals/basics.html#get-all-values",
-    "title": "General Overview",
-    "section": "Get all values",
-    "text": "Get all values\n\ncurrencies.values()\n\ndict_values(['Dollar', 'Euro', 'Yen'])",
-    "crumbs": [
-      "Python Fundamentals",
-      "General Overview"
-    ]
-  },
-  {
-    "objectID": "python-fundamentals/basics.html#get-all-items",
-    "href": "python-fundamentals/basics.html#get-all-items",
-    "title": "General Overview",
-    "section": "Get all items",
-    "text": "Get all items\n\ncurrencies.items()\n\ndict_items([('US', 'Dollar'), ('NL', 'Euro'), ('JP', 'Yen')])\n\n\n\ncurrencies\n\n{'US': 'Dollar', 'NL': 'Euro', 'JP': 'Yen'}",
-    "crumbs": [
-      "Python Fundamentals",
-      "General Overview"
-    ]
-  },
-  {
-    "objectID": "python-fundamentals/basics.html#loop-through-dictionary-keys",
-    "href": "python-fundamentals/basics.html#loop-through-dictionary-keys",
-    "title": "General Overview",
-    "section": "Loop through dictionary keys",
-    "text": "Loop through dictionary keys\n\nfor country in currencies:\n    print(country)\n\nUS\nNL\nJP",
-    "crumbs": [
-      "Python Fundamentals",
-      "General Overview"
-    ]
-  },
-  {
-    "objectID": "python-fundamentals/basics.html#loop-through-values",
-    "href": "python-fundamentals/basics.html#loop-through-values",
-    "title": "General Overview",
-    "section": "Loop through values",
-    "text": "Loop through values\n\nfor currency in currencies.values():\n    print(currency)\n\nDollar\nEuro\nYen",
-    "crumbs": [
-      "Python Fundamentals",
-      "General Overview"
-    ]
-  },
-  {
-    "objectID": "python-fundamentals/basics.html#loop-through-both",
-    "href": "python-fundamentals/basics.html#loop-through-both",
-    "title": "General Overview",
-    "section": "Loop through both",
-    "text": "Loop through both\n\nfor country, currency in currencies.items():\n    print(f\"The currency of {country} is the {currency}\")\n\nThe currency of US is the Dollar\nThe currency of NL is the Euro\nThe currency of JP is the Yen",
-    "crumbs": [
-      "Python Fundamentals",
-      "General Overview"
-    ]
-  },
-  {
-    "objectID": "python-fundamentals/basics.html#a-list-with-a-collection-of-dictionaries",
-    "href": "python-fundamentals/basics.html#a-list-with-a-collection-of-dictionaries",
-    "title": "General Overview",
-    "section": "A list with a collection of dictionaries",
-    "text": "A list with a collection of dictionaries\n\ncountries = []\n\nnetherlands = {\n    'capital': 'Amsterdam',\n    'region':'Western Europe'\n}\n\nfrance = {\n    'capital': 'Paris',\n    'region':'Western Europe'\n}\n\ncountries.append(netherlands)\ncountries.append(france)\n\ncountries\n\n[{'capital': 'Amsterdam', 'region': 'Western Europe'},\n {'capital': 'Paris', 'region': 'Western Europe'}]\n\n\n\nfor country in countries:\n    display_name = f\"{country['capital']}, \"\n    display_name += f\"{country['region']}\"\n    print(display_name)\n\nAmsterdam, Western Europe\nParis, Western Europe",
-    "crumbs": [
-      "Python Fundamentals",
-      "General Overview"
-    ]
-  },
-  {
-    "objectID": "python-fundamentals/basics.html#lists-within-dictionaries",
-    "href": "python-fundamentals/basics.html#lists-within-dictionaries",
-    "title": "General Overview",
-    "section": "Lists within dictionaries",
-    "text": "Lists within dictionaries\n\nlanguages = {\n    'Canada': ['English', 'French'],\n    'Belgium': ['French', 'Dutch'],\n    'Switzerland': ['German', 'Italian', 'French']\n}\nlanguages\n\n{'Canada': ['English', 'French'],\n 'Belgium': ['French', 'Dutch'],\n 'Switzerland': ['German', 'Italian', 'French']}\n\n\n\nfor country, languages_list in languages.items():\n    print(f\"In {country}, the following languages are spoken:\")\n    for language in languages_list:\n        print(f\"\\t{language}\")\n\nIn Canada, the following languages are spoken:\n    English\n    French\nIn Belgium, the following languages are spoken:\n    French\n    Dutch\nIn Switzerland, the following languages are spoken:\n    German\n    Italian\n    French",
-    "crumbs": [
-      "Python Fundamentals",
-      "General Overview"
-    ]
-  },
-  {
-    "objectID": "python-fundamentals/basics.html#performance-considerations",
-    "href": "python-fundamentals/basics.html#performance-considerations",
-    "title": "General Overview",
-    "section": "Performance considerations",
-    "text": "Performance considerations\n\n# Performance comparison for lookups\nimport time\n\n# Create large datasets\nlarge_list = list(range(10000))\nlarge_set = set(range(10000))\nlarge_dict = {i: f\"value_{i}\" for i in range(10000)}\n\n# List lookup (slow for large lists)\ntarget = 9999\nstart_time = time.time()\nfound = target in large_list\nlist_time = time.time() - start_time\n\n# Set lookup (very fast)\nstart_time = time.time()\nfound = target in large_set\nset_time = time.time() - start_time\n\n# Dictionary lookup (very fast)\nstart_time = time.time()\nfound = target in large_dict\ndict_time = time.time() - start_time\n\nprint(f\"List lookup: {list_time:.6f} seconds\")\nprint(f\"Set lookup: {set_time:.6f} seconds\") \nprint(f\"Dict lookup: {dict_time:.6f} seconds\")\nprint(f\"Set is {list_time/set_time:.0f}x faster than list for lookups\")\n\nList lookup: 0.000084 seconds\nSet lookup: 0.000024 seconds\nDict lookup: 0.000023 seconds\nSet is 3x faster than list for lookups",
-    "crumbs": [
-      "Python Fundamentals",
-      "General Overview"
-    ]
-  },
-  {
-    "objectID": "python-fundamentals/basics.html#for-loops",
-    "href": "python-fundamentals/basics.html#for-loops",
-    "title": "General Overview",
-    "section": "For loops",
-    "text": "For loops\nFor loops iterate over sequences (lists, strings, ranges, etc.). They’re the most common type of loop in data analytics.\n\n# Loop through a list\ncountries = ['Netherlands', 'France', 'Germany', 'Spain']\nfor country in countries:\n    print(f\"Visiting {country}\")\n\nVisiting Netherlands\nVisiting France\nVisiting Germany\nVisiting Spain\n\n\n\n# Loop with enumerate to get index and value\nfor index, country in enumerate(countries):\n    print(f\"{index + 1}. {country}\")\n\n1. Netherlands\n2. France\n3. Germany\n4. Spain\n\n\n\n# Loop through a range of numbers\nfor i in range(5):\n    print(f\"Number: {i}\")\n\nNumber: 0\nNumber: 1\nNumber: 2\nNumber: 3\nNumber: 4\n\n\n\n# Loop through a range with start, stop, step\nfor i in range(2, 10, 2):  # Start at 2, stop before 10, step by 2\n    print(f\"Even number: {i}\")\n\nEven number: 2\nEven number: 4\nEven number: 6\nEven number: 8\n\n\n\n# Loop through string characters\nfor letter in \"Python\":\n    print(f\"Letter: {letter}\")\n\nLetter: P\nLetter: y\nLetter: t\nLetter: h\nLetter: o\nLetter: n",
-    "crumbs": [
-      "Python Fundamentals",
-      "General Overview"
-    ]
-  },
-  {
-    "objectID": "python-fundamentals/basics.html#while-loops",
-    "href": "python-fundamentals/basics.html#while-loops",
-    "title": "General Overview",
-    "section": "While loops",
-    "text": "While loops\nWhile loops continue as long as a condition is True. Use them when you don’t know exactly how many iterations you need.\n\nmonth = 1\nwhile month &lt;= 12:\n    print(f\"Month {month}\")\n    month += 1\n\nMonth 1\nMonth 2\nMonth 3\nMonth 4\nMonth 5\nMonth 6\nMonth 7\nMonth 8\nMonth 9\nMonth 10\nMonth 11\nMonth 12",
-    "crumbs": [
-      "Python Fundamentals",
-      "General Overview"
-    ]
-  },
-  {
-    "objectID": "python-fundamentals/basics.html#loop-control-statements",
-    "href": "python-fundamentals/basics.html#loop-control-statements",
-    "title": "General Overview",
-    "section": "Loop control statements",
-    "text": "Loop control statements\n\nbreak: exits the loop completely when a condition is met\ncontinue: skips the current iteration and moves to the next one\n\n\n# Using break\nfor i in range(10):\n    if i == 5:\n        print(\"Breaking at 5\")\n        break\n    print(i)\n\n0\n1\n2\n3\n4\nBreaking at 5\n\n\n\n# Using continue\nfor i in range(5):\n    if i == 2:\n        print(\"Skipping 2\")\n        continue\n    print(f\"Processing {i}\")\n\nProcessing 0\nProcessing 1\nSkipping 2\nProcessing 3\nProcessing 4\n\n\n\n# Practical example: processing data with conditions\nsales_data = [100, 0, 250, -50, 300, 0, 150]\nvalid_sales = []\n\nfor sale in sales_data:\n    if sale &lt; 0:\n        print(f\"Invalid sale amount: {sale}\")\n        continue\n    if sale == 0:\n        print(\"No sale recorded\")\n        continue\n    valid_sales.append(sale)\n    \nprint(f\"Valid sales: {valid_sales}\")\nprint(f\"Total valid sales: {sum(valid_sales)}\")\n\nNo sale recorded\nInvalid sale amount: -50\nNo sale recorded\nValid sales: [100, 250, 300, 150]\nTotal valid sales: 800",
-    "crumbs": [
-      "Python Fundamentals",
-      "General Overview"
-    ]
-  },
-  {
-    "objectID": "python-fundamentals/basics.html#arbitrary-positional-arguments",
-    "href": "python-fundamentals/basics.html#arbitrary-positional-arguments",
-    "title": "General Overview",
-    "section": "Arbitrary Positional Arguments",
-    "text": "Arbitrary Positional Arguments\n* allows users to pass any number of arguments for when you don’t know how much input a function may receive\n\ndef family(last_name, *first_names):\n    \"\"\"Return all people within a family\"\"\"\n    print(f\"{last_name}:\")\n    for first_name in first_names:\n        print(f\"* {first_name}\")\n\nfamily(\"chisholm\", \"alex\", \"karen\", \"clara\", \"gracie\")\n\nchisholm:\n* alex\n* karen\n* clara\n* gracie",
-    "crumbs": [
-      "Python Fundamentals",
-      "General Overview"
-    ]
-  },
-  {
-    "objectID": "python-fundamentals/basics.html#arbitrary-keyword-arguments",
-    "href": "python-fundamentals/basics.html#arbitrary-keyword-arguments",
-    "title": "General Overview",
-    "section": "Arbitrary Keyword Arguments",
-    "text": "Arbitrary Keyword Arguments\nYou can also set unknown or undefined parameters using key-value pairs.\n\ndef country(name, **qualities):\n    print(name)\n    for key, value in qualities.items():\n        print(f\"* {key}: {value}\")\n\ncountry(\"Netherlands\")\n\nNetherlands\n\n\n\ncountry(\"Netherlands\", region = \"Europe\", climate = \"Wet\", landlocked = False)\n\nNetherlands\n* region: Europe\n* climate: Wet\n* landlocked: False",
-    "crumbs": [
-      "Python Fundamentals",
-      "General Overview"
-    ]
-  },
-  {
-    "objectID": "python-fundamentals/basics.html#default-values",
-    "href": "python-fundamentals/basics.html#default-values",
-    "title": "General Overview",
-    "section": "Default values",
-    "text": "Default values\nYou can also set a default value that will be used as the argument if the function is called without the argument.\n\ndef hello(name, greeting = \"Hello\"):\n    return greeting + ', ' + name + '!'\n\nIf you do not pass in an updated greeting value.\n\nhello(\"Tommy\")\n\n'Hello, Tommy!'\n\n\nAnd with an updated greeting value.\n\nhello(\"Tommy\", \"What's going on\")\n\n\"What's going on, Tommy!\"",
-    "crumbs": [
-      "Python Fundamentals",
-      "General Overview"
-    ]
-  },
-  {
-    "objectID": "python-fundamentals/basics.html#modules-and-imports",
-    "href": "python-fundamentals/basics.html#modules-and-imports",
-    "title": "General Overview",
-    "section": "Modules and Imports",
-    "text": "Modules and Imports\nModules allow you to organize code across multiple files and reuse functionality. This is essential for data analytics projects.\n\nBuilt-in modules\n\n# Different ways to import\nimport math\nimport random\nfrom datetime import datetime\nimport json\n\n# Using imported modules\nprint(f\"Pi: {math.pi}\")\nprint(f\"Random number: {random.randint(1, 100)}\")\nprint(f\"Current time: {datetime.now()}\")\n\ndata = {\"name\": \"Alice\", \"score\": 95}\njson_string = json.dumps(data)\nprint(f\"JSON: {json_string}\")\n\nPi: 3.141592653589793\nRandom number: 22\nCurrent time: 2025-09-13 16:34:35.072471\nJSON: {\"name\": \"Alice\", \"score\": 95}\n\n\n\n\nImport variations\n\n# Import specific functions\nfrom math import sqrt, pow\nresult = sqrt(pow(3, 2) + pow(4, 2))  # Pythagorean theorem\nprint(f\"Hypotenuse: {result}\")\n\n# Import with alias\nimport statistics as stats\nscores = [85, 92, 78, 96, 88]\nprint(f\"Mean: {stats.mean(scores)}\")\nprint(f\"Median: {stats.median(scores)}\")\nprint(f\"Standard deviation: {stats.stdev(scores):.2f}\")\n\nHypotenuse: 5.0\nMean: 87.8\nMedian: 88\nStandard deviation: 6.87\n\n\n\n\nCreating your own modules\nWhen you save functions in a .py file, you can import them into other files:\n\n# Example: If you saved these functions in 'data_helpers.py':\ndef clean_data(data_list):\n    \"\"\"Remove None values and convert to numbers\"\"\"\n    cleaned = []\n    for item in data_list:\n        if item is not None:\n            try:\n                cleaned.append(float(item))\n            except (ValueError, TypeError):\n                pass\n    return cleaned\n\ndef calculate_stats(numbers):\n    \"\"\"Calculate basic statistics\"\"\"\n    if not numbers:\n        return {\"mean\": 0, \"min\": 0, \"max\": 0}\n    \n    return {\n        \"mean\": sum(numbers) / len(numbers),\n        \"min\": min(numbers),\n        \"max\": max(numbers)\n    }\n\n# Then in another file, you could use:\n# from data_helpers import clean_data, calculate_stats\n# \n# raw_data = [1, \"2\", None, 3.5, \"invalid\", 4]\n# clean_numbers = clean_data(raw_data)\n# stats = calculate_stats(clean_numbers)\n\n# For demonstration, we'll use the functions directly:\nraw_data = [1, \"2\", None, 3.5, \"invalid\", 4]\nclean_numbers = clean_data(raw_data)\nstats = calculate_stats(clean_numbers)\nprint(f\"Clean data: {clean_numbers}\")\nprint(f\"Statistics: {stats}\")\n\nClean data: [1.0, 2.0, 3.5, 4.0]\nStatistics: {'mean': 2.625, 'min': 1.0, 'max': 4.0}\n\n\nThis modular approach is useful for:\n\nLarge programs where a single script becomes too long or complex\nReusable functions that you want to use across multiple projects\nTeam collaboration where different people work on different modules\nData analytics workflows where you separate data cleaning, analysis, and visualization functions",
-    "crumbs": [
-      "Python Fundamentals",
-      "General Overview"
-    ]
-  },
-  {
-    "objectID": "python-fundamentals/basics.html#define-a-class",
-    "href": "python-fundamentals/basics.html#define-a-class",
-    "title": "General Overview",
-    "section": "Define a class",
-    "text": "Define a class\n\nclass Stock:\n    def __init__(self, symbol, price):\n        \"\"\"Create a stock with symbol and price\"\"\"\n        self.symbol = symbol\n        self.price = price",
-    "crumbs": [
-      "Python Fundamentals",
-      "General Overview"
-    ]
-  },
-  {
-    "objectID": "python-fundamentals/basics.html#create-a-class-instance",
-    "href": "python-fundamentals/basics.html#create-a-class-instance",
-    "title": "General Overview",
-    "section": "Create a class instance",
-    "text": "Create a class instance\n\napple = Stock(\"APPL\", 214)",
-    "crumbs": [
-      "Python Fundamentals",
-      "General Overview"
-    ]
-  },
-  {
-    "objectID": "python-fundamentals/basics.html#add-some-methods",
-    "href": "python-fundamentals/basics.html#add-some-methods",
-    "title": "General Overview",
-    "section": "Add some methods",
-    "text": "Add some methods\nNow let’s add new methods.\n\ndisplay(): Summarize the current price.\ntoo_expensive(): Is the stock price too expensive? (Arbitrary $100 level)\n\n\nclass Stock:\n    def __init__(self, symbol, price):\n        \"\"\"Create a stock with symbol and price\"\"\"\n        self.symbol = symbol\n        self.price = price\n    \n    def display(self):\n        \"\"\"Show the stock info\"\"\"\n        print(f\"The most recent stock price for {self.symbol} is ${self.price}.\")\n    \n    def too_expensive(self):\n        \"\"\"Check if stock costs more than $100\"\"\"\n        return self.price &gt; 100\n\n\napple = Stock(\"APPL\", 214)\napple.display()\n\nThe most recent stock price for APPL is $214.\n\n\n\napple.too_expensive()\n\nTrue\n\n\n\nuber = Stock(\"UBER\", 91)\nuber.display()\n\nThe most recent stock price for UBER is $91.\n\n\n\nuber.too_expensive()\n\nFalse",
-    "crumbs": [
-      "Python Fundamentals",
-      "General Overview"
-    ]
-  },
-  {
-    "objectID": "python-fundamentals/basics.html#writing-text-files",
-    "href": "python-fundamentals/basics.html#writing-text-files",
-    "title": "General Overview",
-    "section": "Writing text files",
-    "text": "Writing text files\n\n# Writing to a file (creates new file or overwrites existing)\ncountries_data = ['Netherlands', 'France', 'Germany', 'Spain']\n\nwith open('countries.txt', 'w') as file:\n    for country in countries_data:\n        file.write(f\"{country}\\n\")\n\nprint(\"Countries written to file\")\n\nCountries written to file\n\n\n\n# Appending to a file\nwith open('countries.txt', 'a') as file:\n    file.write(\"Italy\\n\")\n    file.write(\"Portugal\\n\")\n\nprint(\"Additional countries appended\")\n\nAdditional countries appended",
-    "crumbs": [
-      "Python Fundamentals",
-      "General Overview"
-    ]
-  },
-  {
-    "objectID": "python-fundamentals/basics.html#reading-text-files",
-    "href": "python-fundamentals/basics.html#reading-text-files",
-    "title": "General Overview",
-    "section": "Reading text files",
-    "text": "Reading text files\n\n# Reading entire file content\ntry:\n    with open('countries.txt', 'r') as file:\n        content = file.read()\n        print(content)\nexcept FileNotFoundError:\n    print(\"File not found\")\n\nNetherlands\nFrance\nGermany\nSpain\nItaly\nPortugal\n\n\n\n\n# Reading line by line (memory efficient for large files)\ntry:\n    with open('countries.txt', 'r') as file:\n        for line_number, line in enumerate(file, 1):\n            print(f\"Line {line_number}: {line.strip()}\")\nexcept FileNotFoundError:\n    print(\"File not found\")\n\nLine 1: Netherlands\nLine 2: France\nLine 3: Germany\nLine 4: Spain\nLine 5: Italy\nLine 6: Portugal\n\n\n\n# Reading all lines into a list\ntry:\n    with open('countries.txt', 'r') as file:\n        lines = file.readlines()\n        print(f\"Read {len(lines)} lines\")\n        for line in lines[:3]:  # Show first 3 lines\n            print(line.strip())\nexcept FileNotFoundError:\n    print(\"File not found\")\n\nRead 6 lines\nNetherlands\nFrance\nGermany",
+    "section": "Return vs. Print",
+    "text": "Return vs. Print\nUnderstanding the difference between return and print is crucial for writing reusable functions.\n\nReturn FunctionsPrint Functions\n\n\n\ndef calculate_area(length, width):\n    \"\"\"Calculate rectangle area - returns a value\"\"\"\n    return length * width\n\n# Function with return - value can be stored\nstored_area = calculate_area(5, 3)\nprint(f\"Stored area: {stored_area}\")\nprint(f\"Type: {type(stored_area)}\")\n\n# Return values can be used in calculations\narea1 = calculate_area(5, 3)\narea2 = calculate_area(4, 6)\ntotal_area = area1 + area2\nprint(f\"Total area: {total_area}\")\n\nStored area: 15\nType: &lt;class 'int'&gt;\nTotal area: 39\n\n\n\n\n\ndef display_area(length, width):\n    \"\"\"Calculate and display rectangle area - prints but doesn't return\"\"\"\n    area = length * width\n    print(f\"The area is {area} square units\")\n\n# Function with print - returns None\nprinted_result = display_area(5, 3)\nprint(f\"Printed result: {printed_result}\")\nprint(f\"Type: {type(printed_result)}\")\n\n# Print functions cannot be used in calculations\n# This would cause an error: total = display_area(5, 3) + display_area(4, 6)\n\nThe area is 15 square units\nPrinted result: None\nType: &lt;class 'NoneType'&gt;",
     "crumbs": [
       "Python Fundamentals",
       "General Overview"
@@ -376,8 +90,8 @@
     "objectID": "python-fundamentals/basics.html#working-with-csv-files",
     "href": "python-fundamentals/basics.html#working-with-csv-files",
     "title": "General Overview",
-    "section": "Working with CSV files",
-    "text": "Working with CSV files\nCSV (Comma-Separated Values) files are common in data analytics.\n\nimport csv\n\n# Writing CSV data\nsales_data = [\n    ['Date', 'Product', 'Sales'],\n    ['2024-01-01', 'Widget A', 100],\n    ['2024-01-02', 'Widget B', 150],\n    ['2024-01-03', 'Widget A', 120]\n]\n\nwith open('sales.csv', 'w', newline='') as file:\n    writer = csv.writer(file)\n    writer.writerows(sales_data)\n\nprint(\"CSV file created\")\n\nCSV file created\n\n\n\n# Reading CSV data\ntry:\n    with open('sales.csv', 'r') as file:\n        reader = csv.reader(file)\n        header = next(reader)  # Get header row\n        print(f\"Headers: {header}\")\n        \n        for row in reader:\n            print(f\"Date: {row[0]}, Product: {row[1]}, Sales: {row[2]}\")\nexcept FileNotFoundError:\n    print(\"CSV file not found\")\n\nHeaders: ['Date', 'Product', 'Sales']\nDate: 2024-01-01, Product: Widget A, Sales: 100\nDate: 2024-01-02, Product: Widget B, Sales: 150\nDate: 2024-01-03, Product: Widget A, Sales: 120\n\n\n\n# Reading CSV as dictionaries (more convenient)\ntry:\n    with open('sales.csv', 'r') as file:\n        reader = csv.DictReader(file)\n        for row in reader:\n            print(f\"On {row['Date']}, {row['Product']} sold {row['Sales']} units\")\nexcept FileNotFoundError:\n    print(\"CSV file not found\")\n\nOn 2024-01-01, Widget A sold 100 units\nOn 2024-01-02, Widget B sold 150 units\nOn 2024-01-03, Widget A sold 120 units",
+    "section": "Working with CSV Files",
+    "text": "Working with CSV Files\nCSV (Comma-Separated Values) files are common in data analytics.\n\nWriting CSVReading CSV - BasicReading CSV - as Dictionaries\n\n\n\nimport csv\n\n# Writing CSV data\nsales_data = [\n    ['Date', 'Product', 'Sales'],\n    ['2024-01-01', 'Widget A', 100],\n    ['2024-01-02', 'Widget B', 150],\n    ['2024-01-03', 'Widget A', 120]\n]\n\nwith open('sales.csv', 'w', newline='') as file:\n    writer = csv.writer(file)\n    writer.writerows(sales_data)\n\nprint(\"CSV file created\")\n\nCSV file created\n\n\n\n\n\nimport csv\n\n# Reading CSV data\ntry:\n    with open('sales.csv', 'r') as file:\n        reader = csv.reader(file)\n        header = next(reader)  # Get header row\n        print(f\"Headers: {header}\")\n        \n        for row in reader:\n            print(f\"Date: {row[0]}, Product: {row[1]}, Sales: {row[2]}\")\nexcept FileNotFoundError:\n    print(\"CSV file not found\")\n\nHeaders: ['Date', 'Product', 'Sales']\nDate: 2024-01-01, Product: Widget A, Sales: 100\nDate: 2024-01-02, Product: Widget B, Sales: 150\nDate: 2024-01-03, Product: Widget A, Sales: 120\n\n\n\n\n\nimport csv\n\n# Reading CSV as dictionaries (more convenient)\ntry:\n    with open('sales.csv', 'r') as file:\n        reader = csv.DictReader(file)\n        for row in reader:\n            print(f\"On {row['Date']}, {row['Product']} sold {row['Sales']} units\")\n        \n        # Convert to list of dictionaries\n        file.seek(0)  # Reset file pointer\n        reader = csv.DictReader(file)\n        data_list = list(reader)\n        print(f\"\\nAs list: {data_list}\")\nexcept FileNotFoundError:\n    print(\"CSV file not found\")\n\nOn 2024-01-01, Widget A sold 100 units\nOn 2024-01-02, Widget B sold 150 units\nOn 2024-01-03, Widget A sold 120 units\n\nAs list: [{'Date': '2024-01-01', 'Product': 'Widget A', 'Sales': '100'}, {'Date': '2024-01-02', 'Product': 'Widget B', 'Sales': '150'}, {'Date': '2024-01-03', 'Product': 'Widget A', 'Sales': '120'}]",
     "crumbs": [
       "Python Fundamentals",
       "General Overview"
@@ -387,8 +101,8 @@
     "objectID": "python-fundamentals/basics.html#working-with-json-files",
     "href": "python-fundamentals/basics.html#working-with-json-files",
     "title": "General Overview",
-    "section": "Working with JSON files",
-    "text": "Working with JSON files\nJSON (JavaScript Object Notation) is common for structured data.\n\nimport json\n\n# Writing JSON data\ncountry_data = {\n    \"name\": \"Netherlands\",\n    \"capital\": \"Amsterdam\",\n    \"population\": 17441000,\n    \"languages\": [\"Dutch\", \"English\"],\n    \"eu_member\": True\n}\n\nwith open('country.json', 'w') as file:\n    json.dump(country_data, file, indent=2)\n\nprint(\"JSON file created\")\n\nJSON file created\n\n\n\n# Reading JSON data\ntry:\n    with open('country.json', 'r') as file:\n        data = json.load(file)\n        print(f\"Country: {data['name']}\")\n        print(f\"Capital: {data['capital']}\")\n        print(f\"Population: {data['population']:,}\")\n        print(f\"Languages: {', '.join(data['languages'])}\")\nexcept FileNotFoundError:\n    print(\"JSON file not found\")\nexcept json.JSONDecodeError:\n    print(\"Invalid JSON file\")\n\nCountry: Netherlands\nCapital: Amsterdam\nPopulation: 17,441,000\nLanguages: Dutch, English",
+    "section": "Working with JSON Files",
+    "text": "Working with JSON Files\nJSON (JavaScript Object Notation) is common for structured data.\n\nWriting JSONReading JSONJSON String Operations\n\n\n\nimport json\n\n# Writing JSON data\ncountry_data = {\n    \"name\": \"Netherlands\",\n    \"capital\": \"Amsterdam\",\n    \"population\": 17441000,\n    \"languages\": [\"Dutch\", \"English\"],\n    \"eu_member\": True\n}\n\nwith open('country.json', 'w') as file:\n    json.dump(country_data, file, indent=2)\n\nprint(\"JSON file created\")\n\nJSON file created\n\n\n\n\n\nimport json\n\n# Reading JSON data\ntry:\n    with open('country.json', 'r') as file:\n        data = json.load(file)\n        print(f\"Country: {data['name']}\")\n        print(f\"Capital: {data['capital']}\")\n        print(f\"Population: {data['population']:,}\")\n        print(f\"Languages: {', '.join(data['languages'])}\")\n        print(f\"EU Member: {data['eu_member']}\")\nexcept FileNotFoundError:\n    print(\"JSON file not found\")\nexcept json.JSONDecodeError:\n    print(\"Invalid JSON file\")\n\nCountry: Netherlands\nCapital: Amsterdam\nPopulation: 17,441,000\nLanguages: Dutch, English\nEU Member: True\n\n\n\n\n\nimport json\n\n# Working with JSON strings (not files)\ndata_dict = {\"name\": \"Alice\", \"scores\": [85, 92, 78]}\n\n# Convert dict to JSON string\njson_string = json.dumps(data_dict)\nprint(f\"JSON string: {json_string}\")\n\n# Convert JSON string back to dict\nparsed_data = json.loads(json_string)\nprint(f\"Parsed data: {parsed_data}\")\nprint(f\"Name: {parsed_data['name']}\")\n\nJSON string: {\"name\": \"Alice\", \"scores\": [85, 92, 78]}\nParsed data: {'name': 'Alice', 'scores': [85, 92, 78]}\nName: Alice",
     "crumbs": [
       "Python Fundamentals",
       "General Overview"
@@ -398,63 +112,8 @@
     "objectID": "python-fundamentals/basics.html#file-path-operations",
     "href": "python-fundamentals/basics.html#file-path-operations",
     "title": "General Overview",
-    "section": "File path operations",
-    "text": "File path operations\n\nimport os\n\n# Check if file exists\nif os.path.exists('countries.txt'):\n    print(\"File exists\")\n    print(f\"File size: {os.path.getsize('countries.txt')} bytes\")\nelse:\n    print(\"File does not exist\")\n\n# Get file information\ntry:\n    stat_info = os.stat('countries.txt')\n    print(f\"Last modified: {stat_info.st_mtime}\")\nexcept FileNotFoundError:\n    print(\"File not found for stat\")\n\nFile exists\nFile size: 48 bytes\nLast modified: 1757795675.1210907\n\n\n\n# Working with directories\ncurrent_dir = os.getcwd()\nprint(f\"Current directory: {current_dir}\")\n\n# List files in directory\nfiles = os.listdir('.')\nprint(f\"Files in current directory: {files[:5]}\")  # Show first 5\n\n# Create directory\nos.makedirs('data_files', exist_ok=True)  # exist_ok prevents error if exists\nprint(\"Directory created or already exists\")\n\nCurrent directory: /Users/alexchisholm/teaching-python2/python-fundamentals\nFiles in current directory: ['basics.quarto_ipynb', 'bool_files', 'str.qmd', 'bool.qmd', 'number.qmd']\nDirectory created or already exists",
-    "crumbs": [
-      "Python Fundamentals",
-      "General Overview"
-    ]
-  },
-  {
-    "objectID": "python-fundamentals/basics.html#basic-try-except",
-    "href": "python-fundamentals/basics.html#basic-try-except",
-    "title": "General Overview",
-    "section": "Basic try-except",
-    "text": "Basic try-except\n\ndef safe_divide(a, b):\n    try:\n        result = a / b\n        return result\n    except ZeroDivisionError:\n        print(\"Error: Cannot divide by zero\")\n        return None\n    except TypeError:\n        print(\"Error: Both arguments must be numbers\")\n        return None\n\n# Test the function\nprint(safe_divide(10, 2))\nprint(safe_divide(10, 0))\nprint(safe_divide(\"10\", 2))\n\n5.0\nError: Cannot divide by zero\nNone\nError: Both arguments must be numbers\nNone",
-    "crumbs": [
-      "Python Fundamentals",
-      "General Overview"
-    ]
-  },
-  {
-    "objectID": "python-fundamentals/basics.html#multiple-exception-types",
-    "href": "python-fundamentals/basics.html#multiple-exception-types",
-    "title": "General Overview",
-    "section": "Multiple exception types",
-    "text": "Multiple exception types\n\ndef process_data_file(filename):\n    try:\n        with open(filename, 'r') as file:\n            data = json.load(file)\n            return data['values']\n    except FileNotFoundError:\n        print(f\"Error: File '{filename}' not found\")\n        return []\n    except json.JSONDecodeError as e:\n        print(f\"Error: Invalid JSON in file - {e}\")\n        return []\n    except KeyError as e:\n        print(f\"Error: Missing key {e} in JSON data\")\n        return []\n    except Exception as e:\n        print(f\"Unexpected error: {e}\")\n        return []\n\n# Test with different scenarios\nresult = process_data_file('nonexistent.json')\nprint(f\"Result: {result}\")\n\nError: File 'nonexistent.json' not found\nResult: []",
-    "crumbs": [
-      "Python Fundamentals",
-      "General Overview"
-    ]
-  },
-  {
-    "objectID": "python-fundamentals/basics.html#finally-clause-and-cleanup",
-    "href": "python-fundamentals/basics.html#finally-clause-and-cleanup",
-    "title": "General Overview",
-    "section": "Finally clause and cleanup",
-    "text": "Finally clause and cleanup\n\ndef process_file_with_cleanup(filename):\n    file_handle = None\n    try:\n        file_handle = open(filename, 'r')\n        content = file_handle.read()\n        # Process content here\n        return content\n    except FileNotFoundError:\n        print(f\"File {filename} not found\")\n        return None\n    finally:\n        if file_handle:\n            file_handle.close()\n            print(\"File closed in finally block\")\n\n# Better approach: using context manager (recommended)\ndef process_file_better(filename):\n    try:\n        with open(filename, 'r') as file:  # Automatically closes file\n            return file.read()\n    except FileNotFoundError:\n        print(f\"File {filename} not found\")\n        return None",
-    "crumbs": [
-      "Python Fundamentals",
-      "General Overview"
-    ]
-  },
-  {
-    "objectID": "python-fundamentals/basics.html#custom-exceptions-for-data-validation",
-    "href": "python-fundamentals/basics.html#custom-exceptions-for-data-validation",
-    "title": "General Overview",
-    "section": "Custom exceptions for data validation",
-    "text": "Custom exceptions for data validation\n\nclass DataValidationError(Exception):\n    \"\"\"Custom exception for data validation errors\"\"\"\n    pass\n\ndef validate_age(age):\n    try:\n        age_int = int(age)\n        if age_int &lt; 0:\n            raise DataValidationError(\"Age cannot be negative\")\n        if age_int &gt; 150:\n            raise DataValidationError(\"Age seems unrealistic (&gt;150)\")\n        return age_int\n    except ValueError:\n        raise DataValidationError(f\"'{age}' is not a valid age\")\n\n# Test data validation\ntest_ages = [25, -5, \"thirty\", 200, \"25\"]\nfor age in test_ages:\n    try:\n        valid_age = validate_age(age)\n        print(f\"Valid age: {valid_age}\")\n    except DataValidationError as e:\n        print(f\"Invalid age '{age}': {e}\")\n\nValid age: 25\nInvalid age '-5': Age cannot be negative\nInvalid age 'thirty': 'thirty' is not a valid age\nInvalid age '200': Age seems unrealistic (&gt;150)\nValid age: 25",
-    "crumbs": [
-      "Python Fundamentals",
-      "General Overview"
-    ]
-  },
-  {
-    "objectID": "python-fundamentals/basics.html#simple-testing-with-assertions",
-    "href": "python-fundamentals/basics.html#simple-testing-with-assertions",
-    "title": "General Overview",
-    "section": "Simple testing with assertions",
-    "text": "Simple testing with assertions\n\ndef calculate_average(numbers):\n    \"\"\"Calculate the average of a list of numbers\"\"\"\n    if not numbers:\n        return 0\n    return sum(numbers) / len(numbers)\n\n# Test the function\ndef test_calculate_average():\n    # Test normal case\n    assert calculate_average([1, 2, 3, 4, 5]) == 3.0\n    \n    # Test empty list\n    assert calculate_average([]) == 0\n    \n    # Test single number\n    assert calculate_average([10]) == 10.0\n    \n    # Test negative numbers\n    assert calculate_average([-1, -2, -3]) == -2.0\n    \n    print(\"All tests passed!\")\n\ntest_calculate_average()\n\nAll tests passed!\n\n\n\n# Testing data cleaning functions\ndef clean_numeric_data(data):\n    \"\"\"Remove non-numeric values and convert to float\"\"\"\n    cleaned = []\n    for item in data:\n        try:\n            cleaned.append(float(item))\n        except (ValueError, TypeError):\n            continue  # Skip non-numeric values\n    return cleaned\n\ndef test_clean_numeric_data():\n    # Test mixed data\n    mixed_data = [1, \"2\", \"hello\", 3.5, None, \"4.7\", True]\n    result = clean_numeric_data(mixed_data)\n    expected = [1.0, 2.0, 3.5, 4.7, 1.0]  # True converts to 1.0\n    assert result == expected, f\"Expected {expected}, got {result}\"\n    \n    # Test empty list\n    assert clean_numeric_data([]) == []\n    \n    # Test all invalid data\n    assert clean_numeric_data([\"hello\", \"world\", None]) == []\n    \n    print(\"Data cleaning tests passed!\")\n\ntest_clean_numeric_data()\n\nData cleaning tests passed!",
+    "section": "File Path Operations",
+    "text": "File Path Operations\n\nFile Existence & InfoDirectory Operations\n\n\n\nimport os\n\n# Check if file exists\nif os.path.exists('countries.txt'):\n    print(\"File exists\")\n    print(f\"File size: {os.path.getsize('countries.txt')} bytes\")\nelse:\n    print(\"File does not exist\")\n\n# Get file information\ntry:\n    stat_info = os.stat('countries.txt')\n    print(f\"Last modified timestamp: {stat_info.st_mtime}\")\nexcept FileNotFoundError:\n    print(\"File not found for stat\")\n\nFile exists\nFile size: 48 bytes\nLast modified timestamp: 1757797146.7339044\n\n\n\n\n\nimport os\n\n# Working with directories\ncurrent_dir = os.getcwd()\nprint(f\"Current directory: {current_dir}\")\n\n# List files in directory\nfiles = os.listdir('.')\nprint(f\"Files in current directory: {files[:5]}\")  # Show first 5\n\n# Create directory\nos.makedirs('data_files', exist_ok=True)  # exist_ok prevents error if exists\nprint(\"Directory created or already exists\")\n\n# Check if it's a file or directory\nfor item in os.listdir('.')[:3]:  # Check first 3 items\n    if os.path.isfile(item):\n        print(f\"{item} is a file\")\n    elif os.path.isdir(item):\n        print(f\"{item} is a directory\")\n\nCurrent directory: /Users/alexchisholm/teaching-python2/python-fundamentals\nFiles in current directory: ['basics.quarto_ipynb', 'bool_files', 'str.qmd', 'bool.qmd', 'number.qmd']\nDirectory created or already exists\nbasics.quarto_ipynb is a file\nbool_files is a directory\nstr.qmd is a file",
     "crumbs": [
       "Python Fundamentals",
       "General Overview"
@@ -718,7 +377,7 @@
     "href": "pandas/merging-data.html",
     "title": "Merging Data",
     "section": "",
-    "text": "Left Join\nLet’s try adding data from passengers table into meals table using a left join. A left join is the most common approach and keeps all records from the left table, adding new info from the right table if a connection can be made to a given record.\nluggage_combo_df = pd.merge(left = luggage_df, right = passengers_df, on = \"passenger_id\", how = \"left\")\nluggage_combo_df\n\n\n\n\n\n\n\n\npassenger_id\nbag_number\nbag_type\nweight_kgs\nsurvived\nsex\nage\nsibling_spouse_count\nparents_children_count\nfare\nclass\nembark_town\nclass_codes\nage_outlier\nage_clean\nfilled_age\n\n\n\n\n0\naf1089fa-c928-4719-94ec-4bdb0aa90e8a\n1\nduffel_bag\n23.0\n0\nmale\n22.0\n1\n0\n7.2500\nThird\nSouthampton\n2\nFalse\n22.0\n22.0\n\n\n1\naf1089fa-c928-4719-94ec-4bdb0aa90e8a\n2\nsmall_suitcase\n11.1\n0\nmale\n22.0\n1\n0\n7.2500\nThird\nSouthampton\n2\nFalse\n22.0\n22.0\n\n\n2\n5f616a6d-f338-4360-9d7b-3b92196dd350\n1\nsuitcase\n43.7\n1\nfemale\n38.0\n1\n0\n71.2833\nFirst\nCherbourg\n0\nFalse\n38.0\n38.0\n\n\n3\n5f616a6d-f338-4360-9d7b-3b92196dd350\n2\nhat_box\n18.8\n1\nfemale\n38.0\n1\n0\n71.2833\nFirst\nCherbourg\n0\nFalse\n38.0\n38.0\n\n\n4\n5f616a6d-f338-4360-9d7b-3b92196dd350\n3\nwardrobe_trunk\n45.2\n1\nfemale\n38.0\n1\n0\n71.2833\nFirst\nCherbourg\n0\nFalse\n38.0\n38.0\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n2031\n2094390f-10db-4ca3-9693-ef5795da5446\n2\nhat_box\n17.8\n1\nmale\n26.0\n0\n0\n30.0000\nFirst\nCherbourg\n0\nFalse\n26.0\n26.0\n\n\n2032\n2094390f-10db-4ca3-9693-ef5795da5446\n3\nwardrobe_trunk\n34.6\n1\nmale\n26.0\n0\n0\n30.0000\nFirst\nCherbourg\n0\nFalse\n26.0\n26.0\n\n\n2033\n2094390f-10db-4ca3-9693-ef5795da5446\n4\njewelry_case\n18.4\n1\nmale\n26.0\n0\n0\n30.0000\nFirst\nCherbourg\n0\nFalse\n26.0\n26.0\n\n\n2034\n2094390f-10db-4ca3-9693-ef5795da5446\n5\nsuitcase\n26.1\n1\nmale\n26.0\n0\n0\n30.0000\nFirst\nCherbourg\n0\nFalse\n26.0\n26.0\n\n\n2035\nb64de32c-dfbc-4e27-a2dc-a2af3e5597c5\n1\ncloth_bundle\n5.0\n0\nmale\n32.0\n0\n0\n7.7500\nThird\nQueenstown\n2\nFalse\n32.0\n32.0\n\n\n\n\n2036 rows × 16 columns\nThis works and we could do like find average luggage weight by something new from the passenger dataset such as class.\nluggage_combo_df.groupby(\"class\")[\"weight_kgs\"].mean()\n\n/var/folders/jh/vdccym5962j7k7gdnt8z2w1h0000gn/T/ipykernel_11380/3239628133.py:1: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.\n  luggage_combo_df.groupby(\"class\")[\"weight_kgs\"].mean()\n\n\nclass\nFirst     32.524771\nSecond    22.240000\nThird     14.594142\nName: weight_kgs, dtype: float64\nHowever, if may be more useful to take information from the new luggage_df table, calculate something new, and then add it back to pasenger_df which is a very clean table for analytics with one row per unique passenger.\nLet’s do three things\nluggage_summary_df = luggage_df.groupby(\"passenger_id\").agg(\n    luggage_count=(\"bag_number\", \"count\"),\n    luggage_mean_weight=(\"weight_kgs\", \"mean\"),\n    luggage_total_weight=(\"weight_kgs\", \"sum\")\n).reset_index()\n\nluggage_summary_df\n\n\n\n\n\n\n\n\npassenger_id\nluggage_count\nluggage_mean_weight\nluggage_total_weight\n\n\n\n\n0\n001c43f2-cc62-405f-bc6b-32fe01ac690e\n4\n35.825000\n143.3\n\n\n1\n005eeee0-731c-4140-8173-7e320708fc8b\n2\n18.000000\n36.0\n\n\n2\n0095bd9e-f724-4ea0-b36c-14c422372fa6\n1\n8.100000\n8.1\n\n\n3\n010ed1a2-8f40-41c0-9440-e4eaa68c23bf\n1\n23.200000\n23.2\n\n\n4\n015ef17d-8360-430a-97b2-81d13fcf1674\n2\n15.650000\n31.3\n\n\n...\n...\n...\n...\n...\n\n\n886\nfcf07c16-653f-49f8-b41d-848d654433fb\n2\n14.800000\n29.6\n\n\n887\nfda40ec4-cff3-447e-a12d-f2391ac2a016\n3\n23.533333\n70.6\n\n\n888\nfe237248-3145-49c3-873a-23103a548d48\n3\n33.933333\n101.8\n\n\n889\nff4c5bd2-a58f-4d1b-9ba9-98c963e6a1f1\n1\n6.400000\n6.4\n\n\n890\nffaa9cfb-d5cd-4ef0-8248-9250a2a57a39\n1\n15.400000\n15.4\n\n\n\n\n891 rows × 4 columns\npd.merge(left=passengers_df, right = luggage_summary_df, on = \"passenger_id\", how = \"left\")\n\n\n\n\n\n\n\n\npassenger_id\nsurvived\nsex\nage\nsibling_spouse_count\nparents_children_count\nfare\nclass\nembark_town\nclass_codes\nage_outlier\nage_clean\nfilled_age\nluggage_count\nluggage_mean_weight\nluggage_total_weight\n\n\n\n\n0\naf1089fa-c928-4719-94ec-4bdb0aa90e8a\n0\nmale\n22.0\n1\n0\n7.2500\nThird\nSouthampton\n2\nFalse\n22.0\n22.0\n2\n17.05\n34.1\n\n\n1\n5f616a6d-f338-4360-9d7b-3b92196dd350\n1\nfemale\n38.0\n1\n0\n71.2833\nFirst\nCherbourg\n0\nFalse\n38.0\n38.0\n3\n35.90\n107.7\n\n\n2\n34ad8431-f090-40d0-a1c9-50fe2cb39979\n1\nfemale\n26.0\n0\n0\n7.9250\nThird\nSouthampton\n2\nFalse\n26.0\n26.0\n2\n16.40\n32.8\n\n\n3\n3bcdceb3-f1dd-4ef2-a9dc-089c13f54a27\n1\nfemale\n35.0\n1\n0\n53.1000\nFirst\nSouthampton\n0\nFalse\n35.0\n35.0\n4\n34.95\n139.8\n\n\n4\n0ee5b915-66c7-42d4-ba2d-5c0703633ccc\n0\nmale\n35.0\n0\n0\n8.0500\nThird\nSouthampton\n2\nFalse\n35.0\n35.0\n1\n22.70\n22.7\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n886\n79e179d2-8fd2-42e3-8e25-6d1124861a45\n0\nmale\n27.0\n0\n0\n13.0000\nSecond\nSouthampton\n1\nFalse\n27.0\n27.0\n2\n26.75\n53.5\n\n\n887\na53b93a9-a0fe-4e83-ac58-a74c32825abe\n1\nfemale\n19.0\n0\n0\n30.0000\nFirst\nSouthampton\n0\nFalse\n19.0\n19.0\n4\n36.00\n144.0\n\n\n888\nc89d25cf-49ac-4aaf-a614-b2cf8754bc13\n0\nfemale\nNaN\n1\n2\n23.4500\nThird\nSouthampton\n2\nFalse\nNaN\n28.0\n2\n15.45\n30.9\n\n\n889\n2094390f-10db-4ca3-9693-ef5795da5446\n1\nmale\n26.0\n0\n0\n30.0000\nFirst\nCherbourg\n0\nFalse\n26.0\n26.0\n5\n28.68\n143.4\n\n\n890\nb64de32c-dfbc-4e27-a2dc-a2af3e5597c5\n0\nmale\n32.0\n0\n0\n7.7500\nThird\nQueenstown\n2\nFalse\n32.0\n32.0\n1\n5.00\n5.0\n\n\n\n\n891 rows × 16 columns",
+    "text": "Left Join\nLet’s try adding data from passengers table into meals table using a left join. A left join is the most common approach and keeps all records from the left table, adding new info from the right table if a connection can be made to a given record.\nluggage_combo_df = pd.merge(left = luggage_df, right = passengers_df, on = \"passenger_id\", how = \"left\")\nluggage_combo_df\n\n\n\n\n\n\n\n\npassenger_id\nbag_number\nbag_type\nweight_kgs\nsurvived\nsex\nage\nsibling_spouse_count\nparents_children_count\nfare\nclass\nembark_town\nclass_codes\nage_outlier\nage_clean\nfilled_age\n\n\n\n\n0\naf1089fa-c928-4719-94ec-4bdb0aa90e8a\n1\nduffel_bag\n23.0\n0\nmale\n22.0\n1\n0\n7.2500\nThird\nSouthampton\n2\nFalse\n22.0\n22.0\n\n\n1\naf1089fa-c928-4719-94ec-4bdb0aa90e8a\n2\nsmall_suitcase\n11.1\n0\nmale\n22.0\n1\n0\n7.2500\nThird\nSouthampton\n2\nFalse\n22.0\n22.0\n\n\n2\n5f616a6d-f338-4360-9d7b-3b92196dd350\n1\nsuitcase\n43.7\n1\nfemale\n38.0\n1\n0\n71.2833\nFirst\nCherbourg\n0\nFalse\n38.0\n38.0\n\n\n3\n5f616a6d-f338-4360-9d7b-3b92196dd350\n2\nhat_box\n18.8\n1\nfemale\n38.0\n1\n0\n71.2833\nFirst\nCherbourg\n0\nFalse\n38.0\n38.0\n\n\n4\n5f616a6d-f338-4360-9d7b-3b92196dd350\n3\nwardrobe_trunk\n45.2\n1\nfemale\n38.0\n1\n0\n71.2833\nFirst\nCherbourg\n0\nFalse\n38.0\n38.0\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n2031\n2094390f-10db-4ca3-9693-ef5795da5446\n2\nhat_box\n17.8\n1\nmale\n26.0\n0\n0\n30.0000\nFirst\nCherbourg\n0\nFalse\n26.0\n26.0\n\n\n2032\n2094390f-10db-4ca3-9693-ef5795da5446\n3\nwardrobe_trunk\n34.6\n1\nmale\n26.0\n0\n0\n30.0000\nFirst\nCherbourg\n0\nFalse\n26.0\n26.0\n\n\n2033\n2094390f-10db-4ca3-9693-ef5795da5446\n4\njewelry_case\n18.4\n1\nmale\n26.0\n0\n0\n30.0000\nFirst\nCherbourg\n0\nFalse\n26.0\n26.0\n\n\n2034\n2094390f-10db-4ca3-9693-ef5795da5446\n5\nsuitcase\n26.1\n1\nmale\n26.0\n0\n0\n30.0000\nFirst\nCherbourg\n0\nFalse\n26.0\n26.0\n\n\n2035\nb64de32c-dfbc-4e27-a2dc-a2af3e5597c5\n1\ncloth_bundle\n5.0\n0\nmale\n32.0\n0\n0\n7.7500\nThird\nQueenstown\n2\nFalse\n32.0\n32.0\n\n\n\n\n2036 rows × 16 columns\nThis works and we could do like find average luggage weight by something new from the passenger dataset such as class.\nluggage_combo_df.groupby(\"class\")[\"weight_kgs\"].mean()\n\n/var/folders/jh/vdccym5962j7k7gdnt8z2w1h0000gn/T/ipykernel_16278/3239628133.py:1: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.\n  luggage_combo_df.groupby(\"class\")[\"weight_kgs\"].mean()\n\n\nclass\nFirst     32.524771\nSecond    22.240000\nThird     14.594142\nName: weight_kgs, dtype: float64\nHowever, if may be more useful to take information from the new luggage_df table, calculate something new, and then add it back to pasenger_df which is a very clean table for analytics with one row per unique passenger.\nLet’s do three things\nluggage_summary_df = luggage_df.groupby(\"passenger_id\").agg(\n    luggage_count=(\"bag_number\", \"count\"),\n    luggage_mean_weight=(\"weight_kgs\", \"mean\"),\n    luggage_total_weight=(\"weight_kgs\", \"sum\")\n).reset_index()\n\nluggage_summary_df\n\n\n\n\n\n\n\n\npassenger_id\nluggage_count\nluggage_mean_weight\nluggage_total_weight\n\n\n\n\n0\n001c43f2-cc62-405f-bc6b-32fe01ac690e\n4\n35.825000\n143.3\n\n\n1\n005eeee0-731c-4140-8173-7e320708fc8b\n2\n18.000000\n36.0\n\n\n2\n0095bd9e-f724-4ea0-b36c-14c422372fa6\n1\n8.100000\n8.1\n\n\n3\n010ed1a2-8f40-41c0-9440-e4eaa68c23bf\n1\n23.200000\n23.2\n\n\n4\n015ef17d-8360-430a-97b2-81d13fcf1674\n2\n15.650000\n31.3\n\n\n...\n...\n...\n...\n...\n\n\n886\nfcf07c16-653f-49f8-b41d-848d654433fb\n2\n14.800000\n29.6\n\n\n887\nfda40ec4-cff3-447e-a12d-f2391ac2a016\n3\n23.533333\n70.6\n\n\n888\nfe237248-3145-49c3-873a-23103a548d48\n3\n33.933333\n101.8\n\n\n889\nff4c5bd2-a58f-4d1b-9ba9-98c963e6a1f1\n1\n6.400000\n6.4\n\n\n890\nffaa9cfb-d5cd-4ef0-8248-9250a2a57a39\n1\n15.400000\n15.4\n\n\n\n\n891 rows × 4 columns\npd.merge(left=passengers_df, right = luggage_summary_df, on = \"passenger_id\", how = \"left\")\n\n\n\n\n\n\n\n\npassenger_id\nsurvived\nsex\nage\nsibling_spouse_count\nparents_children_count\nfare\nclass\nembark_town\nclass_codes\nage_outlier\nage_clean\nfilled_age\nluggage_count\nluggage_mean_weight\nluggage_total_weight\n\n\n\n\n0\naf1089fa-c928-4719-94ec-4bdb0aa90e8a\n0\nmale\n22.0\n1\n0\n7.2500\nThird\nSouthampton\n2\nFalse\n22.0\n22.0\n2\n17.05\n34.1\n\n\n1\n5f616a6d-f338-4360-9d7b-3b92196dd350\n1\nfemale\n38.0\n1\n0\n71.2833\nFirst\nCherbourg\n0\nFalse\n38.0\n38.0\n3\n35.90\n107.7\n\n\n2\n34ad8431-f090-40d0-a1c9-50fe2cb39979\n1\nfemale\n26.0\n0\n0\n7.9250\nThird\nSouthampton\n2\nFalse\n26.0\n26.0\n2\n16.40\n32.8\n\n\n3\n3bcdceb3-f1dd-4ef2-a9dc-089c13f54a27\n1\nfemale\n35.0\n1\n0\n53.1000\nFirst\nSouthampton\n0\nFalse\n35.0\n35.0\n4\n34.95\n139.8\n\n\n4\n0ee5b915-66c7-42d4-ba2d-5c0703633ccc\n0\nmale\n35.0\n0\n0\n8.0500\nThird\nSouthampton\n2\nFalse\n35.0\n35.0\n1\n22.70\n22.7\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n886\n79e179d2-8fd2-42e3-8e25-6d1124861a45\n0\nmale\n27.0\n0\n0\n13.0000\nSecond\nSouthampton\n1\nFalse\n27.0\n27.0\n2\n26.75\n53.5\n\n\n887\na53b93a9-a0fe-4e83-ac58-a74c32825abe\n1\nfemale\n19.0\n0\n0\n30.0000\nFirst\nSouthampton\n0\nFalse\n19.0\n19.0\n4\n36.00\n144.0\n\n\n888\nc89d25cf-49ac-4aaf-a614-b2cf8754bc13\n0\nfemale\nNaN\n1\n2\n23.4500\nThird\nSouthampton\n2\nFalse\nNaN\n28.0\n2\n15.45\n30.9\n\n\n889\n2094390f-10db-4ca3-9693-ef5795da5446\n1\nmale\n26.0\n0\n0\n30.0000\nFirst\nCherbourg\n0\nFalse\n26.0\n26.0\n5\n28.68\n143.4\n\n\n890\nb64de32c-dfbc-4e27-a2dc-a2af3e5597c5\n0\nmale\n32.0\n0\n0\n7.7500\nThird\nQueenstown\n2\nFalse\n32.0\n32.0\n1\n5.00\n5.0\n\n\n\n\n891 rows × 16 columns",
     "crumbs": [
       "Pandas",
       "Merging Data"

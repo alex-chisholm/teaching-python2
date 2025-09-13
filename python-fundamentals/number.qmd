@@ -1,0 +1,583 @@
+# number Details  {.unnumbered}
+
+## Setup
+
+```{python}
+gdp_capita = 65000
+gdp_capita_float = 65000.0
+print(f"Working with integer: {gdp_capita}")
+print(f"Working with float: {gdp_capita_float}")
+```
+
+# Built-in Functions
+
+## len()
+
+This function doesn't work with integers - it's only for sequences and collections.
+
+```{python}
+# This would raise a TypeError
+# len(gdp_capita)
+print("len() doesn't work with integers")
+```
+
+## str()
+
+Converts the integer to its string representation.
+
+```{python}
+str(gdp_capita)
+```
+
+## repr()
+
+Returns the "official" string representation. For integers, this is identical to `str()`.
+
+```{python}
+repr(gdp_capita)
+```
+
+## type()
+
+Returns the type/class of the object.
+
+```{python}
+type(gdp_capita)
+```
+
+## bool()
+
+Returns False for zero, True for any non-zero integer.
+
+```{python}
+bool(gdp_capita)
+```
+
+## bool() with zero
+
+```{python}
+bool(0)
+```
+
+## hash()
+
+Returns a hash value for the integer. Unlike strings, integer hash values are predictable and consistent.
+
+```{python}
+hash(gdp_capita)
+```
+
+## id()
+
+Returns the memory address where the integer object is stored. Small integers (-5 to 256) are cached and reused in Python.
+
+```{python}
+id(gdp_capita)
+```
+
+## abs()
+
+Returns the absolute value of the integer.
+
+```{python}
+abs(gdp_capita)
+```
+
+## abs() with negative
+
+```{python}
+abs(-gdp_capita)
+```
+
+## int()
+
+Converts to integer (redundant here, but useful for converting other types).
+
+```{python}
+int(gdp_capita)
+```
+
+## float()
+
+Converts integer to floating-point number.
+
+```{python}
+float(gdp_capita)
+```
+
+## complex()
+
+Converts integer to complex number (real part = integer, imaginary part = 0).
+
+```{python}
+complex(gdp_capita)
+```
+
+# Mathematical Operations
+
+## Basic arithmetic
+
+```{python}
+gdp_capita + 5000  # Addition
+```
+
+```{python}
+gdp_capita - 10000  # Subtraction
+```
+
+```{python}
+gdp_capita * 2  # Multiplication
+```
+
+```{python}
+gdp_capita / 2  # Division (returns float)
+```
+
+## Floor division
+
+Returns the largest integer less than or equal to the division result.
+
+```{python}
+gdp_capita // 3  # Floor division
+```
+
+## Modulo
+
+Returns the remainder after division.
+
+```{python}
+gdp_capita % 7  # Modulo
+```
+
+## Exponentiation
+
+```{python}
+gdp_capita ** 2  # Exponentiation
+```
+
+## divmod()
+
+Returns both quotient and remainder as a tuple.
+
+```{python}
+divmod(gdp_capita, 7)
+```
+
+## pow()
+
+Raises number to a power. Third argument provides modulo operation.
+
+```{python}
+pow(gdp_capita, 2)
+```
+
+## pow() with modulo
+
+More efficient than `(base ** exp) % mod` for large numbers.
+
+```{python}
+pow(gdp_capita, 2, 1000)  # (65000^2) % 1000
+```
+
+# Comparison Operations
+
+## Equality
+
+```{python}
+gdp_capita == 65000
+```
+
+## Inequality
+
+```{python}
+gdp_capita != 50000
+```
+
+## Less than
+
+```{python}
+gdp_capita < 70000
+```
+
+## Greater than
+
+```{python}
+gdp_capita > 60000
+```
+
+## Less than or equal
+
+```{python}
+gdp_capita <= 65000
+```
+
+## Greater than or equal
+
+```{python}
+gdp_capita >= 65000
+```
+
+# Bitwise Operations
+
+## Binary representation
+
+```{python}
+bin(gdp_capita)
+```
+
+## Hexadecimal representation
+
+```{python}
+hex(gdp_capita)
+```
+
+## Octal representation
+
+```{python}
+oct(gdp_capita)
+```
+
+## Bitwise AND
+
+```{python}
+gdp_capita & 255  # AND with 255 (gets last 8 bits)
+```
+
+## Bitwise OR
+
+```{python}
+gdp_capita | 15  # OR with 15
+```
+
+## Bitwise XOR
+
+```{python}
+gdp_capita ^ 100  # XOR with 100
+```
+
+## Bitwise NOT
+
+Returns the bitwise complement (inverts all bits).
+
+```{python}
+~gdp_capita
+```
+
+## Left shift
+
+Shifts bits left (equivalent to multiplying by 2^n).
+
+```{python}
+gdp_capita << 2  # Shift left by 2 positions
+```
+
+## Right shift
+
+Shifts bits right (equivalent to integer division by 2^n).
+
+```{python}
+gdp_capita >> 3  # Shift right by 3 positions
+```
+
+# Integer Methods
+
+## bit_length()
+
+Returns the number of bits required to represent the integer in base 2.
+
+```{python}
+gdp_capita.bit_length()
+```
+
+## bit_count()
+
+Returns the number of 1-bits in the binary representation (Python 3.10+).
+
+```{python}
+gdp_capita.bit_count()
+```
+
+## to_bytes()
+
+Converts integer to bytes representation. Requires length and byte order.
+
+```{python}
+gdp_capita.to_bytes(4, 'big')  # 4 bytes, big-endian
+```
+
+## to_bytes() little endian
+
+```{python}
+gdp_capita.to_bytes(4, 'little')  # 4 bytes, little-endian
+```
+
+## from_bytes()
+
+Class method that creates integer from bytes (demonstrates the reverse operation).
+
+```{python}
+int.from_bytes(b'\x00\x00\xfd\xe8', 'big')
+```
+
+# Formatting and Display
+
+## String formatting with f-strings
+
+```{python}
+f"GDP per capita: ${gdp_capita:,}"  # Thousands separator
+```
+
+## String formatting with format()
+
+```{python}
+"GDP per capita: ${:,}".format(gdp_capita)
+```
+
+## Binary formatting
+
+```{python}
+f"Binary: {gdp_capita:b}"
+```
+
+## Hexadecimal formatting
+
+```{python}
+f"Hex: {gdp_capita:x}"
+```
+
+## Zero-padded formatting
+
+```{python}
+f"Zero-padded: {gdp_capita:08d}"
+```
+
+# Mathematical Functions (import math)
+
+```{python}
+import math
+```
+
+## math.sqrt()
+
+Returns the square root as a float.
+
+```{python}
+math.sqrt(gdp_capita)
+```
+
+## math.log()
+
+Returns the natural logarithm.
+
+```{python}
+math.log(gdp_capita)
+```
+
+## math.log10()
+
+Returns the base-10 logarithm.
+
+```{python}
+math.log10(gdp_capita)
+```
+
+## math.factorial()
+
+Returns the factorial. Only works with non-negative integers.
+
+```{python}
+math.factorial(10)  # Using smaller number for readability
+```
+
+## math.gcd()
+
+Returns the greatest common divisor of two integers.
+
+```{python}
+math.gcd(gdp_capita, 1000)
+```
+
+## math.lcm()
+
+Returns the least common multiple (Python 3.9+).
+
+```{python}
+math.lcm(gdp_capita, 1000)
+```
+
+# Type Checking and Conversion
+
+## isinstance() with int
+
+Checks if object is an instance of integer type.
+
+```{python}
+isinstance(gdp_capita, int)
+```
+
+## isinstance() with multiple types
+
+Can check against multiple types using a tuple.
+
+```{python}
+isinstance(gdp_capita, (int, float))
+```
+
+## round()
+
+For integers, round() returns the same value but as an integer type.
+
+```{python}
+round(gdp_capita)
+```
+
+## round() with decimal places
+
+Even with decimal places specified, integer input returns integer.
+
+```{python}
+round(gdp_capita, 2)
+```
+
+# Integer vs Float Differences
+
+## Type comparison
+
+```{python}
+print(f"Integer type: {type(gdp_capita)}")
+print(f"Float type: {type(gdp_capita_float)}")
+```
+
+## Memory representation
+
+Integers and floats are stored differently in memory.
+
+```{python}
+print(f"Integer id: {id(gdp_capita)}")
+print(f"Float id: {id(gdp_capita_float)}")
+```
+
+## Equality despite different types
+
+Python allows comparison between int and float when values are equal.
+
+```{python}
+gdp_capita == gdp_capita_float
+```
+
+## Type-specific behavior: Division
+
+Integer division vs float division can produce different types.
+
+```{python}
+print(f"Int / Int: {gdp_capita / 2} (type: {type(gdp_capita / 2)})")
+print(f"Float / Float: {gdp_capita_float / 2.0} (type: {type(gdp_capita_float / 2.0)})")
+```
+
+## Type-specific behavior: Floor division
+
+Floor division behavior differs between int and float.
+
+```{python}
+print(f"Int // Int: {gdp_capita // 3} (type: {type(gdp_capita // 3)})")
+print(f"Float // Float: {gdp_capita_float // 3.0} (type: {type(gdp_capita_float // 3.0)})")
+```
+
+## Precision differences
+
+Floats have limited precision, while integers have arbitrary precision.
+
+```{python}
+large_int = 99999999999999999999999999999999999999
+large_float = 99999999999999999999999999999999999999.0
+print(f"Large integer: {large_int}")
+print(f"Large float: {large_float}")
+```
+
+## Scientific notation
+
+Only floats display in scientific notation for very large numbers.
+
+```{python}
+very_large_float = float(10**20)
+very_large_int = 10**20
+print(f"Large float: {very_large_float}")
+print(f"Large int: {very_large_int}")
+```
+
+## is vs == comparison
+
+Identity vs equality comparison shows they're different objects.
+
+```{python}
+print(f"gdp_capita == gdp_capita_float: {gdp_capita == gdp_capita_float}")
+print(f"gdp_capita is gdp_capita_float: {gdp_capita is gdp_capita_float}")
+```
+
+## Hash values
+
+Integers and equivalent floats have the same hash value for dictionary/set compatibility.
+
+```{python}
+print(f"hash(gdp_capita): {hash(gdp_capita)}")
+print(f"hash(gdp_capita_float): {hash(gdp_capita_float)}")
+```
+
+## Method availability
+
+Some methods are specific to integers or floats.
+
+```{python}
+print(f"Integer has bit_length(): {hasattr(gdp_capita, 'bit_length')}")
+print(f"Float has bit_length(): {hasattr(gdp_capita_float, 'bit_length')}")
+print(f"Float has is_integer(): {hasattr(gdp_capita_float, 'is_integer')}")
+print(f"Integer has is_integer(): {hasattr(gdp_capita, 'is_integer')}")
+```
+
+## Float-specific methods
+
+```{python}
+print(f"Is the float an integer value? {gdp_capita_float.is_integer()}")
+print(f"Float as integer ratio: {gdp_capita_float.as_integer_ratio()}")
+```
+
+# Working with Collections
+
+## range()
+
+Creates a sequence of integers. Often used in loops.
+
+```{python}
+list(range(5))  # 0 to 4
+```
+
+## range() with start and stop
+
+```{python}
+list(range(gdp_capita, gdp_capita + 5))
+```
+
+## Membership in ranges
+
+```{python}
+gdp_capita in range(60000, 70000)
+```
+
+## List indexing
+
+Integers are used as indices for sequences.
+
+```{python}
+countries = ['USA', 'Germany', 'Japan', 'Netherlands']
+index = 3
+countries[index]
+```
+
+## Dictionary keys
+
+Integers can be used as dictionary keys.
+
+```{python}
+gdp_data = {gdp_capita: 'Netherlands', 50000: 'Germany', 70000: 'USA'}
+gdp_data[gdp_capita]
+```

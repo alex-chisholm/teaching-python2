@@ -1,0 +1,108 @@
+# List Operations Matrix  {.unnumbered}
+
+## Function/Method Compatibility with Lists Containing Different Types
+
+| Function/Method | Definition | List[str] | List[int] | List[float] | List[bool] | Mixed List | Notes |
+|----------------|------------|-----------|-----------|-------------|------------|------------|-------|
+| **Basic List Functions** |||||||
+| `len()` | Length of list | ✅ | ✅ | ✅ | ✅ | ✅ | Always works regardless of element type |
+| `type()` | Get object type | ✅ | ✅ | ✅ | ✅ | ✅ | Always returns `<class 'list'>` |
+| `str()` | Convert to string | ✅ | ✅ | ✅ | ✅ | ✅ | String representation of entire list |
+| `repr()` | Official representation | ✅ | ✅ | ✅ | ✅ | ✅ | Shows list with element representations |
+| `bool()` | Convert to boolean | ✅ | ✅ | ✅ | ✅ | ✅ | False for empty list, True otherwise |
+| `id()` | Get memory address | ✅ | ✅ | ✅ | ✅ | ✅ | Every list has unique identity |
+| **Mathematical Functions** |||||||
+| `sum()` | Sum all elements | ❌ | ✅ | ✅ | ✅ | ⚠️ | String concatenation not supported; mixed needs compatible types |
+| `min()` | Minimum value | ✅ | ✅ | ✅ | ✅ | ⚠️ | Works if all elements are comparable |
+| `max()` | Maximum value | ✅ | ✅ | ✅ | ✅ | ⚠️ | Works if all elements are comparable |
+| `all()` | All elements truthy | ✅ | ✅ | ✅ | ✅ | ✅ | Checks truthiness of each element |
+| `any()` | Any element truthy | ✅ | ✅ | ✅ | ✅ | ✅ | Checks if any element is truthy |
+| **List Methods - Modification** |||||||
+| `.append()` | Add single item to end | ✅ | ✅ | ✅ | ✅ | ✅ | Can append any type to any list |
+| `.extend()` | Add multiple items | ✅ | ✅ | ✅ | ✅ | ✅ | Extends with any iterable |
+| `.insert()` | Insert at position | ✅ | ✅ | ✅ | ✅ | ✅ | Can insert any type anywhere |
+| `.remove()` | Remove first occurrence | ✅ | ✅ | ✅ | ✅ | ✅ | Must match element exactly |
+| `.pop()` | Remove and return item | ✅ | ✅ | ✅ | ✅ | ✅ | Returns the removed element |
+| `.clear()` | Remove all items | ✅ | ✅ | ✅ | ✅ | ✅ | Always works |
+| `.reverse()` | Reverse in place | ✅ | ✅ | ✅ | ✅ | ✅ | Always works |
+| `.sort()` | Sort in place | ✅ | ✅ | ✅ | ✅ | ⚠️ | Mixed types may not be comparable |
+| **List Methods - Information** |||||||
+| `.index()` | Find first index | ✅ | ✅ | ✅ | ✅ | ✅ | Must match element exactly |
+| `.count()` | Count occurrences | ✅ | ✅ | ✅ | ✅ | ✅ | Counts exact matches |
+| `.copy()` | Shallow copy | ✅ | ✅ | ✅ | ✅ | ✅ | Always works |
+| **Sequence Operations** |||||||
+| `+` (concatenation) | Join lists | ✅ | ✅ | ✅ | ✅ | ✅ | Can concatenate any list types |
+| `*` (repetition) | Repeat list | ✅ | ✅ | ✅ | ✅ | ✅ | Always works |
+| `in/not in` | Check membership | ✅ | ✅ | ✅ | ✅ | ✅ | Checks for exact element match |
+| `[index]` | Access by position | ✅ | ✅ | ✅ | ✅ | ✅ | Always works with valid index |
+| `[start:end]` | Slice list | ✅ | ✅ | ✅ | ✅ | ✅ | Always works |
+| **Sorting Functions** |||||||
+| `sorted()` | Return sorted copy | ✅ | ✅ | ✅ | ✅ | ⚠️ | Mixed types may not be comparable |
+| `reversed()` | Return reversed iterator | ✅ | ✅ | ✅ | ✅ | ✅ | Always works |
+| **Type Conversion** |||||||
+| `tuple()` | Convert to tuple | ✅ | ✅ | ✅ | ✅ | ✅ | Always works |
+| `set()` | Convert to set | ✅ | ✅ | ✅ | ✅ | ✅ | Removes duplicates; elements must be hashable |
+| `frozenset()` | Convert to immutable set | ✅ | ✅ | ✅ | ✅ | ✅ | Like set() but immutable |
+| **Iteration Functions** |||||||
+| `enumerate()` | Add index to elements | ✅ | ✅ | ✅ | ✅ | ✅ | Always works |
+| `zip()` | Combine with other iterables | ✅ | ✅ | ✅ | ✅ | ✅ | Always works |
+| `map()` | Apply function to elements | ✅ | ✅ | ✅ | ✅ | ✅ | Function must be compatible with element types |
+| `filter()` | Filter elements | ✅ | ✅ | ✅ | ✅ | ✅ | Function must be compatible with element types |
+| **List Comprehensions** |||||||
+| Basic comprehension | `[expr for x in list]` | ✅ | ✅ | ✅ | ✅ | ✅ | Expression must work with element type |
+| Conditional comprehension | `[x for x in list if cond]` | ✅ | ✅ | ✅ | ✅ | ✅ | Condition must work with element type |
+| **Mathematical Operations on Elements** |||||||
+| Element-wise arithmetic | Apply math to each element | ❌ | ✅ | ✅ | ✅ | ⚠️ | `[x + 1 for x in lst]` - numeric types only |
+| **String Operations on Lists** |||||||
+| `str.join()` | Join elements with separator | ✅ | ⚠️ | ⚠️ | ⚠️ | ⚠️ | Non-string elements need `str()` conversion |
+| **Statistical Functions (statistics module)** |||||||
+| `statistics.mean()` | Calculate average | ❌ | ✅ | ✅ | ✅ | ⚠️ | Numeric types only |
+| `statistics.median()` | Find median | ❌ | ✅ | ✅ | ✅ | ⚠️ | Numeric types only |
+| `statistics.mode()` | Find most common | ✅ | ✅ | ✅ | ✅ | ✅ | Works with any hashable type |
+| `statistics.stdev()` | Standard deviation | ❌ | ✅ | ✅ | ✅ | ⚠️ | Numeric types only |
+| `statistics.variance()` | Calculate variance | ❌ | ✅ | ✅ | ✅ | ⚠️ | Numeric types only |
+| **Collections Module Functions** |||||||
+| `collections.Counter()` | Count element frequencies | ✅ | ✅ | ✅ | ✅ | ✅ | Works with any hashable elements |
+| `collections.deque()` | Convert to double-ended queue | ✅ | ✅ | ✅ | ✅ | ✅ | Always works |
+| **Random Module Functions** |||||||
+| `random.choice()` | Pick random element | ✅ | ✅ | ✅ | ✅ | ✅ | Works with any non-empty list |
+| `random.choices()` | Pick multiple with replacement | ✅ | ✅ | ✅ | ✅ | ✅ | Works with any non-empty list |
+| `random.sample()` | Pick multiple without replacement | ✅ | ✅ | ✅ | ✅ | ✅ | Works with any list |
+| `random.shuffle()` | Shuffle in place | ✅ | ✅ | ✅ | ✅ | ✅ | Always works |
+| **Itertools Functions** |||||||
+| `itertools.chain()` | Flatten nested iterables | ✅ | ✅ | ✅ | ✅ | ✅ | Combines multiple lists |
+| `itertools.compress()` | Filter by boolean mask | ✅ | ✅ | ✅ | ✅ | ✅ | Uses boolean list as selector |
+| `itertools.groupby()` | Group consecutive elements | ✅ | ✅ | ✅ | ✅ | ✅ | Groups by key function |
+| `itertools.accumulate()` | Cumulative operations | ❌ | ✅ | ✅ | ✅ | ⚠️ | Default is addition (numeric only) |
+| **Copy Module Functions** |||||||
+| `copy.copy()` | Shallow copy | ✅ | ✅ | ✅ | ✅ | ✅ | Same as list.copy() |
+| `copy.deepcopy()` | Deep copy | ✅ | ✅ | ✅ | ✅ | ✅ | Copies nested objects too |
+| **Comparison Operations** |||||||
+| `==, !=` | Equality comparison | ✅ | ✅ | ✅ | ✅ | ✅ | Element-wise comparison |
+| `<, >, <=, >=` | Lexicographic comparison | ✅ | ✅ | ✅ | ✅ | ⚠️ | Elements must be comparable |
+| **Functional Programming** |||||||
+| `functools.reduce()` | Reduce to single value | ✅ | ✅ | ✅ | ✅ | ✅ | Function must work with element types |
+| **NumPy Operations (if available)** |||||||
+| `numpy.array()` | Convert to NumPy array | ✅ | ✅ | ✅ | ✅ | ⚠️ | Mixed types become object arrays |
+| `numpy.mean()` | Array mean | ❌ | ✅ | ✅ | ✅ | ⚠️ | Numeric arrays only |
+| `numpy.sum()` | Array sum | ❌ | ✅ | ✅ | ✅ | ⚠️ | Numeric arrays only |
+| **Pandas Operations (if available)** |||||||
+| `pandas.Series()` | Convert to Pandas Series | ✅ | ✅ | ✅ | ✅ | ✅ | Always works, handles mixed types |
+| `pandas.DataFrame()` | Convert to DataFrame | ✅ | ✅ | ✅ | ✅ | ✅ | Creates single-column DataFrame |
+
+## Example Lists for Testing
+
+```python
+# Sample lists for each type
+str_list = ['apple', 'banana', 'cherry']
+int_list = [1, 2, 3, 4, 5]
+float_list = [1.1, 2.2, 3.3, 4.4]
+bool_list = [True, False, True, False]
+mixed_list = ['hello', 42, 3.14, True]
+```
+
+## Legend
+
+- ✅ **Works**: Function/method works directly with this list type
+- ❌ **Doesn't Work**: Function/method doesn't work with this list type
+- ⚠️ **Conditional**: Works with conditions or may raise errors

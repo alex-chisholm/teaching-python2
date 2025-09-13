@@ -1,0 +1,54 @@
+# Merging Data  {.unnumbered}
+
+{{< include _load_processed.qmd >}}
+
+```{python}
+
+luggage_df = pd.read_csv("../data/titanic_luggage.csv")
+luggage_df
+```
+
+## Left Join
+
+Let's try adding data from passengers table into meals table using a left join. A left join is the most common approach and keeps all records from the left table, adding new info from the right table if a connection can be made to a given record.
+
+
+```{python}
+
+luggage_combo_df = pd.merge(left = luggage_df, right = passengers_df, on = "passenger_id", how = "left")
+luggage_combo_df
+```
+
+This works and we could do like find average luggage weight by something new from the passenger dataset such as class.
+
+```{python}
+luggage_combo_df.groupby("class")["weight_kgs"].mean()
+```
+
+However, if may be more useful to take information from the new `luggage_df` table, calculate something new, and then add it back to `pasenger_df` which is a very clean table for analytics with one row per unique passenger.
+
+Let's do three things
+
+1. Make the calculations and reset the index to help with eventual merging.
+
+```{python}
+
+luggage_summary_df = luggage_df.groupby("passenger_id").agg(
+    luggage_count=("bag_number", "count"),
+    luggage_mean_weight=("weight_kgs", "mean"),
+    luggage_total_weight=("weight_kgs", "sum")
+).reset_index()
+
+luggage_summary_df
+
+
+```
+
+2. Merge the summaries into `passengers_df`
+
+
+```{python}
+pd.merge(left=passengers_df, right = luggage_summary_df, on = "passenger_id", how = "left")
+```
+
+{{< include _save_processed.qmd >}}

@@ -1,0 +1,92 @@
+# Functions/Method by Type Matrix {.unnumbered} 
+
+## Function/Method Availability by Type
+
+| Function/Method | Definition | str | int | float | bool | Notes |
+|----------------|------------|-----|-----|-------|------|-------|
+| **Built-in Functions** ||||||
+| `len()` | Length/count of items | ✅ | ❌ | ❌ | ❌ | Only for sequences/collections |
+| `str()` | Convert to string | ✅ | ✅ | ✅ | ✅ | Universal conversion |
+| `repr()` | Official string representation | ✅ | ✅ | ✅ | ✅ | Universal representation |
+| `type()` | Get object type | ✅ | ✅ | ✅ | ✅ | Universal type checking |
+| `bool()` | Convert to boolean | ✅ | ✅ | ✅ | ✅ | Universal truthiness conversion |
+| `hash()` | Get hash value | ✅ | ✅ | ✅ | ✅ | Universal (immutable types) |
+| `id()` | Get memory address | ✅ | ✅ | ✅ | ✅ | Universal memory address |
+| `abs()` | Absolute value | ❌ | ✅ | ✅ | ✅ | Numeric types only |
+| `int()` | Convert to integer | ✅* | ✅ | ✅ | ✅ | *if string contains valid number |
+| `float()` | Convert to float | ✅* | ✅ | ✅ | ✅ | *if string contains valid number |
+| `complex()` | Convert to complex number | ✅* | ✅ | ✅ | ✅ | *if string contains valid number |
+| `round()` | Round to nearest integer | ❌ | ✅ | ✅ | ✅ | Numeric types only |
+| `pow()` | Raise to power | ❌ | ✅ | ✅ | ✅ | Numeric types only |
+| `divmod()` | Division and remainder | ❌ | ✅ | ✅ | ✅ | Numeric types only |
+| `sum()` | Sum of iterable | ❌ | ✅ | ✅ | ✅ | Works on iterables of numeric types |
+| `min()/max()` | Minimum/maximum value | ✅ | ✅ | ✅ | ✅ | Comparable types |
+| `sorted()` | Sort iterable | ✅ | ✅ | ✅ | ✅ | Works on iterables |
+| `reversed()` | Reverse sequence | ✅ | ❌ | ❌ | ❌ | Sequences only |
+| **Arithmetic Operators** ||||||
+| `+` (addition) | Add values/concatenate | ✅ | ✅ | ✅ | ✅ | String concatenation vs numeric addition |
+| `-` (subtraction) | Subtract values | ❌ | ✅ | ✅ | ✅ | Numeric types only |
+| `*` (multiplication) | Multiply/repeat | ✅ | ✅ | ✅ | ✅ | String repetition vs numeric multiplication |
+| `/` (division) | Divide values | ❌ | ✅ | ✅ | ✅ | Numeric types only |
+| `//` (floor division) | Integer division | ❌ | ✅ | ✅ | ✅ | Numeric types only |
+| `%` (modulo) | Remainder/format | ✅ | ✅ | ✅ | ✅ | String formatting vs numeric modulo |
+| `**` (exponentiation) | Raise to power | ❌ | ✅ | ✅ | ✅ | Numeric types only |
+| **Comparison Operators** ||||||
+| `==, !=` | Equal/not equal | ✅ | ✅ | ✅ | ✅ | Universal |
+| `<, >, <=, >=` | Ordering comparisons | ✅ | ✅ | ✅ | ✅ | Universal (comparable types) |
+| **Bitwise Operators** ||||||
+| `&, |, ^` | AND, OR, XOR | ❌ | ✅ | ❌ | ✅ | Integer types only (bool inherits from int) |
+| `~` | Bitwise NOT | ❌ | ✅ | ❌ | ✅ | Integer types only |
+| `<<, >>` | Left/right shift | ❌ | ✅ | ❌ | ✅ | Integer types only |
+| **Type-Specific Methods** ||||||
+| `.upper()/.lower()` | Change case | ✅ | ❌ | ❌ | ❌ | String methods only |
+| `.strip()/.split()` | Remove whitespace/split | ✅ | ❌ | ❌ | ❌ | String methods only |
+| `.replace()/.find()` | Replace/find substring | ✅ | ❌ | ❌ | ❌ | String methods only |
+| `.startswith()/.endswith()` | Check prefix/suffix | ✅ | ❌ | ❌ | ❌ | String methods only |
+| `.isalpha()/.isdigit()` | Check character types | ✅ | ❌ | ❌ | ❌ | String methods only |
+| `.join()` | Join strings with separator | ✅ | ❌ | ❌ | ❌ | String methods only |
+| `.format()` | Format string | ✅ | ❌ | ❌ | ❌ | String methods only |
+| `.encode()` | Encode to bytes | ✅ | ❌ | ❌ | ❌ | String methods only |
+| `.bit_length()` | Number of bits needed | ❌ | ✅ | ❌ | ✅ | Integer methods (bool inherits) |
+| `.bit_count()` | Count of 1-bits | ❌ | ✅ | ❌ | ✅ | Integer methods (Python 3.10+) |
+| `.to_bytes()` | Convert to bytes | ❌ | ✅ | ❌ | ✅ | Integer methods |
+| `.from_bytes()` | Create from bytes | ❌ | ✅ | ❌ | ✅ | Integer class methods |
+| `.is_integer()` | Check if whole number | ❌ | ❌ | ✅ | ❌ | Float methods only |
+| `.as_integer_ratio()` | Return as fraction | ❌ | ❌ | ✅ | ❌ | Float methods only |
+| `.hex()` | Hexadecimal representation | ❌ | ❌ | ✅ | ❌ | Float methods only |
+| **Formatting Functions** ||||||
+| `bin()` | Binary representation | ❌ | ✅ | ❌ | ✅ | Integer types only |
+| `oct()` | Octal representation | ❌ | ✅ | ❌ | ✅ | Integer types only |
+| `hex()` | Hexadecimal representation | ❌ | ✅ | ❌ | ✅ | Integer types only |
+| **Math Module Functions** ||||||
+| `math.sqrt()` | Square root | ❌ | ✅ | ✅ | ✅ | Numeric types only |
+| `math.log()` | Natural logarithm | ❌ | ✅ | ✅ | ✅ | Numeric types only |
+| `math.sin()/.cos()` | Trigonometric functions | ❌ | ✅ | ✅ | ✅ | Numeric types only |
+| `math.factorial()` | Factorial calculation | ❌ | ✅ | ❌ | ✅ | Integer types only |
+| `math.gcd()/.lcm()` | Greatest common divisor/LCM | ❌ | ✅ | ❌ | ✅ | Integer types only |
+| `math.ceil()/.floor()` | Round up/down | ❌ | ✅ | ✅ | ✅ | Numeric types only |
+| **Regular Expressions** ||||||
+| `re.search()` | Find pattern match | ✅ | ❌* | ❌* | ❌* | *Must convert to string first |
+| `re.findall()` | Find all matches | ✅ | ❌* | ❌* | ❌* | *Must convert to string first |
+| `re.sub()` | Substitute pattern | ✅ | ❌* | ❌* | ❌* | *Must convert to string first |
+| `re.split()` | Split by pattern | ✅ | ❌* | ❌* | ❌* | *Must convert to string first |
+| **String Module** ||||||
+| `string.ascii_letters` | Letter constants | ✅ | ❌ | ❌ | ❌ | String operations only |
+| `string.capwords()` | Capitalize words | ✅ | ❌ | ❌ | ❌ | String operations only |
+| **Collections/Iteration** ||||||
+| `list()` | Convert to list | ✅ | ❌ | ❌ | ❌ | Sequences only |
+| `tuple()` | Convert to tuple | ✅ | ❌ | ❌ | ❌ | Sequences only |
+| `set()` | Convert to set | ✅ | ❌ | ❌ | ❌ | Sequences only |
+| `enumerate()` | Add index to iterable | ✅ | ❌ | ❌ | ❌ | Sequences only |
+| `zip()` | Combine iterables | ✅ | ❌ | ❌ | ❌ | Sequences only |
+| **Membership/Indexing** ||||||
+| `in/not in` | Check membership | ✅ | ❌ | ❌ | ❌ | Sequences only |
+| `[index]` | Access by position | ✅ | ❌ | ❌ | ❌ | Sequences only |
+| `[start:end]` | Slice sequence | ✅ | ❌ | ❌ | ❌ | Sequences only |
+
+## Legend
+
+- ✅ **Available**: Function/method works directly with this type
+- ❌ **Not Available**: Function/method doesn't work with this type
+- ✅* **Conditional**: Works with conditions (see notes)
+- ❌* **Requires Conversion**: Must convert type first

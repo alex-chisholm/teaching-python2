@@ -1,0 +1,1491 @@
+# General Overview  {.unnumbered}
+
+# Getting Started
+
+Before we dive into data analytics in Python, let's recap Python basics using just the standard library. This guide serves as a comprehensive reference for Python fundamentals that you'll use in data analysis.
+
+# Variables
+
+Variables store data that can be used throughout your program. Python automatically determines the data type based on the value you assign.
+
+## Strings
+
+Text data is stored as strings and enclosed in quotes.
+
+```{python}
+country = "Netherlands"
+print(country)
+```
+
+We can use the `type()` function to see that Python stores it as a string.
+
+```{python}
+type(country)
+```
+
+Python has many built-in tools to work with strings using functions or methods:
+
+* Method: call using dot notation (e.g., country.upper()) 
+* Function: call with the variable as an argument (e.g., type(country))
+
+### Common String Methods
+
+#### Cases
+
+```{python}
+country.upper()
+```
+
+```{python}
+country.lower()
+```
+
+```{python}
+city = "den haag"
+city.title()
+```
+
+```{python}
+city.capitalize()
+```
+
+#### Evaluating Strings
+
+```{python}
+country.startswith("Neth")
+```
+
+```{python}
+country.endswith("land")
+```
+
+```{python}
+country.isalpha()  
+```
+
+```{python}
+country.isdigit()  
+```
+
+## Numbers (Integers and Floats)
+
+> Note: Integers (whole numbers) and Floats (decimals) have nearly identical treatment in Python.
+
+
+```{python}
+
+gdp_capita = 50000
+print(gdp_capita)
+```
+
+```{python}
+
+gdp_capita_float = 50000.00
+gdp_capita == gdp_capita_float
+```
+
+```{python}
+type(gdp_capita)
+```
+
+```{python}
+type(gdp_capita_float)
+```
+
+### Basic math
+
+```{python}
+
+gdp_capita + 5000    # 55000 (addition)
+gdp_capita - 5000    # 45000 (subtraction)
+gdp_capita * 2       # 100000 (multiplication)
+gdp_capita / 1000    # 50.0 (division)
+gdp_capita // 1000   # 50 (floor division)
+gdp_capita % 1000    # 0 (remainder/modulo)
+gdp_capita ** 2      # 2500000000 (exponentiation)
+
+```
+
+```{python}
+
+
+
+# Math functions
+abs(gdp_capita)      # 50000 (absolute value)
+round(gdp_capita, -3) # 50000 (round to nearest thousand)
+min(gdp_capita, 60000) # 50000 (minimum of values)
+max(gdp_capita, 40000) # 50000 (maximum of values)
+sum([gdp_capita, 45000, 55000]) # 150000
+
+
+```
+
+```{python}
+
+import math
+
+math.sqrt(gdp_capita)    # 223.6 (square root)
+math.log10(gdp_capita)   # 4.699 (base-10 logarithm)
+math.ceil(gdp_capita/3)  # 16667 (ceiling division)
+
+```
+
+
+```{python}
+
+# Type conversion
+str(gdp_capita)      # "50000" (convert to string)
+float(gdp_capita)    # 50000.0 (convert to float)
+len(str(gdp_capita)) # 5 (number of digits)
+
+```
+
+
+
+## Booleans
+
+Boolean values represent True or False and are essential for conditional logic and data filtering.
+
+```{python}
+is_european = True
+is_landlocked = False
+
+print(f"European: {is_european}")
+print(f"Type: {type(is_european)}")
+```
+
+```{python}
+# Boolean operations
+print(f"Both conditions: {is_european and is_landlocked}")
+print(f"Either condition: {is_european or is_landlocked}")
+print(f"Not European: {not is_european}")
+```
+
+## Null values
+
+```{python}
+my_null = None
+type(my_null)
+```
+
+```{python}
+# Checking for None values (important for data cleaning)
+if my_null is None:
+    print("Value is None")
+
+# Using None in comparisons
+values = [1, 2, None, 4, 5]
+clean_values = [x for x in values if x is not None]
+print(clean_values)
+```
+
+# Lists
+
+Lists are ordered collections that can store multiple items of any data type.
+
+## Creating Lists
+
+```{python}
+# Empty list
+countries = []
+
+# List with initial values
+european_countries = ['Netherlands', 'France', 'Germany', 'Spain']
+print(european_countries)
+```
+
+```{python}
+# Mixed data types
+mixed_list = ['Netherlands', 50000, True, None]
+print(mixed_list)
+```
+
+## Common List Operations
+
+### Adding items
+
+```{python}
+countries = ['Netherlands', 'France']
+countries.append('Germany')  # Add to end
+print(countries)
+```
+
+```{python}
+countries.insert(1, 'Belgium')  # Insert at specific position
+print(countries)
+```
+
+```{python}
+countries.extend(['Spain', 'Italy'])  # Add multiple items
+print(countries)
+```
+
+### Accessing items
+
+```{python}
+print(countries[0])    # First item
+print(countries[-1])   # Last item
+print(countries[1:3])  # Slice from index 1 to 2
+```
+
+### Modifying and removing items
+
+```{python}
+countries[0] = 'Holland'  # Replace item
+print(countries)
+```
+
+```{python}
+countries.remove('Belgium')  # Remove first occurrence
+print(countries)
+```
+
+```{python}
+popped = countries.pop()  # Remove and return last item
+print(f"Removed: {popped}")
+print(countries)
+```
+
+## Common List Functions and Methods
+
+```{python}
+numbers = [3, 1, 4, 1, 5, 9, 2, 6]
+
+# Built-in functions
+print(f"Length: {len(numbers)}")
+print(f"Sum: {sum(numbers)}")
+print(f"Min: {min(numbers)}")
+print(f"Max: {max(numbers)}")
+```
+
+```{python}
+# List methods
+print(f"Count of 1: {numbers.count(1)}")
+print(f"Index of 4: {numbers.index(4)}")
+
+numbers.sort()  # Sort in place
+print(f"Sorted: {numbers}")
+
+numbers.reverse()  # Reverse in place
+print(f"Reversed: {numbers}")
+```
+
+### List comprehensions
+
+```{python}
+# Create a list of squares
+squares = [x**2 for x in range(1, 6)]
+print(squares)
+```
+
+```{python}
+# Filter and transform
+words = ['apple', 'banana', 'cherry', 'date']
+long_words = [word.upper() for word in words if len(word) > 5]
+print(long_words)
+```
+
+# Tuples
+
+Tuples are ordered collections like lists, but they are **immutable** (cannot be changed after creation). They're perfect for storing related data that shouldn't change.
+
+```{python}
+# Create a tuple
+coordinates = (52.3676, 4.9041)  # Amsterdam coordinates
+print(f"Amsterdam coordinates: {coordinates}")
+print(f"Type: {type(coordinates)}")
+```
+
+```{python}
+# Access tuple elements (same as lists)
+latitude = coordinates[0]
+longitude = coordinates[1]
+print(f"Latitude: {latitude}, Longitude: {longitude}")
+```
+
+```{python}
+# Tuple unpacking (very useful for data analytics)
+lat, lon = coordinates
+print(f"Unpacked - Lat: {lat}, Lon: {lon}")
+```
+
+```{python}
+# Tuples with mixed data types
+country_info = ("Netherlands", 17_441_000, "Euro", True)  # name, population, currency, eu_member
+name, population, currency, eu_member = country_info
+print(f"{name} has {population:,} people, uses {currency}, EU member: {eu_member}")
+```
+
+```{python}
+# Common tuple operations
+print(f"Length: {len(country_info)}")
+print(f"Index of 'Euro': {country_info.index('Euro')}")
+print(f"Count of True: {country_info.count(True)}")
+```
+
+# Sets
+
+Sets are unordered collections of **unique** items. They're excellent for removing duplicates and set operations.
+
+```{python}
+# Create sets
+european_countries = {"Netherlands", "France", "Germany", "Spain", "Italy"}
+nordic_countries = {"Norway", "Sweden", "Denmark", "Finland", "Iceland"}
+
+print(f"European countries: {european_countries}")
+print(f"Type: {type(european_countries)}")
+```
+
+```{python}
+# Remove duplicates from a list
+cities_with_duplicates = ["Amsterdam", "Paris", "Berlin", "Amsterdam", "Madrid", "Paris"]
+unique_cities = set(cities_with_duplicates)
+print(f"Unique cities: {unique_cities}")
+
+# Convert back to list if needed
+unique_cities_list = list(unique_cities)
+print(f"As list: {unique_cities_list}")
+```
+
+```{python}
+# Set operations (useful for data analysis)
+eu_countries = {"Netherlands", "France", "Germany", "Spain", "Italy", "Sweden", "Denmark", "Finland"}
+rich_countries = {"Netherlands", "Germany", "Norway", "Sweden", "Denmark", "Switzerland"}
+
+# Intersection: countries that are both EU and rich
+eu_and_rich = eu_countries & rich_countries
+print(f"EU and rich: {eu_and_rich}")
+
+# Union: all countries (no duplicates)
+all_countries = eu_countries | rich_countries
+print(f"All countries: {all_countries}")
+
+# Difference: EU countries that are not in rich countries
+eu_not_rich = eu_countries - rich_countries
+print(f"EU but not rich: {eu_not_rich}")
+```
+
+```{python}
+# Adding and removing from sets
+my_countries = {"Netherlands", "France"}
+my_countries.add("Germany")
+print(f"After adding: {my_countries}")
+
+my_countries.remove("France")  # Will error if not found
+print(f"After removing: {my_countries}")
+
+my_countries.discard("Spain")  # Won't error if not found
+print(f"After discarding non-existent: {my_countries}")
+```
+
+# Dictionaries
+
+Dictionaries store key-value pairs and are essential for structured data. Getting closer to a data table, right?
+
+```{python}
+
+currencies = {
+    'US': 'Dollar',
+    'NL': 'Euro',
+    'JP': 'Yen'
+}
+currencies
+```
+
+## Retrieve single value
+```{python}
+currencies['US']
+```
+
+## Add a new item
+
+
+```{python}
+currencies['MX'] = 'Peso'
+currencies
+```
+
+## Delete an item
+
+
+```{python}
+
+del currencies['MX']
+currencies
+
+```
+
+## Get a value of a specific key
+
+> If the key does not exist, Python returns None type.
+
+
+```{python}
+currencies.get('US')
+```
+
+```{python}
+print(currencies.get('BR'))
+```
+
+You can pass a default value if it is not there. 
+
+```{python}
+currencies.get('ZZ', 'Not in our dictionary')
+```
+
+## Get all keys
+
+
+```{python}
+currencies.keys()
+```
+
+## Get all values
+
+
+```{python}
+currencies.values()
+```
+
+## Get all items
+
+
+```{python}
+currencies.items()
+```
+
+
+```{python}
+currencies
+```
+
+## Loop through dictionary keys
+
+```{python}
+for country in currencies:
+    print(country)
+```
+
+## Loop through values
+
+```{python}
+for currency in currencies.values():
+    print(currency)
+```
+
+## Loop through both
+
+
+```{python}
+for country, currency in currencies.items():
+    print(f"The currency of {country} is the {currency}")
+
+```
+
+## A list with a collection of dictionaries
+
+```{python}
+
+countries = []
+
+netherlands = {
+    'capital': 'Amsterdam',
+    'region':'Western Europe'
+}
+
+france = {
+    'capital': 'Paris',
+    'region':'Western Europe'
+}
+
+countries.append(netherlands)
+countries.append(france)
+
+countries
+
+
+
+```
+
+
+```{python}
+
+for country in countries:
+    display_name = f"{country['capital']}, "
+    display_name += f"{country['region']}"
+    print(display_name)
+
+```
+
+## Lists within dictionaries
+
+
+```{python}
+
+languages = {
+    'Canada': ['English', 'French'],
+    'Belgium': ['French', 'Dutch'],
+    'Switzerland': ['German', 'Italian', 'French']
+}
+languages
+```
+
+
+```{python}
+
+for country, languages_list in languages.items():
+    print(f"In {country}, the following languages are spoken:")
+    for language in languages_list:
+        print(f"\t{language}")
+
+```
+
+
+
+# Data Structure Comparison
+
+Understanding when to use each data structure is crucial for efficient data analysis.
+
+| Data Structure | Ordered | Mutable | Duplicates | Use Case |
+|----------------|---------|---------|------------|----------|
+| **List** | ✓ | ✓ | ✓ | Sequential data, multiple values of same type |
+| **Tuple** | ✓ | ✗ | ✓ | Fixed data records, function returns |
+| **Set** | ✗ | ✓ | ✗ | Unique values, set operations |
+| **Dictionary** | ✓ | ✓ | ✗ (keys) | Key-value mappings, structured data |
+
+
+```{python}
+# Example: Choosing the right data structure for student data
+
+# List: Multiple test scores for one student
+test_scores = [85, 92, 78, 96, 88]
+print(f"Average score: {sum(test_scores) / len(test_scores):.1f}")
+
+# Tuple: Student information that shouldn't change
+student_info = ("Alice Johnson", 20, "Computer Science")
+name, age, major = student_info
+
+# Set: Unique skills
+skills = {"Python", "SQL", "Excel", "Python", "Statistics"}  # Duplicate Python removed
+print(f"Skills: {skills}")
+
+# Dictionary: Complete student profile
+student_profile = {
+    "name": "Alice Johnson",
+    "age": 20,
+    "major": "Computer Science",
+    "test_scores": [85, 92, 78, 96, 88],
+    "skills": ["Python", "SQL", "Excel", "Statistics"]
+}
+
+print(f"Student: {student_profile['name']} ({student_profile['major']})")
+print(f"Skills: {', '.join(student_profile['skills'])}")
+```
+
+## Performance considerations
+
+```{python}
+# Performance comparison for lookups
+import time
+
+# Create large datasets
+large_list = list(range(10000))
+large_set = set(range(10000))
+large_dict = {i: f"value_{i}" for i in range(10000)}
+
+# List lookup (slow for large lists)
+target = 9999
+start_time = time.time()
+found = target in large_list
+list_time = time.time() - start_time
+
+# Set lookup (very fast)
+start_time = time.time()
+found = target in large_set
+set_time = time.time() - start_time
+
+# Dictionary lookup (very fast)
+start_time = time.time()
+found = target in large_dict
+dict_time = time.time() - start_time
+
+print(f"List lookup: {list_time:.6f} seconds")
+print(f"Set lookup: {set_time:.6f} seconds") 
+print(f"Dict lookup: {dict_time:.6f} seconds")
+print(f"Set is {list_time/set_time:.0f}x faster than list for lookups")
+```
+
+# Conditional Statements
+
+Control your program based on certain logical conditions.
+
+| Operator | Description | Example | Result |
+|----------|-------------|---------|---------|
+| `==` | Equal to | `5 == 5` | `True` |
+| `!=` | Not equal to | `5 != 3` | `True` |
+| `<` | Less than | `3 < 5` | `True` |
+| `>` | Greater than | `7 > 4` | `True` |
+| `<=` | Less than or equal to | `5 <= 5` | `True` |
+| `>=` | Greater than or equal to | `6 >= 4` | `True` |
+| `in` | Membership test | `'a' in 'cat'` | `True` |
+| `not in` | Negative membership test | `'x' not in 'cat'` | `True` |
+| `is` | Identity test | `x is None` | `True` (if x is None) |
+| `is not` | Negative identity test | `x is not None` | `True` (if x is not None) |
+| `and` | Logical AND | `True and False` | `False` |
+| `or` | Logical OR | `True or False` | `True` |
+| `not` | Logical NOT | `not True` | `False` |
+
+
+
+```{python}
+monthly_spend = 6000 
+monthly_budget = 5000
+
+if monthly_spend > monthly_budget:
+    print("Careful, you're spending more than you are earning!")
+```
+
+We could also store that outcome as a variable
+
+```{python}
+losing_money = monthly_spend > monthly_budget
+print(losing_money)
+
+if losing_money:
+    print("Careful, you are losing money")
+
+```
+
+Another way to define `losing_money` is with a ternary operator.
+
+```{python}
+losing_money = True if monthly_spend > monthly_budget else False
+losing_money
+```
+
+Perhaps you want more control over the conditional.
+
+```{python}
+
+guidance = ''
+
+if monthly_spend > monthly_budget:
+    guidance = "Stop spending money you don't have"
+else:
+    guidance = "You're doing alright. Keep it up!"
+
+guidance
+```
+
+Or add multiple condition checks with `elif`:
+
+```{python}
+
+monthly_spend = 10000
+monthly_budget = 10000
+
+if monthly_spend > monthly_budget:
+    guidance = "Stop spending money you don't have"
+elif monthly_spend < monthly_budget:
+    guidance = "You're doing alright. Keep it up!"
+else:
+    guidance = "Money in, money out!"
+
+guidance
+```
+
+
+# Loops
+
+Loops allow you to repeat code efficiently. There are two main types of loops in Python.
+
+## For loops
+
+For loops iterate over sequences (lists, strings, ranges, etc.). They're the most common type of loop in data analytics.
+
+```{python}
+# Loop through a list
+countries = ['Netherlands', 'France', 'Germany', 'Spain']
+for country in countries:
+    print(f"Visiting {country}")
+```
+
+```{python}
+# Loop with enumerate to get index and value
+for index, country in enumerate(countries):
+    print(f"{index + 1}. {country}")
+```
+
+```{python}
+# Loop through a range of numbers
+for i in range(5):
+    print(f"Number: {i}")
+```
+
+```{python}
+# Loop through a range with start, stop, step
+for i in range(2, 10, 2):  # Start at 2, stop before 10, step by 2
+    print(f"Even number: {i}")
+```
+
+```{python}
+# Loop through string characters
+for letter in "Python":
+    print(f"Letter: {letter}")
+```
+
+## While loops
+
+While loops continue as long as a condition is True. Use them when you don't know exactly how many iterations you need.
+
+```{python}
+month = 1
+while month <= 12:
+    print(f"Month {month}")
+    month += 1
+```
+
+## Loop control statements
+
+* **break**: exits the loop completely when a condition is met
+* **continue**: skips the current iteration and moves to the next one
+
+```{python}
+# Using break
+for i in range(10):
+    if i == 5:
+        print("Breaking at 5")
+        break
+    print(i)
+```
+
+```{python}
+# Using continue
+for i in range(5):
+    if i == 2:
+        print("Skipping 2")
+        continue
+    print(f"Processing {i}")
+```
+
+```{python}
+# Practical example: processing data with conditions
+sales_data = [100, 0, 250, -50, 300, 0, 150]
+valid_sales = []
+
+for sale in sales_data:
+    if sale < 0:
+        print(f"Invalid sale amount: {sale}")
+        continue
+    if sale == 0:
+        print("No sale recorded")
+        continue
+    valid_sales.append(sale)
+    
+print(f"Valid sales: {valid_sales}")
+print(f"Total valid sales: {sum(valid_sales)}")
+```
+
+
+# Functions
+
+Build once, reuse whenever. Functions are the building blocks of organized, reusable code.
+
+
+```{python}
+
+def two_plus_two():
+    """return the sum of two plus two""" # docstring: standard place to describe a function
+    return 2+2
+
+two_plus_two()
+```
+
+This is neat, but it doesn't allow us to save much time. Why not just print 4 whenever that value is needed? What makes functions powerful is their ability to define parameters and take values for those parameters as arguments.
+
+
+```{python}
+
+def add_numbers(num1, num2):
+    """return the sum of num1 and num2"""
+    return num1 + num2
+
+add_numbers(2,2)
+```
+
+Now we can pass in any two numbers and get their sum.
+
+```{python}
+add_numbers(num1 = 10, num2 = 2)
+```
+
+
+> Note: We don't need to specify the names of positional arguments. They will be assumed to follow the order of parameters defined in the function. `add_numbers(10, 2)`. You can also use keyword argument with the names to ignore the provided parameter ordering: `add_numbers(num2 = 2, num1 = 10)`
+
+
+This could be very useful as the arguments could be different in different parts of your applications or based on user input.
+
+However, we have to be careful about potential misuse. Imagine if someone put in string values as the arguments?
+
+```{python}
+add_numbers("car", "bike")
+```
+
+
+That was... unexpected. Even though the function didn't return an error, it didn't give us what we were looking for. Adding `try` and `except` to functions can improve usability and help with testing. 
+
+```{python}
+def add_numbers(num1, num2):
+    """Return the sum of num1 and num2 with error handling"""
+    try:
+        # Convert inputs to float to handle both integers and decimals
+        number1 = float(num1)
+        number2 = float(num2)
+        
+        return number1 + number2
+        
+    except ValueError:
+        print("Error: Please enter valid numbers only.")
+        return None
+    except TypeError:
+        print("Error: Invalid input type. Please provide numeric values.")
+        return None
+```
+
+
+```{python}
+add_numbers(num1 = "car", num2 =  "bike")
+```
+
+
+```{python}
+add_numbers(None, 3)
+```
+
+## Arbitrary Positional Arguments
+
+`*` allows users to pass any number of arguments for when you don't know how much input a function may receive
+
+
+```{python}
+
+def family(last_name, *first_names):
+    """Return all people within a family"""
+    print(f"{last_name}:")
+    for first_name in first_names:
+        print(f"* {first_name}")
+
+family("chisholm", "alex", "karen", "clara", "gracie")
+
+```
+
+
+## Arbitrary Keyword Arguments
+
+You can also set unknown or undefined parameters using key-value pairs. 
+
+```{python}
+
+def country(name, **qualities):
+    print(name)
+    for key, value in qualities.items():
+        print(f"* {key}: {value}")
+
+country("Netherlands")
+
+```
+
+
+```{python}
+
+country("Netherlands", region = "Europe", climate = "Wet", landlocked = False)
+
+```
+
+## Default values
+
+You can also set a default value that will be used as the argument if the function is called without the argument.
+
+```{python}
+
+def hello(name, greeting = "Hello"):
+    return greeting + ', ' + name + '!'
+```
+
+If you do not pass in an updated greeting value.
+
+
+```{python}
+
+hello("Tommy")
+
+```
+
+And with an updated greeting value.
+
+```{python}
+
+hello("Tommy", "What's going on")
+
+```
+
+# Return vs. Print
+
+Understanding the difference between `return` and `print` is crucial for writing reusable functions.
+
+If your function uses the `return` keyword, the output can be stored and reused later in the program.
+
+```{python}
+def calculate_area(length, width):
+    """Calculate rectangle area - returns a value"""
+    return length * width
+
+def display_area(length, width):
+    """Calculate and display rectangle area - prints but doesn't return"""
+    area = length * width
+    print(f"The area is {area} square units")
+
+# Function with return - value can be stored
+stored_area = calculate_area(5, 3)
+print(f"Stored area: {stored_area}")
+print(f"Type: {type(stored_area)}")
+
+# Function with print - returns None
+printed_result = display_area(5, 3)
+print(f"Printed result: {printed_result}")
+print(f"Type: {type(printed_result)}")
+```
+
+```{python}
+# Return values can be used in calculations
+area1 = calculate_area(5, 3)
+area2 = calculate_area(4, 6)
+total_area = area1 + area2
+print(f"Total area: {total_area}")
+
+# Print functions cannot be used in calculations
+# This would cause an error: total = display_area(5, 3) + display_area(4, 6)
+```
+
+## Modules and Imports
+
+Modules allow you to organize code across multiple files and reuse functionality. This is essential for data analytics projects.
+
+### Built-in modules
+
+```{python}
+# Different ways to import
+import math
+import random
+from datetime import datetime
+import json
+
+# Using imported modules
+print(f"Pi: {math.pi}")
+print(f"Random number: {random.randint(1, 100)}")
+print(f"Current time: {datetime.now()}")
+
+data = {"name": "Alice", "score": 95}
+json_string = json.dumps(data)
+print(f"JSON: {json_string}")
+```
+
+### Import variations
+
+```{python}
+# Import specific functions
+from math import sqrt, pow
+result = sqrt(pow(3, 2) + pow(4, 2))  # Pythagorean theorem
+print(f"Hypotenuse: {result}")
+
+# Import with alias
+import statistics as stats
+scores = [85, 92, 78, 96, 88]
+print(f"Mean: {stats.mean(scores)}")
+print(f"Median: {stats.median(scores)}")
+print(f"Standard deviation: {stats.stdev(scores):.2f}")
+```
+
+### Creating your own modules
+
+When you save functions in a `.py` file, you can import them into other files:
+
+```{python}
+# Example: If you saved these functions in 'data_helpers.py':
+def clean_data(data_list):
+    """Remove None values and convert to numbers"""
+    cleaned = []
+    for item in data_list:
+        if item is not None:
+            try:
+                cleaned.append(float(item))
+            except (ValueError, TypeError):
+                pass
+    return cleaned
+
+def calculate_stats(numbers):
+    """Calculate basic statistics"""
+    if not numbers:
+        return {"mean": 0, "min": 0, "max": 0}
+    
+    return {
+        "mean": sum(numbers) / len(numbers),
+        "min": min(numbers),
+        "max": max(numbers)
+    }
+
+# Then in another file, you could use:
+# from data_helpers import clean_data, calculate_stats
+# 
+# raw_data = [1, "2", None, 3.5, "invalid", 4]
+# clean_numbers = clean_data(raw_data)
+# stats = calculate_stats(clean_numbers)
+
+# For demonstration, we'll use the functions directly:
+raw_data = [1, "2", None, 3.5, "invalid", 4]
+clean_numbers = clean_data(raw_data)
+stats = calculate_stats(clean_numbers)
+print(f"Clean data: {clean_numbers}")
+print(f"Statistics: {stats}")
+```
+
+This modular approach is useful for:
+* Large programs where a single script becomes too long or complex
+* Reusable functions that you want to use across multiple projects
+* Team collaboration where different people work on different modules
+* Data analytics workflows where you separate data cleaning, analysis, and visualization functions
+
+
+# Classes
+
+A class is like a blueprint or template for a specific concept or entity. 
+
+Class attribute = a variable
+Class method = a function
+
+Process
+* Define a class. Capitalizing the name is standard.
+* Make an instance of the class
+
+Let's create a class for a company's stock. A class can have an `__init__` method, which runs automatically when a new class instance is created. `self` refers to the instance and the additional values `symbol` and `price` are assigned. These will be available when other methods are added.  
+
+## Define a class
+```{python}
+
+class Stock:
+    def __init__(self, symbol, price):
+        """Create a stock with symbol and price"""
+        self.symbol = symbol
+        self.price = price
+
+```
+
+## Create a class instance
+
+```{python}
+
+apple = Stock("APPL", 214)
+
+```
+
+
+
+## Add some methods
+
+Now let's add new methods.
+
+* `display()`: Summarize the current price.
+* `too_expensive()`: Is the stock price too expensive? (Arbitrary $100 level)
+
+```{python}
+class Stock:
+    def __init__(self, symbol, price):
+        """Create a stock with symbol and price"""
+        self.symbol = symbol
+        self.price = price
+    
+    def display(self):
+        """Show the stock info"""
+        print(f"The most recent stock price for {self.symbol} is ${self.price}.")
+    
+    def too_expensive(self):
+        """Check if stock costs more than $100"""
+        return self.price > 100
+
+```
+
+
+```{python}
+
+apple = Stock("APPL", 214)
+apple.display()
+
+```
+
+
+```{python}
+
+apple.too_expensive()
+
+```
+
+```{python}
+
+uber = Stock("UBER", 91)
+uber.display()
+
+```
+
+
+```{python}
+
+uber.too_expensive()
+
+```
+
+# File Input/Output
+
+Working with files is essential for data analytics. Python provides built-in functions to read and write different file types.
+
+## Reading text files
+
+```{python}
+# Reading entire file content
+try:
+    with open('data.txt', 'r') as file:
+        content = file.read()
+        print(content)
+except FileNotFoundError:
+    print("File not found")
+```
+
+```{python}
+# Reading line by line (memory efficient for large files)
+try:
+    with open('data.txt', 'r') as file:
+        for line_number, line in enumerate(file, 1):
+            print(f"Line {line_number}: {line.strip()}")
+except FileNotFoundError:
+    print("File not found")
+```
+
+```{python}
+# Reading all lines into a list
+try:
+    with open('data.txt', 'r') as file:
+        lines = file.readlines()
+        print(f"Read {len(lines)} lines")
+        for line in lines[:3]:  # Show first 3 lines
+            print(line.strip())
+except FileNotFoundError:
+    print("File not found")
+```
+
+## Writing text files
+
+```{python}
+# Writing to a file (creates new file or overwrites existing)
+countries_data = ['Netherlands', 'France', 'Germany', 'Spain']
+
+with open('countries.txt', 'w') as file:
+    for country in countries_data:
+        file.write(f"{country}\n")
+
+print("Countries written to file")
+```
+
+```{python}
+# Appending to a file
+with open('countries.txt', 'a') as file:
+    file.write("Italy\n")
+    file.write("Portugal\n")
+
+print("Additional countries appended")
+```
+
+## Working with CSV files
+
+CSV (Comma-Separated Values) files are common in data analytics.
+
+```{python}
+import csv
+
+# Writing CSV data
+sales_data = [
+    ['Date', 'Product', 'Sales'],
+    ['2024-01-01', 'Widget A', 100],
+    ['2024-01-02', 'Widget B', 150],
+    ['2024-01-03', 'Widget A', 120]
+]
+
+with open('sales.csv', 'w', newline='') as file:
+    writer = csv.writer(file)
+    writer.writerows(sales_data)
+
+print("CSV file created")
+```
+
+```{python}
+# Reading CSV data
+try:
+    with open('sales.csv', 'r') as file:
+        reader = csv.reader(file)
+        header = next(reader)  # Get header row
+        print(f"Headers: {header}")
+        
+        for row in reader:
+            print(f"Date: {row[0]}, Product: {row[1]}, Sales: {row[2]}")
+except FileNotFoundError:
+    print("CSV file not found")
+```
+
+```{python}
+# Reading CSV as dictionaries (more convenient)
+try:
+    with open('sales.csv', 'r') as file:
+        reader = csv.DictReader(file)
+        for row in reader:
+            print(f"On {row['Date']}, {row['Product']} sold {row['Sales']} units")
+except FileNotFoundError:
+    print("CSV file not found")
+```
+
+## Working with JSON files
+
+JSON (JavaScript Object Notation) is common for structured data.
+
+```{python}
+import json
+
+# Writing JSON data
+country_data = {
+    "name": "Netherlands",
+    "capital": "Amsterdam",
+    "population": 17441000,
+    "languages": ["Dutch", "English"],
+    "eu_member": True
+}
+
+with open('country.json', 'w') as file:
+    json.dump(country_data, file, indent=2)
+
+print("JSON file created")
+```
+
+```{python}
+# Reading JSON data
+try:
+    with open('country.json', 'r') as file:
+        data = json.load(file)
+        print(f"Country: {data['name']}")
+        print(f"Capital: {data['capital']}")
+        print(f"Population: {data['population']:,}")
+        print(f"Languages: {', '.join(data['languages'])}")
+except FileNotFoundError:
+    print("JSON file not found")
+except json.JSONDecodeError:
+    print("Invalid JSON file")
+```
+
+## File path operations
+
+```{python}
+import os
+
+# Check if file exists
+if os.path.exists('countries.txt'):
+    print("File exists")
+    print(f"File size: {os.path.getsize('countries.txt')} bytes")
+else:
+    print("File does not exist")
+
+# Get file information
+try:
+    stat_info = os.stat('countries.txt')
+    print(f"Last modified: {stat_info.st_mtime}")
+except FileNotFoundError:
+    print("File not found for stat")
+```
+
+```{python}
+# Working with directories
+current_dir = os.getcwd()
+print(f"Current directory: {current_dir}")
+
+# List files in directory
+files = os.listdir('.')
+print(f"Files in current directory: {files[:5]}")  # Show first 5
+
+# Create directory
+os.makedirs('data_files', exist_ok=True)  # exist_ok prevents error if exists
+print("Directory created or already exists")
+```
+
+# Error Handling
+
+Proper error handling is crucial when working with data, as files may be missing, corrupted, or in unexpected formats.
+
+## Basic try-except
+
+```{python}
+def safe_divide(a, b):
+    try:
+        result = a / b
+        return result
+    except ZeroDivisionError:
+        print("Error: Cannot divide by zero")
+        return None
+    except TypeError:
+        print("Error: Both arguments must be numbers")
+        return None
+
+# Test the function
+print(safe_divide(10, 2))
+print(safe_divide(10, 0))
+print(safe_divide("10", 2))
+```
+
+## Multiple exception types
+
+```{python}
+def process_data_file(filename):
+    try:
+        with open(filename, 'r') as file:
+            data = json.load(file)
+            return data['values']
+    except FileNotFoundError:
+        print(f"Error: File '{filename}' not found")
+        return []
+    except json.JSONDecodeError as e:
+        print(f"Error: Invalid JSON in file - {e}")
+        return []
+    except KeyError as e:
+        print(f"Error: Missing key {e} in JSON data")
+        return []
+    except Exception as e:
+        print(f"Unexpected error: {e}")
+        return []
+
+# Test with different scenarios
+result = process_data_file('nonexistent.json')
+print(f"Result: {result}")
+```
+
+## Finally clause and cleanup
+
+```{python}
+def process_file_with_cleanup(filename):
+    file_handle = None
+    try:
+        file_handle = open(filename, 'r')
+        content = file_handle.read()
+        # Process content here
+        return content
+    except FileNotFoundError:
+        print(f"File {filename} not found")
+        return None
+    finally:
+        if file_handle:
+            file_handle.close()
+            print("File closed in finally block")
+
+# Better approach: using context manager (recommended)
+def process_file_better(filename):
+    try:
+        with open(filename, 'r') as file:  # Automatically closes file
+            return file.read()
+    except FileNotFoundError:
+        print(f"File {filename} not found")
+        return None
+```
+
+## Custom exceptions for data validation
+
+```{python}
+class DataValidationError(Exception):
+    """Custom exception for data validation errors"""
+    pass
+
+def validate_age(age):
+    try:
+        age_int = int(age)
+        if age_int < 0:
+            raise DataValidationError("Age cannot be negative")
+        if age_int > 150:
+            raise DataValidationError("Age seems unrealistic (>150)")
+        return age_int
+    except ValueError:
+        raise DataValidationError(f"'{age}' is not a valid age")
+
+# Test data validation
+test_ages = [25, -5, "thirty", 200, "25"]
+for age in test_ages:
+    try:
+        valid_age = validate_age(age)
+        print(f"Valid age: {valid_age}")
+    except DataValidationError as e:
+        print(f"Invalid age '{age}': {e}")
+```
+
+# Testing
+
+Testing ensures your code works correctly and helps prevent bugs when working with data.
+
+## Simple testing with assertions
+
+```{python}
+def calculate_average(numbers):
+    """Calculate the average of a list of numbers"""
+    if not numbers:
+        return 0
+    return sum(numbers) / len(numbers)
+
+# Test the function
+def test_calculate_average():
+    # Test normal case
+    assert calculate_average([1, 2, 3, 4, 5]) == 3.0
+    
+    # Test empty list
+    assert calculate_average([]) == 0
+    
+    # Test single number
+    assert calculate_average([10]) == 10.0
+    
+    # Test negative numbers
+    assert calculate_average([-1, -2, -3]) == -2.0
+    
+    print("All tests passed!")
+
+test_calculate_average()
+```
+
+```{python}
+# Testing data cleaning functions
+def clean_numeric_data(data):
+    """Remove non-numeric values and convert to float"""
+    cleaned = []
+    for item in data:
+        try:
+            cleaned.append(float(item))
+        except (ValueError, TypeError):
+            continue  # Skip non-numeric values
+    return cleaned
+
+def test_clean_numeric_data():
+    # Test mixed data
+    mixed_data = [1, "2", "hello", 3.5, None, "4.7", True]
+    result = clean_numeric_data(mixed_data)
+    expected = [1.0, 2.0, 3.5, 4.7, 1.0]  # True converts to 1.0
+    assert result == expected, f"Expected {expected}, got {result}"
+    
+    # Test empty list
+    assert clean_numeric_data([]) == []
+    
+    # Test all invalid data
+    assert clean_numeric_data(["hello", "world", None]) == []
+    
+    print("Data cleaning tests passed!")
+
+test_clean_numeric_data()
+```

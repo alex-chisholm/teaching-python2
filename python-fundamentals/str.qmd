@@ -1,0 +1,713 @@
+# str Details  {.unnumbered}
+
+## Setup
+
+```{python}
+target_country = 'Netherlands'
+```
+
+# Built-in Functions
+
+## len()
+
+Returns the length (number of characters) in the string.
+
+```{python}
+len(target_country)
+```
+
+## str()
+
+Converts object to string representation. This is redundant here since we already have a string, but useful when converting other data types.
+
+```{python}
+str(target_country)
+```
+
+## repr()
+
+Returns the "official" string representation showing quotes and escape characters. This is extremely useful for debugging to see exactly what's in a string, including hidden characters.
+
+```{python}
+repr(target_country)
+```
+
+## type()
+
+Returns the type/class of the object.
+
+```{python}
+type(target_country)
+```
+
+## bool()
+
+Returns True for non-empty strings, False for empty strings. Used in conditional statements.
+
+```{python}
+bool(target_country)
+```
+
+## hash()
+
+Returns a hash value for the string, used internally by dictionaries and sets. The value varies between Python sessions for security reasons.
+
+```{python}
+hash(target_country)
+```
+
+## id()
+
+Returns the memory address where the string is stored. Mainly used for debugging memory issues and understanding object identity.
+
+```{python}
+id(target_country)
+```
+
+# String Methods - Case Conversion
+
+## upper()
+
+```{python}
+target_country.upper()
+```
+
+## lower()
+
+```{python}
+target_country.lower()
+```
+
+## title()
+
+Capitalizes the first letter of each word.
+
+```{python}
+target_country.title()
+```
+
+## capitalize()
+
+Capitalizes only the first letter of the entire string.
+
+```{python}
+target_country.capitalize()
+```
+
+## swapcase()
+
+Swaps the case of all characters: uppercase becomes lowercase and vice versa.
+
+```{python}
+target_country.swapcase()
+```
+
+## casefold()
+
+Similar to lower() but more aggressive - handles special Unicode characters properly. This is the preferred method for case-insensitive comparisons.
+
+```{python}
+target_country.casefold()
+```
+
+# String Methods - Checking/Testing
+
+## isalpha()
+
+Returns True if all characters are alphabetic (a-z, A-Z).
+
+```{python}
+target_country.isalpha()
+```
+
+## isdigit()
+
+Returns True if all characters are digits (0-9).
+
+```{python}
+target_country.isdigit()
+```
+
+## isalnum()
+
+Returns True if all characters are alphanumeric (letters or digits).
+
+```{python}
+target_country.isalnum()
+```
+
+## isupper()
+
+Returns True if all cased characters are uppercase.
+
+```{python}
+target_country.isupper()
+```
+
+## islower()
+
+Returns True if all cased characters are lowercase.
+
+```{python}
+target_country.islower()
+```
+
+## istitle()
+
+Returns True if string is in title case (first letter of each word capitalized).
+
+```{python}
+target_country.istitle()
+```
+
+## isspace()
+
+Returns True if string contains only whitespace characters.
+
+```{python}
+target_country.isspace()
+```
+
+## isprintable()
+
+Returns True if all characters are printable (not control characters like `\n` or `\t`).
+
+```{python}
+target_country.isprintable()
+```
+
+## isascii()
+
+Returns True if all characters are ASCII (0-127 in Unicode). Useful for checking if text will display properly in ASCII-only contexts.
+
+```{python}
+target_country.isascii()
+```
+
+## isdecimal()
+
+Returns True if all characters are decimal digits (0-9). More restrictive than `isdigit()`.
+
+```{python}
+target_country.isdecimal()
+```
+
+## isnumeric()
+
+Returns True if all characters are numeric, including digits, fractions, and superscripts. Most inclusive of the numeric checking methods.
+
+```{python}
+target_country.isnumeric()
+```
+
+## isidentifier()
+
+Returns True if string is a valid Python identifier (could be used as a variable name).
+
+```{python}
+target_country.isidentifier()
+```
+
+# String Methods - Searching/Finding
+
+## find()
+
+Finds the first occurrence of substring and returns its index, or -1 if not found.
+
+```{python}
+target_country.find('land')
+```
+
+## rfind()
+
+Finds the last occurrence of substring and returns its index, or -1 if not found.
+
+```{python}
+target_country.rfind('e')
+```
+
+## index()
+
+Like `find()` but raises a ValueError if substring is not found. Use when you're certain the substring exists.
+
+```{python}
+target_country.index('land')
+```
+
+## rindex()
+
+Like `rfind()` but raises a ValueError if substring is not found.
+
+```{python}
+target_country.rindex('e')
+```
+
+## count()
+
+Counts non-overlapping occurrences of substring.
+
+```{python}
+target_country.count('e')
+```
+
+## startswith()
+
+Returns True if string starts with the specified prefix. Can also take a tuple of prefixes to check multiple options at once.
+
+```{python}
+target_country.startswith('Neth')
+```
+
+## endswith()
+
+Returns True if string ends with the specified suffix. Can also take a tuple of suffixes to check multiple options at once.
+
+```{python}
+target_country.endswith('lands')
+```
+
+# String Methods - Splitting/Joining
+
+## split()
+
+Splits string at each occurrence of separator and returns a list. Default separator is any whitespace.
+
+```{python}
+target_country.split('e')
+```
+
+## rsplit()
+
+Like `split()` but starts from the right side. The second argument limits the number of splits.
+
+```{python}
+target_country.rsplit('e', 1)
+```
+
+## partition()
+
+Splits string into exactly 3 parts: before separator, separator itself, and after separator. If separator is not found, returns (original_string, '', '').
+
+```{python}
+target_country.partition('e')
+```
+
+## rpartition()
+
+Like `partition()` but searches from the right side.
+
+```{python}
+target_country.rpartition('e')
+```
+
+## join()
+
+Joins elements of an iterable with the string as separator. The string calling `join()` becomes the separator between elements.
+
+```{python}
+'-'.join(['N', 'e', 't', 'h'])
+```
+
+# String Methods - Replacing/Modifying
+
+## replace()
+
+Replaces all occurrences of old substring with new substring.
+
+```{python}
+target_country.replace('e', 'E')
+```
+
+## replace() with count
+
+The third argument limits the number of replacements starting from the left.
+
+```{python}
+target_country.replace('e', 'E', 1)
+```
+
+## translate()
+
+Uses a translation table to replace characters. `str.maketrans()` creates the translation table. More efficient than multiple `replace()` calls.
+
+```{python}
+target_country.translate(str.maketrans('e', 'E'))
+```
+
+# String Methods - Formatting/Alignment
+
+## center()
+
+Centers string in a field of specified width, padding with spaces by default.
+
+```{python}
+target_country.center(15)
+```
+
+## center() with fill character
+
+Centers string using a custom fill character.
+
+```{python}
+target_country.center(15, '-')
+```
+
+## ljust()
+
+Left-justifies string in a field of specified width.
+
+```{python}
+target_country.ljust(15)
+```
+
+## ljust() with fill character
+
+Left-justifies string with a custom fill character.
+
+```{python}
+target_country.ljust(15, '-')
+```
+
+## rjust()
+
+Right-justifies string in a field of specified width.
+
+```{python}
+target_country.rjust(15)
+```
+
+## rjust() with fill character
+
+Right-justifies string with a custom fill character.
+
+```{python}
+target_country.rjust(15, '-')
+```
+
+## zfill()
+
+Pads string with zeros on the left to specified width. Particularly useful for formatting numbers with leading zeros.
+
+```{python}
+target_country.zfill(15)
+```
+
+# String Methods - Trimming
+
+## strip()
+
+Removes leading and trailing whitespace (spaces, tabs, newlines). Can specify custom characters to remove with `strip('.,!?')`.
+
+```{python}
+(' ' + target_country + ' ').strip()
+```
+
+## lstrip()
+
+Removes only leading (left) whitespace.
+
+```{python}
+(' ' + target_country + ' ').lstrip()
+```
+
+## rstrip()
+
+Removes only trailing (right) whitespace.
+
+```{python}
+(' ' + target_country + ' ').rstrip()
+```
+
+## removeprefix()
+
+Removes specified prefix if present (Python 3.9+). Returns original string if prefix is not found.
+
+```{python}
+target_country.removeprefix('Neth')
+```
+
+## removesuffix()
+
+Removes specified suffix if present (Python 3.9+). Returns original string if suffix is not found.
+
+```{python}
+target_country.removesuffix('lands')
+```
+
+# String Methods - Encoding/Decoding
+
+## encode() with UTF-8
+
+Encodes string to bytes using specified encoding. Returns a bytes object (shown with `b'...'` prefix).
+
+```{python}
+target_country.encode('utf-8')
+```
+
+## encode() with ASCII
+
+Encodes using ASCII. This will fail if any non-ASCII characters are present in the string.
+
+```{python}
+target_country.encode('ascii')
+```
+
+# String Slicing and Indexing
+
+## Character access by index
+
+Gets character at specific index using 0-based indexing.
+
+```{python}
+target_country[0]
+```
+
+## Negative indexing
+
+Negative indexing starts from the end of the string.
+
+```{python}
+target_country[-1]
+```
+
+## Basic slicing
+
+Slicing uses `[start:end]` syntax where end is not included.
+
+```{python}
+target_country[1:5]
+```
+
+## Slice from beginning
+
+Slice from beginning to index 4.
+
+```{python}
+target_country[:4]
+```
+
+## Slice to end
+
+Slice from index 6 to the end.
+
+```{python}
+target_country[6:]
+```
+
+## Step slicing
+
+Step slicing uses `[start:end:step]` - here we get every 2nd character.
+
+```{python}
+target_country[::2]
+```
+
+## Reverse string
+
+Reverse string using negative step.
+
+```{python}
+target_country[::-1]
+```
+
+# String Formatting Methods
+
+## format() method
+
+Old-style string formatting with `.format()` method. Curly braces `{}` are placeholders for values.
+
+```{python}
+'Country: {}'.format(target_country)
+```
+
+## f-strings
+
+F-string (formatted string literal) introduced in Python 3.6+. This is the most readable and efficient way to format strings.
+
+```{python}
+f'Country: {target_country}'
+```
+
+## % formatting
+
+Very old-style string formatting with % operator. `%s` means "string", `%d` means "integer", `%f` means "float".
+
+```{python}
+'Country: %s' % target_country
+```
+
+## Numbered placeholders
+
+Numbered placeholders in `.format()`. `{0}` refers to first argument, `{1}` to second, etc.
+
+```{python}
+'{0} has {1} letters'.format(target_country, len(target_country))
+```
+
+# Regular Expressions
+
+## Import re module
+
+```{python}
+import re
+```
+
+## re.search()
+
+Searches for pattern in string and returns a Match object or None. The `r'...'` syntax creates a raw string where backslashes are not treated as escape characters.
+
+```{python}
+re.search(r'land', target_country)
+```
+
+## re.findall()
+
+Finds all non-overlapping matches of pattern. `[aeiou]` matches any single vowel.
+
+```{python}
+re.findall(r'[aeiou]', target_country)
+```
+
+## re.sub()
+
+Substitutes pattern with replacement string. Returns a new string (original is unchanged).
+
+```{python}
+re.sub(r'e', 'E', target_country)
+```
+
+## re.split()
+
+Splits string by pattern, similar to `str.split()` but using regular expressions.
+
+```{python}
+re.split(r'e', target_country)
+```
+
+# String Module Functions
+
+## Import string module
+
+```{python}
+import string
+```
+
+## string.ascii_letters membership
+
+Checks if the entire string is contained in the `ascii_letters` constant. Note: this checks if the string itself is a subset, not individual characters.
+
+```{python}
+target_country in string.ascii_letters
+```
+
+## Character-by-character checking
+
+Checks if ALL characters in string are letters using the `all()` function with a generator expression.
+
+```{python}
+all(c in string.ascii_letters for c in target_country)
+```
+
+## string.capwords()
+
+Capitalizes words separated by whitespace. More sophisticated than `title()` for handling apostrophes and other punctuation.
+
+```{python}
+string.capwords(target_country)
+```
+
+# Membership and Iteration
+
+## Substring membership
+
+Tests if substring exists anywhere in the string.
+
+```{python}
+'land' in target_country
+```
+
+## Character membership
+
+Tests if a character exists in the string.
+
+```{python}
+'x' in target_country
+```
+
+## Negative membership
+
+Tests if substring does NOT exist in string using explicit negation.
+
+```{python}
+'land' not in target_country
+```
+
+## Convert to list
+
+Converts string to a list of individual characters.
+
+```{python}
+list(target_country)
+```
+
+## Convert to tuple
+
+Converts string to a tuple of individual characters.
+
+```{python}
+tuple(target_country)
+```
+
+## Convert to set
+
+Converts string to a set of unique characters (unordered collection).
+
+```{python}
+set(target_country)
+```
+
+# Comparison Operations
+
+## Equality comparison
+
+Case-sensitive equality comparison.
+
+```{python}
+target_country == 'Netherlands'
+```
+
+## Inequality comparison
+
+```{python}
+target_country != 'Belgium'
+```
+
+## Lexicographic less than
+
+Lexicographic comparison (dictionary order) comparing ASCII/Unicode values character by character.
+
+```{python}
+target_country < 'Norway'
+```
+
+## Lexicographic greater than
+
+```{python}
+target_country > 'Germany'
+```
+
+## Multiple prefix checking
+
+Can check multiple prefixes at once using a tuple.
+
+```{python}
+target_country.startswith(('N', 'B'))
+```
+
+## Multiple suffix checking
+
+Can check multiple suffixes at once using a tuple.
+
+```{python}
+target_country.endswith(('lands', 'mark'))
+```

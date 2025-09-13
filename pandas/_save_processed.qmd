@@ -1,0 +1,5 @@
+```{python}
+#| echo: false
+#| output: false
+passengers_df.to_parquet("../data/processed_passengers.parquet")
+```

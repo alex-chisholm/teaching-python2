@@ -1,0 +1,1735 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.24">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>str Details – Python Programming II for Data Analysis</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../python-fundamentals/number.html" rel="next">
+<link href="../python-fundamentals/basics.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-27c261d06b905028a18691de25d09dde.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../python-fundamentals/basics.html">Python Fundamentals</a></li><li class="breadcrumb-item"><a href="../python-fundamentals/str.html">str Details</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../index.html" class="sidebar-logo-link">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Python Programming II for Data Analysis</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Python Fundamentals</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../python-fundamentals/basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">General Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../python-fundamentals/str.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">str Details</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../python-fundamentals/number.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">number Details</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../python-fundamentals/bool.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">bool Details</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../python-fundamentals/type-functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Functions/Method by Type Matrix</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../python-fundamentals/list-functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">List Operations Matrix</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Pandas</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pandas/project-setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Project Setup</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pandas/dataframe.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">DataFrame</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pandas/one-variable-analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Analyzing One Variable</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pandas/multiple-variable-analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Analyzing Multiple Variable</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pandas/data-cleaning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Cleaning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pandas/merging-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Merging Data</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#setup" id="toc-setup" class="nav-link active" data-scroll-target="#setup">Setup</a></li>
+  <li><a href="#built-in-functions" id="toc-built-in-functions" class="nav-link" data-scroll-target="#built-in-functions">Built-in Functions</a>
+  <ul class="collapse">
+  <li><a href="#len" id="toc-len" class="nav-link" data-scroll-target="#len">len()</a></li>
+  <li><a href="#str" id="toc-str" class="nav-link" data-scroll-target="#str">str()</a></li>
+  <li><a href="#repr" id="toc-repr" class="nav-link" data-scroll-target="#repr">repr()</a></li>
+  <li><a href="#type" id="toc-type" class="nav-link" data-scroll-target="#type">type()</a></li>
+  <li><a href="#bool" id="toc-bool" class="nav-link" data-scroll-target="#bool">bool()</a></li>
+  <li><a href="#hash" id="toc-hash" class="nav-link" data-scroll-target="#hash">hash()</a></li>
+  <li><a href="#id" id="toc-id" class="nav-link" data-scroll-target="#id">id()</a></li>
+  </ul></li>
+  <li><a href="#string-methods---case-conversion" id="toc-string-methods---case-conversion" class="nav-link" data-scroll-target="#string-methods---case-conversion">String Methods - Case Conversion</a>
+  <ul class="collapse">
+  <li><a href="#upper" id="toc-upper" class="nav-link" data-scroll-target="#upper">upper()</a></li>
+  <li><a href="#lower" id="toc-lower" class="nav-link" data-scroll-target="#lower">lower()</a></li>
+  <li><a href="#title" id="toc-title" class="nav-link" data-scroll-target="#title">title()</a></li>
+  <li><a href="#capitalize" id="toc-capitalize" class="nav-link" data-scroll-target="#capitalize">capitalize()</a></li>
+  <li><a href="#swapcase" id="toc-swapcase" class="nav-link" data-scroll-target="#swapcase">swapcase()</a></li>
+  <li><a href="#casefold" id="toc-casefold" class="nav-link" data-scroll-target="#casefold">casefold()</a></li>
+  </ul></li>
+  <li><a href="#string-methods---checkingtesting" id="toc-string-methods---checkingtesting" class="nav-link" data-scroll-target="#string-methods---checkingtesting">String Methods - Checking/Testing</a>
+  <ul class="collapse">
+  <li><a href="#isalpha" id="toc-isalpha" class="nav-link" data-scroll-target="#isalpha">isalpha()</a></li>
+  <li><a href="#isdigit" id="toc-isdigit" class="nav-link" data-scroll-target="#isdigit">isdigit()</a></li>
+  <li><a href="#isalnum" id="toc-isalnum" class="nav-link" data-scroll-target="#isalnum">isalnum()</a></li>
+  <li><a href="#isupper" id="toc-isupper" class="nav-link" data-scroll-target="#isupper">isupper()</a></li>
+  <li><a href="#islower" id="toc-islower" class="nav-link" data-scroll-target="#islower">islower()</a></li>
+  <li><a href="#istitle" id="toc-istitle" class="nav-link" data-scroll-target="#istitle">istitle()</a></li>
+  <li><a href="#isspace" id="toc-isspace" class="nav-link" data-scroll-target="#isspace">isspace()</a></li>
+  <li><a href="#isprintable" id="toc-isprintable" class="nav-link" data-scroll-target="#isprintable">isprintable()</a></li>
+  <li><a href="#isascii" id="toc-isascii" class="nav-link" data-scroll-target="#isascii">isascii()</a></li>
+  <li><a href="#isdecimal" id="toc-isdecimal" class="nav-link" data-scroll-target="#isdecimal">isdecimal()</a></li>
+  <li><a href="#isnumeric" id="toc-isnumeric" class="nav-link" data-scroll-target="#isnumeric">isnumeric()</a></li>
+  <li><a href="#isidentifier" id="toc-isidentifier" class="nav-link" data-scroll-target="#isidentifier">isidentifier()</a></li>
+  </ul></li>
+  <li><a href="#string-methods---searchingfinding" id="toc-string-methods---searchingfinding" class="nav-link" data-scroll-target="#string-methods---searchingfinding">String Methods - Searching/Finding</a>
+  <ul class="collapse">
+  <li><a href="#find" id="toc-find" class="nav-link" data-scroll-target="#find">find()</a></li>
+  <li><a href="#rfind" id="toc-rfind" class="nav-link" data-scroll-target="#rfind">rfind()</a></li>
+  <li><a href="#index" id="toc-index" class="nav-link" data-scroll-target="#index">index()</a></li>
+  <li><a href="#rindex" id="toc-rindex" class="nav-link" data-scroll-target="#rindex">rindex()</a></li>
+  <li><a href="#count" id="toc-count" class="nav-link" data-scroll-target="#count">count()</a></li>
+  <li><a href="#startswith" id="toc-startswith" class="nav-link" data-scroll-target="#startswith">startswith()</a></li>
+  <li><a href="#endswith" id="toc-endswith" class="nav-link" data-scroll-target="#endswith">endswith()</a></li>
+  </ul></li>
+  <li><a href="#string-methods---splittingjoining" id="toc-string-methods---splittingjoining" class="nav-link" data-scroll-target="#string-methods---splittingjoining">String Methods - Splitting/Joining</a>
+  <ul class="collapse">
+  <li><a href="#split" id="toc-split" class="nav-link" data-scroll-target="#split">split()</a></li>
+  <li><a href="#rsplit" id="toc-rsplit" class="nav-link" data-scroll-target="#rsplit">rsplit()</a></li>
+  <li><a href="#partition" id="toc-partition" class="nav-link" data-scroll-target="#partition">partition()</a></li>
+  <li><a href="#rpartition" id="toc-rpartition" class="nav-link" data-scroll-target="#rpartition">rpartition()</a></li>
+  <li><a href="#join" id="toc-join" class="nav-link" data-scroll-target="#join">join()</a></li>
+  </ul></li>
+  <li><a href="#string-methods---replacingmodifying" id="toc-string-methods---replacingmodifying" class="nav-link" data-scroll-target="#string-methods---replacingmodifying">String Methods - Replacing/Modifying</a>
+  <ul class="collapse">
+  <li><a href="#replace" id="toc-replace" class="nav-link" data-scroll-target="#replace">replace()</a></li>
+  <li><a href="#replace-with-count" id="toc-replace-with-count" class="nav-link" data-scroll-target="#replace-with-count">replace() with count</a></li>
+  <li><a href="#translate" id="toc-translate" class="nav-link" data-scroll-target="#translate">translate()</a></li>
+  </ul></li>
+  <li><a href="#string-methods---formattingalignment" id="toc-string-methods---formattingalignment" class="nav-link" data-scroll-target="#string-methods---formattingalignment">String Methods - Formatting/Alignment</a>
+  <ul class="collapse">
+  <li><a href="#center" id="toc-center" class="nav-link" data-scroll-target="#center">center()</a></li>
+  <li><a href="#center-with-fill-character" id="toc-center-with-fill-character" class="nav-link" data-scroll-target="#center-with-fill-character">center() with fill character</a></li>
+  <li><a href="#ljust" id="toc-ljust" class="nav-link" data-scroll-target="#ljust">ljust()</a></li>
+  <li><a href="#ljust-with-fill-character" id="toc-ljust-with-fill-character" class="nav-link" data-scroll-target="#ljust-with-fill-character">ljust() with fill character</a></li>
+  <li><a href="#rjust" id="toc-rjust" class="nav-link" data-scroll-target="#rjust">rjust()</a></li>
+  <li><a href="#rjust-with-fill-character" id="toc-rjust-with-fill-character" class="nav-link" data-scroll-target="#rjust-with-fill-character">rjust() with fill character</a></li>
+  <li><a href="#zfill" id="toc-zfill" class="nav-link" data-scroll-target="#zfill">zfill()</a></li>
+  </ul></li>
+  <li><a href="#string-methods---trimming" id="toc-string-methods---trimming" class="nav-link" data-scroll-target="#string-methods---trimming">String Methods - Trimming</a>
+  <ul class="collapse">
+  <li><a href="#strip" id="toc-strip" class="nav-link" data-scroll-target="#strip">strip()</a></li>
+  <li><a href="#lstrip" id="toc-lstrip" class="nav-link" data-scroll-target="#lstrip">lstrip()</a></li>
+  <li><a href="#rstrip" id="toc-rstrip" class="nav-link" data-scroll-target="#rstrip">rstrip()</a></li>
+  <li><a href="#removeprefix" id="toc-removeprefix" class="nav-link" data-scroll-target="#removeprefix">removeprefix()</a></li>
+  <li><a href="#removesuffix" id="toc-removesuffix" class="nav-link" data-scroll-target="#removesuffix">removesuffix()</a></li>
+  </ul></li>
+  <li><a href="#string-methods---encodingdecoding" id="toc-string-methods---encodingdecoding" class="nav-link" data-scroll-target="#string-methods---encodingdecoding">String Methods - Encoding/Decoding</a>
+  <ul class="collapse">
+  <li><a href="#encode-with-utf-8" id="toc-encode-with-utf-8" class="nav-link" data-scroll-target="#encode-with-utf-8">encode() with UTF-8</a></li>
+  <li><a href="#encode-with-ascii" id="toc-encode-with-ascii" class="nav-link" data-scroll-target="#encode-with-ascii">encode() with ASCII</a></li>
+  </ul></li>
+  <li><a href="#string-slicing-and-indexing" id="toc-string-slicing-and-indexing" class="nav-link" data-scroll-target="#string-slicing-and-indexing">String Slicing and Indexing</a>
+  <ul class="collapse">
+  <li><a href="#character-access-by-index" id="toc-character-access-by-index" class="nav-link" data-scroll-target="#character-access-by-index">Character access by index</a></li>
+  <li><a href="#negative-indexing" id="toc-negative-indexing" class="nav-link" data-scroll-target="#negative-indexing">Negative indexing</a></li>
+  <li><a href="#basic-slicing" id="toc-basic-slicing" class="nav-link" data-scroll-target="#basic-slicing">Basic slicing</a></li>
+  <li><a href="#slice-from-beginning" id="toc-slice-from-beginning" class="nav-link" data-scroll-target="#slice-from-beginning">Slice from beginning</a></li>
+  <li><a href="#slice-to-end" id="toc-slice-to-end" class="nav-link" data-scroll-target="#slice-to-end">Slice to end</a></li>
+  <li><a href="#step-slicing" id="toc-step-slicing" class="nav-link" data-scroll-target="#step-slicing">Step slicing</a></li>
+  <li><a href="#reverse-string" id="toc-reverse-string" class="nav-link" data-scroll-target="#reverse-string">Reverse string</a></li>
+  </ul></li>
+  <li><a href="#string-formatting-methods" id="toc-string-formatting-methods" class="nav-link" data-scroll-target="#string-formatting-methods">String Formatting Methods</a>
+  <ul class="collapse">
+  <li><a href="#format-method" id="toc-format-method" class="nav-link" data-scroll-target="#format-method">format() method</a></li>
+  <li><a href="#f-strings" id="toc-f-strings" class="nav-link" data-scroll-target="#f-strings">f-strings</a></li>
+  <li><a href="#formatting" id="toc-formatting" class="nav-link" data-scroll-target="#formatting">% formatting</a></li>
+  <li><a href="#numbered-placeholders" id="toc-numbered-placeholders" class="nav-link" data-scroll-target="#numbered-placeholders">Numbered placeholders</a></li>
+  </ul></li>
+  <li><a href="#regular-expressions" id="toc-regular-expressions" class="nav-link" data-scroll-target="#regular-expressions">Regular Expressions</a>
+  <ul class="collapse">
+  <li><a href="#import-re-module" id="toc-import-re-module" class="nav-link" data-scroll-target="#import-re-module">Import re module</a></li>
+  <li><a href="#re.search" id="toc-re.search" class="nav-link" data-scroll-target="#re.search">re.search()</a></li>
+  <li><a href="#re.findall" id="toc-re.findall" class="nav-link" data-scroll-target="#re.findall">re.findall()</a></li>
+  <li><a href="#re.sub" id="toc-re.sub" class="nav-link" data-scroll-target="#re.sub">re.sub()</a></li>
+  <li><a href="#re.split" id="toc-re.split" class="nav-link" data-scroll-target="#re.split">re.split()</a></li>
+  </ul></li>
+  <li><a href="#string-module-functions" id="toc-string-module-functions" class="nav-link" data-scroll-target="#string-module-functions">String Module Functions</a>
+  <ul class="collapse">
+  <li><a href="#import-string-module" id="toc-import-string-module" class="nav-link" data-scroll-target="#import-string-module">Import string module</a></li>
+  <li><a href="#string.ascii_letters-membership" id="toc-string.ascii_letters-membership" class="nav-link" data-scroll-target="#string.ascii_letters-membership">string.ascii_letters membership</a></li>
+  <li><a href="#character-by-character-checking" id="toc-character-by-character-checking" class="nav-link" data-scroll-target="#character-by-character-checking">Character-by-character checking</a></li>
+  <li><a href="#string.capwords" id="toc-string.capwords" class="nav-link" data-scroll-target="#string.capwords">string.capwords()</a></li>
+  </ul></li>
+  <li><a href="#membership-and-iteration" id="toc-membership-and-iteration" class="nav-link" data-scroll-target="#membership-and-iteration">Membership and Iteration</a>
+  <ul class="collapse">
+  <li><a href="#substring-membership" id="toc-substring-membership" class="nav-link" data-scroll-target="#substring-membership">Substring membership</a></li>
+  <li><a href="#character-membership" id="toc-character-membership" class="nav-link" data-scroll-target="#character-membership">Character membership</a></li>
+  <li><a href="#negative-membership" id="toc-negative-membership" class="nav-link" data-scroll-target="#negative-membership">Negative membership</a></li>
+  <li><a href="#convert-to-list" id="toc-convert-to-list" class="nav-link" data-scroll-target="#convert-to-list">Convert to list</a></li>
+  <li><a href="#convert-to-tuple" id="toc-convert-to-tuple" class="nav-link" data-scroll-target="#convert-to-tuple">Convert to tuple</a></li>
+  <li><a href="#convert-to-set" id="toc-convert-to-set" class="nav-link" data-scroll-target="#convert-to-set">Convert to set</a></li>
+  </ul></li>
+  <li><a href="#comparison-operations" id="toc-comparison-operations" class="nav-link" data-scroll-target="#comparison-operations">Comparison Operations</a>
+  <ul class="collapse">
+  <li><a href="#equality-comparison" id="toc-equality-comparison" class="nav-link" data-scroll-target="#equality-comparison">Equality comparison</a></li>
+  <li><a href="#inequality-comparison" id="toc-inequality-comparison" class="nav-link" data-scroll-target="#inequality-comparison">Inequality comparison</a></li>
+  <li><a href="#lexicographic-less-than" id="toc-lexicographic-less-than" class="nav-link" data-scroll-target="#lexicographic-less-than">Lexicographic less than</a></li>
+  <li><a href="#lexicographic-greater-than" id="toc-lexicographic-greater-than" class="nav-link" data-scroll-target="#lexicographic-greater-than">Lexicographic greater than</a></li>
+  <li><a href="#multiple-prefix-checking" id="toc-multiple-prefix-checking" class="nav-link" data-scroll-target="#multiple-prefix-checking">Multiple prefix checking</a></li>
+  <li><a href="#multiple-suffix-checking" id="toc-multiple-suffix-checking" class="nav-link" data-scroll-target="#multiple-suffix-checking">Multiple suffix checking</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../python-fundamentals/basics.html">Python Fundamentals</a></li><li class="breadcrumb-item"><a href="../python-fundamentals/str.html">str Details</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">str Details</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="setup" class="level2">
+<h2 class="anchored" data-anchor-id="setup">Setup</h2>
+<div id="9e5072a4" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>target_country <span class="op">=</span> <span class="st">'Netherlands'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="built-in-functions" class="level1">
+<h1>Built-in Functions</h1>
+<section id="len" class="level2">
+<h2 class="anchored" data-anchor-id="len">len()</h2>
+<p>Returns the length (number of characters) in the string.</p>
+<div id="71b52eef" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(target_country)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code>11</code></pre>
+</div>
+</div>
+</section>
+<section id="str" class="level2">
+<h2 class="anchored" data-anchor-id="str">str()</h2>
+<p>Converts object to string representation. This is redundant here since we already have a string, but useful when converting other data types.</p>
+<div id="af3ca94f" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">str</span>(target_country)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>'Netherlands'</code></pre>
+</div>
+</div>
+</section>
+<section id="repr" class="level2">
+<h2 class="anchored" data-anchor-id="repr">repr()</h2>
+<p>Returns the “official” string representation showing quotes and escape characters. This is extremely useful for debugging to see exactly what’s in a string, including hidden characters.</p>
+<div id="da1fa8e6" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">repr</span>(target_country)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>"'Netherlands'"</code></pre>
+</div>
+</div>
+</section>
+<section id="type" class="level2">
+<h2 class="anchored" data-anchor-id="type">type()</h2>
+<p>Returns the type/class of the object.</p>
+<div id="28e87afd" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(target_country)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>str</code></pre>
+</div>
+</div>
+</section>
+<section id="bool" class="level2">
+<h2 class="anchored" data-anchor-id="bool">bool()</h2>
+<p>Returns True for non-empty strings, False for empty strings. Used in conditional statements.</p>
+<div id="22ab7711" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">bool</span>(target_country)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>True</code></pre>
+</div>
+</div>
+</section>
+<section id="hash" class="level2">
+<h2 class="anchored" data-anchor-id="hash">hash()</h2>
+<p>Returns a hash value for the string, used internally by dictionaries and sets. The value varies between Python sessions for security reasons.</p>
+<div id="0be6e3b7" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">hash</span>(target_country)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>3879944215288285559</code></pre>
+</div>
+</div>
+</section>
+<section id="id" class="level2">
+<h2 class="anchored" data-anchor-id="id">id()</h2>
+<p>Returns the memory address where the string is stored. Mainly used for debugging memory issues and understanding object identity.</p>
+<div id="9d3fab6b" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(target_country)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>4376986800</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="string-methods---case-conversion" class="level1">
+<h1>String Methods - Case Conversion</h1>
+<section id="upper" class="level2">
+<h2 class="anchored" data-anchor-id="upper">upper()</h2>
+<div id="00a29ff1" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>target_country.upper()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>'NETHERLANDS'</code></pre>
+</div>
+</div>
+</section>
+<section id="lower" class="level2">
+<h2 class="anchored" data-anchor-id="lower">lower()</h2>
+<div id="63e918ed" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>target_country.lower()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>'netherlands'</code></pre>
+</div>
+</div>
+</section>
+<section id="title" class="level2">
+<h2 class="anchored" data-anchor-id="title">title()</h2>
+<p>Capitalizes the first letter of each word.</p>
+<div id="14b467a1" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>target_country.title()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>'Netherlands'</code></pre>
+</div>
+</div>
+</section>
+<section id="capitalize" class="level2">
+<h2 class="anchored" data-anchor-id="capitalize">capitalize()</h2>
+<p>Capitalizes only the first letter of the entire string.</p>
+<div id="e28b1d11" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>target_country.capitalize()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<pre><code>'Netherlands'</code></pre>
+</div>
+</div>
+</section>
+<section id="swapcase" class="level2">
+<h2 class="anchored" data-anchor-id="swapcase">swapcase()</h2>
+<p>Swaps the case of all characters: uppercase becomes lowercase and vice versa.</p>
+<div id="872d8c11" class="cell" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>target_country.swapcase()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<pre><code>'nETHERLANDS'</code></pre>
+</div>
+</div>
+</section>
+<section id="casefold" class="level2">
+<h2 class="anchored" data-anchor-id="casefold">casefold()</h2>
+<p>Similar to lower() but more aggressive - handles special Unicode characters properly. This is the preferred method for case-insensitive comparisons.</p>
+<div id="0376fa72" class="cell" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>target_country.casefold()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<pre><code>'netherlands'</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="string-methods---checkingtesting" class="level1">
+<h1>String Methods - Checking/Testing</h1>
+<section id="isalpha" class="level2">
+<h2 class="anchored" data-anchor-id="isalpha">isalpha()</h2>
+<p>Returns True if all characters are alphabetic (a-z, A-Z).</p>
+<div id="4dfe6c0a" class="cell" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>target_country.isalpha()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<pre><code>True</code></pre>
+</div>
+</div>
+</section>
+<section id="isdigit" class="level2">
+<h2 class="anchored" data-anchor-id="isdigit">isdigit()</h2>
+<p>Returns True if all characters are digits (0-9).</p>
+<div id="7e0818c0" class="cell" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>target_country.isdigit()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="16">
+<pre><code>False</code></pre>
+</div>
+</div>
+</section>
+<section id="isalnum" class="level2">
+<h2 class="anchored" data-anchor-id="isalnum">isalnum()</h2>
+<p>Returns True if all characters are alphanumeric (letters or digits).</p>
+<div id="d6a3b9bb" class="cell" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>target_country.isalnum()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<pre><code>True</code></pre>
+</div>
+</div>
+</section>
+<section id="isupper" class="level2">
+<h2 class="anchored" data-anchor-id="isupper">isupper()</h2>
+<p>Returns True if all cased characters are uppercase.</p>
+<div id="5f0c7cbe" class="cell" data-execution_count="18">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>target_country.isupper()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="18">
+<pre><code>False</code></pre>
+</div>
+</div>
+</section>
+<section id="islower" class="level2">
+<h2 class="anchored" data-anchor-id="islower">islower()</h2>
+<p>Returns True if all cased characters are lowercase.</p>
+<div id="2dfd6b22" class="cell" data-execution_count="19">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>target_country.islower()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="19">
+<pre><code>False</code></pre>
+</div>
+</div>
+</section>
+<section id="istitle" class="level2">
+<h2 class="anchored" data-anchor-id="istitle">istitle()</h2>
+<p>Returns True if string is in title case (first letter of each word capitalized).</p>
+<div id="9a5ddb07" class="cell" data-execution_count="20">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>target_country.istitle()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
+<pre><code>True</code></pre>
+</div>
+</div>
+</section>
+<section id="isspace" class="level2">
+<h2 class="anchored" data-anchor-id="isspace">isspace()</h2>
+<p>Returns True if string contains only whitespace characters.</p>
+<div id="b12c60eb" class="cell" data-execution_count="21">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>target_country.isspace()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="21">
+<pre><code>False</code></pre>
+</div>
+</div>
+</section>
+<section id="isprintable" class="level2">
+<h2 class="anchored" data-anchor-id="isprintable">isprintable()</h2>
+<p>Returns True if all characters are printable (not control characters like <code>\n</code> or <code>\t</code>).</p>
+<div id="c5da8c89" class="cell" data-execution_count="22">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>target_country.isprintable()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
+<pre><code>True</code></pre>
+</div>
+</div>
+</section>
+<section id="isascii" class="level2">
+<h2 class="anchored" data-anchor-id="isascii">isascii()</h2>
+<p>Returns True if all characters are ASCII (0-127 in Unicode). Useful for checking if text will display properly in ASCII-only contexts.</p>
+<div id="f227e9ae" class="cell" data-execution_count="23">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>target_country.isascii()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="23">
+<pre><code>True</code></pre>
+</div>
+</div>
+</section>
+<section id="isdecimal" class="level2">
+<h2 class="anchored" data-anchor-id="isdecimal">isdecimal()</h2>
+<p>Returns True if all characters are decimal digits (0-9). More restrictive than <code>isdigit()</code>.</p>
+<div id="56c7d291" class="cell" data-execution_count="24">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>target_country.isdecimal()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="24">
+<pre><code>False</code></pre>
+</div>
+</div>
+</section>
+<section id="isnumeric" class="level2">
+<h2 class="anchored" data-anchor-id="isnumeric">isnumeric()</h2>
+<p>Returns True if all characters are numeric, including digits, fractions, and superscripts. Most inclusive of the numeric checking methods.</p>
+<div id="db9412a3" class="cell" data-execution_count="25">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>target_country.isnumeric()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
+<pre><code>False</code></pre>
+</div>
+</div>
+</section>
+<section id="isidentifier" class="level2">
+<h2 class="anchored" data-anchor-id="isidentifier">isidentifier()</h2>
+<p>Returns True if string is a valid Python identifier (could be used as a variable name).</p>
+<div id="45a8ad93" class="cell" data-execution_count="26">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>target_country.isidentifier()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="26">
+<pre><code>True</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="string-methods---searchingfinding" class="level1">
+<h1>String Methods - Searching/Finding</h1>
+<section id="find" class="level2">
+<h2 class="anchored" data-anchor-id="find">find()</h2>
+<p>Finds the first occurrence of substring and returns its index, or -1 if not found.</p>
+<div id="2949d741" class="cell" data-execution_count="27">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>target_country.find(<span class="st">'land'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="27">
+<pre><code>6</code></pre>
+</div>
+</div>
+</section>
+<section id="rfind" class="level2">
+<h2 class="anchored" data-anchor-id="rfind">rfind()</h2>
+<p>Finds the last occurrence of substring and returns its index, or -1 if not found.</p>
+<div id="70ce4b61" class="cell" data-execution_count="28">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>target_country.rfind(<span class="st">'e'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="28">
+<pre><code>4</code></pre>
+</div>
+</div>
+</section>
+<section id="index" class="level2">
+<h2 class="anchored" data-anchor-id="index">index()</h2>
+<p>Like <code>find()</code> but raises a ValueError if substring is not found. Use when you’re certain the substring exists.</p>
+<div id="a4910441" class="cell" data-execution_count="29">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>target_country.index(<span class="st">'land'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="29">
+<pre><code>6</code></pre>
+</div>
+</div>
+</section>
+<section id="rindex" class="level2">
+<h2 class="anchored" data-anchor-id="rindex">rindex()</h2>
+<p>Like <code>rfind()</code> but raises a ValueError if substring is not found.</p>
+<div id="2633f791" class="cell" data-execution_count="30">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>target_country.rindex(<span class="st">'e'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="30">
+<pre><code>4</code></pre>
+</div>
+</div>
+</section>
+<section id="count" class="level2">
+<h2 class="anchored" data-anchor-id="count">count()</h2>
+<p>Counts non-overlapping occurrences of substring.</p>
+<div id="9bc8cda5" class="cell" data-execution_count="31">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>target_country.count(<span class="st">'e'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="31">
+<pre><code>2</code></pre>
+</div>
+</div>
+</section>
+<section id="startswith" class="level2">
+<h2 class="anchored" data-anchor-id="startswith">startswith()</h2>
+<p>Returns True if string starts with the specified prefix. Can also take a tuple of prefixes to check multiple options at once.</p>
+<div id="86287d33" class="cell" data-execution_count="32">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>target_country.startswith(<span class="st">'Neth'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="32">
+<pre><code>True</code></pre>
+</div>
+</div>
+</section>
+<section id="endswith" class="level2">
+<h2 class="anchored" data-anchor-id="endswith">endswith()</h2>
+<p>Returns True if string ends with the specified suffix. Can also take a tuple of suffixes to check multiple options at once.</p>
+<div id="0b3e1a95" class="cell" data-execution_count="33">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>target_country.endswith(<span class="st">'lands'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="33">
+<pre><code>True</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="string-methods---splittingjoining" class="level1">
+<h1>String Methods - Splitting/Joining</h1>
+<section id="split" class="level2">
+<h2 class="anchored" data-anchor-id="split">split()</h2>
+<p>Splits string at each occurrence of separator and returns a list. Default separator is any whitespace.</p>
+<div id="21641c79" class="cell" data-execution_count="34">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>target_country.split(<span class="st">'e'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="34">
+<pre><code>['N', 'th', 'rlands']</code></pre>
+</div>
+</div>
+</section>
+<section id="rsplit" class="level2">
+<h2 class="anchored" data-anchor-id="rsplit">rsplit()</h2>
+<p>Like <code>split()</code> but starts from the right side. The second argument limits the number of splits.</p>
+<div id="3f3da2e4" class="cell" data-execution_count="35">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>target_country.rsplit(<span class="st">'e'</span>, <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="35">
+<pre><code>['Neth', 'rlands']</code></pre>
+</div>
+</div>
+</section>
+<section id="partition" class="level2">
+<h2 class="anchored" data-anchor-id="partition">partition()</h2>
+<p>Splits string into exactly 3 parts: before separator, separator itself, and after separator. If separator is not found, returns (original_string, ’‘,’’).</p>
+<div id="81d56d7d" class="cell" data-execution_count="36">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>target_country.partition(<span class="st">'e'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="36">
+<pre><code>('N', 'e', 'therlands')</code></pre>
+</div>
+</div>
+</section>
+<section id="rpartition" class="level2">
+<h2 class="anchored" data-anchor-id="rpartition">rpartition()</h2>
+<p>Like <code>partition()</code> but searches from the right side.</p>
+<div id="714f829a" class="cell" data-execution_count="37">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>target_country.rpartition(<span class="st">'e'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="37">
+<pre><code>('Neth', 'e', 'rlands')</code></pre>
+</div>
+</div>
+</section>
+<section id="join" class="level2">
+<h2 class="anchored" data-anchor-id="join">join()</h2>
+<p>Joins elements of an iterable with the string as separator. The string calling <code>join()</code> becomes the separator between elements.</p>
+<div id="7474dfb0" class="cell" data-execution_count="38">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co">'-'</span>.join([<span class="st">'N'</span>, <span class="st">'e'</span>, <span class="st">'t'</span>, <span class="st">'h'</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="38">
+<pre><code>'N-e-t-h'</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="string-methods---replacingmodifying" class="level1">
+<h1>String Methods - Replacing/Modifying</h1>
+<section id="replace" class="level2">
+<h2 class="anchored" data-anchor-id="replace">replace()</h2>
+<p>Replaces all occurrences of old substring with new substring.</p>
+<div id="6738b373" class="cell" data-execution_count="39">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>target_country.replace(<span class="st">'e'</span>, <span class="st">'E'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="39">
+<pre><code>'NEthErlands'</code></pre>
+</div>
+</div>
+</section>
+<section id="replace-with-count" class="level2">
+<h2 class="anchored" data-anchor-id="replace-with-count">replace() with count</h2>
+<p>The third argument limits the number of replacements starting from the left.</p>
+<div id="0378d23b" class="cell" data-execution_count="40">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>target_country.replace(<span class="st">'e'</span>, <span class="st">'E'</span>, <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="40">
+<pre><code>'NEtherlands'</code></pre>
+</div>
+</div>
+</section>
+<section id="translate" class="level2">
+<h2 class="anchored" data-anchor-id="translate">translate()</h2>
+<p>Uses a translation table to replace characters. <code>str.maketrans()</code> creates the translation table. More efficient than multiple <code>replace()</code> calls.</p>
+<div id="d7b74087" class="cell" data-execution_count="41">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>target_country.translate(<span class="bu">str</span>.maketrans(<span class="st">'e'</span>, <span class="st">'E'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="41">
+<pre><code>'NEthErlands'</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="string-methods---formattingalignment" class="level1">
+<h1>String Methods - Formatting/Alignment</h1>
+<section id="center" class="level2">
+<h2 class="anchored" data-anchor-id="center">center()</h2>
+<p>Centers string in a field of specified width, padding with spaces by default.</p>
+<div id="b39ab8df" class="cell" data-execution_count="42">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb82"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>target_country.center(<span class="dv">15</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="42">
+<pre><code>'  Netherlands  '</code></pre>
+</div>
+</div>
+</section>
+<section id="center-with-fill-character" class="level2">
+<h2 class="anchored" data-anchor-id="center-with-fill-character">center() with fill character</h2>
+<p>Centers string using a custom fill character.</p>
+<div id="247e4111" class="cell" data-execution_count="43">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb84"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>target_country.center(<span class="dv">15</span>, <span class="st">'-'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="43">
+<pre><code>'--Netherlands--'</code></pre>
+</div>
+</div>
+</section>
+<section id="ljust" class="level2">
+<h2 class="anchored" data-anchor-id="ljust">ljust()</h2>
+<p>Left-justifies string in a field of specified width.</p>
+<div id="fa2c1222" class="cell" data-execution_count="44">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb86"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>target_country.ljust(<span class="dv">15</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="44">
+<pre><code>'Netherlands    '</code></pre>
+</div>
+</div>
+</section>
+<section id="ljust-with-fill-character" class="level2">
+<h2 class="anchored" data-anchor-id="ljust-with-fill-character">ljust() with fill character</h2>
+<p>Left-justifies string with a custom fill character.</p>
+<div id="460d3368" class="cell" data-execution_count="45">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb88"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>target_country.ljust(<span class="dv">15</span>, <span class="st">'-'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="45">
+<pre><code>'Netherlands----'</code></pre>
+</div>
+</div>
+</section>
+<section id="rjust" class="level2">
+<h2 class="anchored" data-anchor-id="rjust">rjust()</h2>
+<p>Right-justifies string in a field of specified width.</p>
+<div id="69dfde33" class="cell" data-execution_count="46">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb90"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a>target_country.rjust(<span class="dv">15</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="46">
+<pre><code>'    Netherlands'</code></pre>
+</div>
+</div>
+</section>
+<section id="rjust-with-fill-character" class="level2">
+<h2 class="anchored" data-anchor-id="rjust-with-fill-character">rjust() with fill character</h2>
+<p>Right-justifies string with a custom fill character.</p>
+<div id="b719dd13" class="cell" data-execution_count="47">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb92"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a>target_country.rjust(<span class="dv">15</span>, <span class="st">'-'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="47">
+<pre><code>'----Netherlands'</code></pre>
+</div>
+</div>
+</section>
+<section id="zfill" class="level2">
+<h2 class="anchored" data-anchor-id="zfill">zfill()</h2>
+<p>Pads string with zeros on the left to specified width. Particularly useful for formatting numbers with leading zeros.</p>
+<div id="00cb71da" class="cell" data-execution_count="48">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb94"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a>target_country.zfill(<span class="dv">15</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="48">
+<pre><code>'0000Netherlands'</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="string-methods---trimming" class="level1">
+<h1>String Methods - Trimming</h1>
+<section id="strip" class="level2">
+<h2 class="anchored" data-anchor-id="strip">strip()</h2>
+<p>Removes leading and trailing whitespace (spaces, tabs, newlines). Can specify custom characters to remove with <code>strip('.,!?')</code>.</p>
+<div id="3d521e47" class="cell" data-execution_count="49">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb96"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a>(<span class="st">' '</span> <span class="op">+</span> target_country <span class="op">+</span> <span class="st">' '</span>).strip()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="49">
+<pre><code>'Netherlands'</code></pre>
+</div>
+</div>
+</section>
+<section id="lstrip" class="level2">
+<h2 class="anchored" data-anchor-id="lstrip">lstrip()</h2>
+<p>Removes only leading (left) whitespace.</p>
+<div id="d27c261f" class="cell" data-execution_count="50">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb98"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a>(<span class="st">' '</span> <span class="op">+</span> target_country <span class="op">+</span> <span class="st">' '</span>).lstrip()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="50">
+<pre><code>'Netherlands '</code></pre>
+</div>
+</div>
+</section>
+<section id="rstrip" class="level2">
+<h2 class="anchored" data-anchor-id="rstrip">rstrip()</h2>
+<p>Removes only trailing (right) whitespace.</p>
+<div id="204dc08c" class="cell" data-execution_count="51">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb100"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a>(<span class="st">' '</span> <span class="op">+</span> target_country <span class="op">+</span> <span class="st">' '</span>).rstrip()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="51">
+<pre><code>' Netherlands'</code></pre>
+</div>
+</div>
+</section>
+<section id="removeprefix" class="level2">
+<h2 class="anchored" data-anchor-id="removeprefix">removeprefix()</h2>
+<p>Removes specified prefix if present (Python 3.9+). Returns original string if prefix is not found.</p>
+<div id="0786801a" class="cell" data-execution_count="52">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb102"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a>target_country.removeprefix(<span class="st">'Neth'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="52">
+<pre><code>'erlands'</code></pre>
+</div>
+</div>
+</section>
+<section id="removesuffix" class="level2">
+<h2 class="anchored" data-anchor-id="removesuffix">removesuffix()</h2>
+<p>Removes specified suffix if present (Python 3.9+). Returns original string if suffix is not found.</p>
+<div id="97213450" class="cell" data-execution_count="53">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb104"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a>target_country.removesuffix(<span class="st">'lands'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="53">
+<pre><code>'Nether'</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="string-methods---encodingdecoding" class="level1">
+<h1>String Methods - Encoding/Decoding</h1>
+<section id="encode-with-utf-8" class="level2">
+<h2 class="anchored" data-anchor-id="encode-with-utf-8">encode() with UTF-8</h2>
+<p>Encodes string to bytes using specified encoding. Returns a bytes object (shown with <code>b'...'</code> prefix).</p>
+<div id="85d12792" class="cell" data-execution_count="54">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb106"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a>target_country.encode(<span class="st">'utf-8'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="54">
+<pre><code>b'Netherlands'</code></pre>
+</div>
+</div>
+</section>
+<section id="encode-with-ascii" class="level2">
+<h2 class="anchored" data-anchor-id="encode-with-ascii">encode() with ASCII</h2>
+<p>Encodes using ASCII. This will fail if any non-ASCII characters are present in the string.</p>
+<div id="7c36187b" class="cell" data-execution_count="55">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb108"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a>target_country.encode(<span class="st">'ascii'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="55">
+<pre><code>b'Netherlands'</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="string-slicing-and-indexing" class="level1">
+<h1>String Slicing and Indexing</h1>
+<section id="character-access-by-index" class="level2">
+<h2 class="anchored" data-anchor-id="character-access-by-index">Character access by index</h2>
+<p>Gets character at specific index using 0-based indexing.</p>
+<div id="17bbcbf4" class="cell" data-execution_count="56">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb110"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a>target_country[<span class="dv">0</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="56">
+<pre><code>'N'</code></pre>
+</div>
+</div>
+</section>
+<section id="negative-indexing" class="level2">
+<h2 class="anchored" data-anchor-id="negative-indexing">Negative indexing</h2>
+<p>Negative indexing starts from the end of the string.</p>
+<div id="4a0ff52b" class="cell" data-execution_count="57">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb112"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a>target_country[<span class="op">-</span><span class="dv">1</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="57">
+<pre><code>'s'</code></pre>
+</div>
+</div>
+</section>
+<section id="basic-slicing" class="level2">
+<h2 class="anchored" data-anchor-id="basic-slicing">Basic slicing</h2>
+<p>Slicing uses <code>[start:end]</code> syntax where end is not included.</p>
+<div id="8be8c053" class="cell" data-execution_count="58">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb114"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a>target_country[<span class="dv">1</span>:<span class="dv">5</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="58">
+<pre><code>'ethe'</code></pre>
+</div>
+</div>
+</section>
+<section id="slice-from-beginning" class="level2">
+<h2 class="anchored" data-anchor-id="slice-from-beginning">Slice from beginning</h2>
+<p>Slice from beginning to index 4.</p>
+<div id="ebaadaa6" class="cell" data-execution_count="59">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb116"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a>target_country[:<span class="dv">4</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="59">
+<pre><code>'Neth'</code></pre>
+</div>
+</div>
+</section>
+<section id="slice-to-end" class="level2">
+<h2 class="anchored" data-anchor-id="slice-to-end">Slice to end</h2>
+<p>Slice from index 6 to the end.</p>
+<div id="cf5022bc" class="cell" data-execution_count="60">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb118"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a>target_country[<span class="dv">6</span>:]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="60">
+<pre><code>'lands'</code></pre>
+</div>
+</div>
+</section>
+<section id="step-slicing" class="level2">
+<h2 class="anchored" data-anchor-id="step-slicing">Step slicing</h2>
+<p>Step slicing uses <code>[start:end:step]</code> - here we get every 2nd character.</p>
+<div id="641dc4a2" class="cell" data-execution_count="61">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb120"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a>target_country[::<span class="dv">2</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="61">
+<pre><code>'Ntelns'</code></pre>
+</div>
+</div>
+</section>
+<section id="reverse-string" class="level2">
+<h2 class="anchored" data-anchor-id="reverse-string">Reverse string</h2>
+<p>Reverse string using negative step.</p>
+<div id="fb42c328" class="cell" data-execution_count="62">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb122"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a>target_country[::<span class="op">-</span><span class="dv">1</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="62">
+<pre><code>'sdnalrehteN'</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="string-formatting-methods" class="level1">
+<h1>String Formatting Methods</h1>
+<section id="format-method" class="level2">
+<h2 class="anchored" data-anchor-id="format-method">format() method</h2>
+<p>Old-style string formatting with <code>.format()</code> method. Curly braces <code>{}</code> are placeholders for values.</p>
+<div id="ec3e7bdd" class="cell" data-execution_count="63">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb124"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb124-1"><a href="#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="co">'Country: {}'</span>.<span class="bu">format</span>(target_country)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="63">
+<pre><code>'Country: Netherlands'</code></pre>
+</div>
+</div>
+</section>
+<section id="f-strings" class="level2">
+<h2 class="anchored" data-anchor-id="f-strings">f-strings</h2>
+<p>F-string (formatted string literal) introduced in Python 3.6+. This is the most readable and efficient way to format strings.</p>
+<div id="57eca7bb" class="cell" data-execution_count="64">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb126"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb126-1"><a href="#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="ss">f'Country: </span><span class="sc">{</span>target_country<span class="sc">}</span><span class="ss">'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="64">
+<pre><code>'Country: Netherlands'</code></pre>
+</div>
+</div>
+</section>
+<section id="formatting" class="level2">
+<h2 class="anchored" data-anchor-id="formatting">% formatting</h2>
+<p>Very old-style string formatting with % operator. <code>%s</code> means “string”, <code>%d</code> means “integer”, <code>%f</code> means “float”.</p>
+<div id="ea4a4261" class="cell" data-execution_count="65">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb128"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb128-1"><a href="#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="co">'Country: %s'</span> <span class="op">%</span> target_country</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="65">
+<pre><code>'Country: Netherlands'</code></pre>
+</div>
+</div>
+</section>
+<section id="numbered-placeholders" class="level2">
+<h2 class="anchored" data-anchor-id="numbered-placeholders">Numbered placeholders</h2>
+<p>Numbered placeholders in <code>.format()</code>. <code>{0}</code> refers to first argument, <code>{1}</code> to second, etc.</p>
+<div id="7633bdd2" class="cell" data-execution_count="66">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb130"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb130-1"><a href="#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="co">'{0} has {1} letters'</span>.<span class="bu">format</span>(target_country, <span class="bu">len</span>(target_country))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="66">
+<pre><code>'Netherlands has 11 letters'</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="regular-expressions" class="level1">
+<h1>Regular Expressions</h1>
+<section id="import-re-module" class="level2">
+<h2 class="anchored" data-anchor-id="import-re-module">Import re module</h2>
+<div id="d550d164" class="cell" data-execution_count="67">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb132"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="re.search" class="level2">
+<h2 class="anchored" data-anchor-id="re.search">re.search()</h2>
+<p>Searches for pattern in string and returns a Match object or None. The <code>r'...'</code> syntax creates a raw string where backslashes are not treated as escape characters.</p>
+<div id="c57f278d" class="cell" data-execution_count="68">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb133"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb133-1"><a href="#cb133-1" aria-hidden="true" tabindex="-1"></a>re.search(<span class="vs">r'land'</span>, target_country)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="68">
+<pre><code>&lt;re.Match object; span=(6, 10), match='land'&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="re.findall" class="level2">
+<h2 class="anchored" data-anchor-id="re.findall">re.findall()</h2>
+<p>Finds all non-overlapping matches of pattern. <code>[aeiou]</code> matches any single vowel.</p>
+<div id="9e1e68b3" class="cell" data-execution_count="69">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb135"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb135-1"><a href="#cb135-1" aria-hidden="true" tabindex="-1"></a>re.findall(<span class="vs">r'</span><span class="pp">[aeiou]</span><span class="vs">'</span>, target_country)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="69">
+<pre><code>['e', 'e', 'a']</code></pre>
+</div>
+</div>
+</section>
+<section id="re.sub" class="level2">
+<h2 class="anchored" data-anchor-id="re.sub">re.sub()</h2>
+<p>Substitutes pattern with replacement string. Returns a new string (original is unchanged).</p>
+<div id="53b8e75a" class="cell" data-execution_count="70">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb137"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb137-1"><a href="#cb137-1" aria-hidden="true" tabindex="-1"></a>re.sub(<span class="vs">r'e'</span>, <span class="st">'E'</span>, target_country)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="70">
+<pre><code>'NEthErlands'</code></pre>
+</div>
+</div>
+</section>
+<section id="re.split" class="level2">
+<h2 class="anchored" data-anchor-id="re.split">re.split()</h2>
+<p>Splits string by pattern, similar to <code>str.split()</code> but using regular expressions.</p>
+<div id="2fd8c89a" class="cell" data-execution_count="71">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb139"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb139-1"><a href="#cb139-1" aria-hidden="true" tabindex="-1"></a>re.split(<span class="vs">r'e'</span>, target_country)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="71">
+<pre><code>['N', 'th', 'rlands']</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="string-module-functions" class="level1">
+<h1>String Module Functions</h1>
+<section id="import-string-module" class="level2">
+<h2 class="anchored" data-anchor-id="import-string-module">Import string module</h2>
+<div id="193a7b46" class="cell" data-execution_count="72">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb141"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb141-1"><a href="#cb141-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> string</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="string.ascii_letters-membership" class="level2">
+<h2 class="anchored" data-anchor-id="string.ascii_letters-membership">string.ascii_letters membership</h2>
+<p>Checks if the entire string is contained in the <code>ascii_letters</code> constant. Note: this checks if the string itself is a subset, not individual characters.</p>
+<div id="08351233" class="cell" data-execution_count="73">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb142"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb142-1"><a href="#cb142-1" aria-hidden="true" tabindex="-1"></a>target_country <span class="kw">in</span> string.ascii_letters</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="73">
+<pre><code>False</code></pre>
+</div>
+</div>
+</section>
+<section id="character-by-character-checking" class="level2">
+<h2 class="anchored" data-anchor-id="character-by-character-checking">Character-by-character checking</h2>
+<p>Checks if ALL characters in string are letters using the <code>all()</code> function with a generator expression.</p>
+<div id="8d2959a1" class="cell" data-execution_count="74">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb144"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb144-1"><a href="#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="bu">all</span>(c <span class="kw">in</span> string.ascii_letters <span class="cf">for</span> c <span class="kw">in</span> target_country)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="74">
+<pre><code>True</code></pre>
+</div>
+</div>
+</section>
+<section id="string.capwords" class="level2">
+<h2 class="anchored" data-anchor-id="string.capwords">string.capwords()</h2>
+<p>Capitalizes words separated by whitespace. More sophisticated than <code>title()</code> for handling apostrophes and other punctuation.</p>
+<div id="ae04420d" class="cell" data-execution_count="75">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb146"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb146-1"><a href="#cb146-1" aria-hidden="true" tabindex="-1"></a>string.capwords(target_country)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="75">
+<pre><code>'Netherlands'</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="membership-and-iteration" class="level1">
+<h1>Membership and Iteration</h1>
+<section id="substring-membership" class="level2">
+<h2 class="anchored" data-anchor-id="substring-membership">Substring membership</h2>
+<p>Tests if substring exists anywhere in the string.</p>
+<div id="2294b5ba" class="cell" data-execution_count="76">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb148"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb148-1"><a href="#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="co">'land'</span> <span class="kw">in</span> target_country</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="76">
+<pre><code>True</code></pre>
+</div>
+</div>
+</section>
+<section id="character-membership" class="level2">
+<h2 class="anchored" data-anchor-id="character-membership">Character membership</h2>
+<p>Tests if a character exists in the string.</p>
+<div id="26bf190f" class="cell" data-execution_count="77">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb150"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb150-1"><a href="#cb150-1" aria-hidden="true" tabindex="-1"></a><span class="co">'x'</span> <span class="kw">in</span> target_country</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="77">
+<pre><code>False</code></pre>
+</div>
+</div>
+</section>
+<section id="negative-membership" class="level2">
+<h2 class="anchored" data-anchor-id="negative-membership">Negative membership</h2>
+<p>Tests if substring does NOT exist in string using explicit negation.</p>
+<div id="58ae59aa" class="cell" data-execution_count="78">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb152"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb152-1"><a href="#cb152-1" aria-hidden="true" tabindex="-1"></a><span class="co">'land'</span> <span class="kw">not</span> <span class="kw">in</span> target_country</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="78">
+<pre><code>False</code></pre>
+</div>
+</div>
+</section>
+<section id="convert-to-list" class="level2">
+<h2 class="anchored" data-anchor-id="convert-to-list">Convert to list</h2>
+<p>Converts string to a list of individual characters.</p>
+<div id="59dbab8a" class="cell" data-execution_count="79">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb154"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb154-1"><a href="#cb154-1" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(target_country)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="79">
+<pre><code>['N', 'e', 't', 'h', 'e', 'r', 'l', 'a', 'n', 'd', 's']</code></pre>
+</div>
+</div>
+</section>
+<section id="convert-to-tuple" class="level2">
+<h2 class="anchored" data-anchor-id="convert-to-tuple">Convert to tuple</h2>
+<p>Converts string to a tuple of individual characters.</p>
+<div id="bc288b0b" class="cell" data-execution_count="80">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb156"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb156-1"><a href="#cb156-1" aria-hidden="true" tabindex="-1"></a><span class="bu">tuple</span>(target_country)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="80">
+<pre><code>('N', 'e', 't', 'h', 'e', 'r', 'l', 'a', 'n', 'd', 's')</code></pre>
+</div>
+</div>
+</section>
+<section id="convert-to-set" class="level2">
+<h2 class="anchored" data-anchor-id="convert-to-set">Convert to set</h2>
+<p>Converts string to a set of unique characters (unordered collection).</p>
+<div id="a6c2d802" class="cell" data-execution_count="81">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb158"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb158-1"><a href="#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span>(target_country)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="81">
+<pre><code>{'N', 'a', 'd', 'e', 'h', 'l', 'n', 'r', 's', 't'}</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="comparison-operations" class="level1">
+<h1>Comparison Operations</h1>
+<section id="equality-comparison" class="level2">
+<h2 class="anchored" data-anchor-id="equality-comparison">Equality comparison</h2>
+<p>Case-sensitive equality comparison.</p>
+<div id="759eb691" class="cell" data-execution_count="82">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb160"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb160-1"><a href="#cb160-1" aria-hidden="true" tabindex="-1"></a>target_country <span class="op">==</span> <span class="st">'Netherlands'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="82">
+<pre><code>True</code></pre>
+</div>
+</div>
+</section>
+<section id="inequality-comparison" class="level2">
+<h2 class="anchored" data-anchor-id="inequality-comparison">Inequality comparison</h2>
+<div id="2afcad0d" class="cell" data-execution_count="83">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb162"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb162-1"><a href="#cb162-1" aria-hidden="true" tabindex="-1"></a>target_country <span class="op">!=</span> <span class="st">'Belgium'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="83">
+<pre><code>True</code></pre>
+</div>
+</div>
+</section>
+<section id="lexicographic-less-than" class="level2">
+<h2 class="anchored" data-anchor-id="lexicographic-less-than">Lexicographic less than</h2>
+<p>Lexicographic comparison (dictionary order) comparing ASCII/Unicode values character by character.</p>
+<div id="4b870412" class="cell" data-execution_count="84">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb164"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb164-1"><a href="#cb164-1" aria-hidden="true" tabindex="-1"></a>target_country <span class="op">&lt;</span> <span class="st">'Norway'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="84">
+<pre><code>True</code></pre>
+</div>
+</div>
+</section>
+<section id="lexicographic-greater-than" class="level2">
+<h2 class="anchored" data-anchor-id="lexicographic-greater-than">Lexicographic greater than</h2>
+<div id="67b864f2" class="cell" data-execution_count="85">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb166"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb166-1"><a href="#cb166-1" aria-hidden="true" tabindex="-1"></a>target_country <span class="op">&gt;</span> <span class="st">'Germany'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="85">
+<pre><code>True</code></pre>
+</div>
+</div>
+</section>
+<section id="multiple-prefix-checking" class="level2">
+<h2 class="anchored" data-anchor-id="multiple-prefix-checking">Multiple prefix checking</h2>
+<p>Can check multiple prefixes at once using a tuple.</p>
+<div id="47c55c51" class="cell" data-execution_count="86">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb168"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb168-1"><a href="#cb168-1" aria-hidden="true" tabindex="-1"></a>target_country.startswith((<span class="st">'N'</span>, <span class="st">'B'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="86">
+<pre><code>True</code></pre>
+</div>
+</div>
+</section>
+<section id="multiple-suffix-checking" class="level2">
+<h2 class="anchored" data-anchor-id="multiple-suffix-checking">Multiple suffix checking</h2>
+<p>Can check multiple suffixes at once using a tuple.</p>
+<div id="d4b55456" class="cell" data-execution_count="87">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb170"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb170-1"><a href="#cb170-1" aria-hidden="true" tabindex="-1"></a>target_country.endswith((<span class="st">'lands'</span>, <span class="st">'mark'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="87">
+<pre><code>True</code></pre>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../python-fundamentals/basics.html" class="pagination-link" aria-label="General Overview">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">General Overview</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../python-fundamentals/number.html" class="pagination-link" aria-label="number Details">
+        <span class="nav-page-text">number Details</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

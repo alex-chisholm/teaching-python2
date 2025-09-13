@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.24">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Data Cleaning – Python Programming II for Data Analysis</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../pandas/merging-data.html" rel="next">
+<link href="../pandas/multiple-variable-analysis.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-27c261d06b905028a18691de25d09dde.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pandas/project-setup.html">Pandas</a></li><li class="breadcrumb-item"><a href="../pandas/data-cleaning.html">Data Cleaning</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../index.html" class="sidebar-logo-link">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Python Programming II for Data Analysis</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Python Fundamentals</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../python-fundamentals/basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">General Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../python-fundamentals/str.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">str Details</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../python-fundamentals/number.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">number Details</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../python-fundamentals/bool.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">bool Details</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../python-fundamentals/type-functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Functions/Method by Type Matrix</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../python-fundamentals/list-functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">List Operations Matrix</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Pandas</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pandas/project-setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Project Setup</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pandas/dataframe.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">DataFrame</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pandas/one-variable-analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Analyzing One Variable</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pandas/multiple-variable-analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Analyzing Multiple Variable</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pandas/data-cleaning.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Data Cleaning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pandas/merging-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Merging Data</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#outliers" id="toc-outliers" class="nav-link active" data-scroll-target="#outliers">Outliers</a>
+  <ul class="collapse">
+  <li><a href="#identification" id="toc-identification" class="nav-link" data-scroll-target="#identification">Identification</a></li>
+  <li><a href="#assignment" id="toc-assignment" class="nav-link" data-scroll-target="#assignment">Assignment</a></li>
+  <li><a href="#decision" id="toc-decision" class="nav-link" data-scroll-target="#decision">Decision</a></li>
+  <li><a href="#crosstabs" id="toc-crosstabs" class="nav-link" data-scroll-target="#crosstabs">Crosstabs</a></li>
+  </ul></li>
+  <li><a href="#missing-data" id="toc-missing-data" class="nav-link" data-scroll-target="#missing-data">Missing Data</a>
+  <ul class="collapse">
+  <li><a href="#identify" id="toc-identify" class="nav-link" data-scroll-target="#identify">Identify</a></li>
+  <li><a href="#remove" id="toc-remove" class="nav-link" data-scroll-target="#remove">Remove</a></li>
+  <li><a href="#replace" id="toc-replace" class="nav-link" data-scroll-target="#replace">Replace</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pandas/project-setup.html">Pandas</a></li><li class="breadcrumb-item"><a href="../pandas/data-cleaning.html">Data Cleaning</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Data Cleaning</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="outliers" class="level2">
+<h2 class="anchored" data-anchor-id="outliers">Outliers</h2>
+<p>Outliers are extreme observations that can have an impact on summary statistics.</p>
+<section id="identification" class="level3">
+<h3 class="anchored" data-anchor-id="identification">Identification</h3>
+<p>A common approach to identifying them is by examining each data point relative to a lower and upper bound.</p>
+<ol type="1">
+<li>Lower bound: 25th percentile - (1.5 x IQR)</li>
+<li>Upper bound: 75th percentile + (1.5 x IQR)</li>
+</ol>
+<blockquote class="blockquote">
+<p>IQR: Interquartile Range = 75th Percentile - 25th Percentile</p>
+</blockquote>
+<p>An value below less than the lower bound or more than the upper bound can be considered an outlier.</p>
+<p>Let’s examine the age variable from <code>passengers_df</code> which had the following descriptive statistics.</p>
+<div id="c519b63f" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>passengers_df[<span class="st">"age"</span>].describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code>count    714.000000
+mean      29.699118
+std       14.526497
+min        0.420000
+25%       20.125000
+50%       28.000000
+75%       38.000000
+max       80.000000
+Name: age, dtype: float64</code></pre>
+</div>
+</div>
+<p>We can calculate the information needed to generate a lower and upper cutoff bound.</p>
+<div id="da3cbda0" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>p25 <span class="op">=</span> passengers_df[<span class="st">"age"</span>].quantile(<span class="fl">0.25</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>p75 <span class="op">=</span> passengers_df[<span class="st">"age"</span>].quantile(<span class="fl">0.75</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>iqr <span class="op">=</span> p75 <span class="op">-</span> p25</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>lower_bound <span class="op">=</span> p25 <span class="op">-</span> <span class="fl">1.5</span> <span class="op">*</span> iqr</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>upper_bound <span class="op">=</span> p75 <span class="op">+</span> <span class="fl">1.5</span> <span class="op">*</span> iqr</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"""</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="ss">25th Percentile: </span><span class="sc">{</span>p25<span class="sc">}</span><span class="ch">\n</span><span class="ss">75th Percentile: </span><span class="sc">{</span>p75<span class="sc">}</span><span class="ch">\n</span><span class="ss">IQR: </span><span class="sc">{</span>iqr<span class="sc">}</span><span class="ch">\n</span><span class="ss">Lower Bound: </span><span class="sc">{</span>lower_bound<span class="sc">}</span><span class="ch">\n</span><span class="ss">Upper Bound: </span><span class="sc">{</span>upper_bound<span class="sc">}</span><span class="ss">"""</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+25th Percentile: 20.125
+75th Percentile: 38.0
+IQR: 17.875
+Lower Bound: -6.6875
+Upper Bound: 64.8125</code></pre>
+</div>
+</div>
+</section>
+<section id="assignment" class="level3">
+<h3 class="anchored" data-anchor-id="assignment">Assignment</h3>
+<p>With this information, we can check the data series. Let’s assign True/False values to a new variable to track this</p>
+<div id="63e3dd1c" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>passengers_df[<span class="st">"age_outlier"</span>] <span class="op">=</span> (passengers_df[<span class="st">"age"</span>] <span class="op">&lt;</span> lower_bound) <span class="op">|</span> (passengers_df[<span class="st">"age"</span>] <span class="op">&gt;</span> upper_bound)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>passengers_df[<span class="st">"age_outlier"</span>] </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>0      False
+1      False
+2      False
+3      False
+4      False
+       ...  
+886    False
+887    False
+888    False
+889    False
+890    False
+Name: age_outlier, Length: 891, dtype: bool</code></pre>
+</div>
+</div>
+<p>We can now count it:</p>
+<div id="b6c3df89" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>passengers_df[<span class="st">"age_outlier"</span>].value_counts()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>age_outlier
+False    880
+True      11
+Name: count, dtype: int64</code></pre>
+</div>
+</div>
+</section>
+<section id="decision" class="level3">
+<h3 class="anchored" data-anchor-id="decision">Decision</h3>
+<p>Just because you have outliers in a number series doesn’t mean you have to do anything about it. It depends on your goals and if you think the value is correct or now.</p>
+<p>You could do nothing and leave the outliers in the data. If so, it could be helpful to:</p>
+<ol type="1">
+<li>Communicate their existence with explanation of values, if available.</li>
+<li>Lean on more robust summary statistics (e.g., Median) when communicating findings.</li>
+</ol>
+<p>You could also:</p>
+</section>
+<section id="crosstabs" class="level3">
+<h3 class="anchored" data-anchor-id="crosstabs">Crosstabs</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Remove the row</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Remove the value</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">Replace it</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div id="f15e9928" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>passengers_df[passengers_df[<span class="st">"age_outlier"</span>] <span class="op">==</span> <span class="va">False</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">passenger_id</th>
+<th data-quarto-table-cell-role="th">survived</th>
+<th data-quarto-table-cell-role="th">sex</th>
+<th data-quarto-table-cell-role="th">age</th>
+<th data-quarto-table-cell-role="th">sibling_spouse_count</th>
+<th data-quarto-table-cell-role="th">parents_children_count</th>
+<th data-quarto-table-cell-role="th">fare</th>
+<th data-quarto-table-cell-role="th">class</th>
+<th data-quarto-table-cell-role="th">embark_town</th>
+<th data-quarto-table-cell-role="th">class_codes</th>
+<th data-quarto-table-cell-role="th">age_outlier</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>af1089fa-c928-4719-94ec-4bdb0aa90e8a</td>
+<td>0</td>
+<td>male</td>
+<td>22.0</td>
+<td>1</td>
+<td>0</td>
+<td>7.2500</td>
+<td>Third</td>
+<td>Southampton</td>
+<td>2</td>
+<td>False</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>5f616a6d-f338-4360-9d7b-3b92196dd350</td>
+<td>1</td>
+<td>female</td>
+<td>38.0</td>
+<td>1</td>
+<td>0</td>
+<td>71.2833</td>
+<td>First</td>
+<td>Cherbourg</td>
+<td>0</td>
+<td>False</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>34ad8431-f090-40d0-a1c9-50fe2cb39979</td>
+<td>1</td>
+<td>female</td>
+<td>26.0</td>
+<td>0</td>
+<td>0</td>
+<td>7.9250</td>
+<td>Third</td>
+<td>Southampton</td>
+<td>2</td>
+<td>False</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>3bcdceb3-f1dd-4ef2-a9dc-089c13f54a27</td>
+<td>1</td>
+<td>female</td>
+<td>35.0</td>
+<td>1</td>
+<td>0</td>
+<td>53.1000</td>
+<td>First</td>
+<td>Southampton</td>
+<td>0</td>
+<td>False</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>0ee5b915-66c7-42d4-ba2d-5c0703633ccc</td>
+<td>0</td>
+<td>male</td>
+<td>35.0</td>
+<td>0</td>
+<td>0</td>
+<td>8.0500</td>
+<td>Third</td>
+<td>Southampton</td>
+<td>2</td>
+<td>False</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">886</th>
+<td>79e179d2-8fd2-42e3-8e25-6d1124861a45</td>
+<td>0</td>
+<td>male</td>
+<td>27.0</td>
+<td>0</td>
+<td>0</td>
+<td>13.0000</td>
+<td>Second</td>
+<td>Southampton</td>
+<td>1</td>
+<td>False</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">887</th>
+<td>a53b93a9-a0fe-4e83-ac58-a74c32825abe</td>
+<td>1</td>
+<td>female</td>
+<td>19.0</td>
+<td>0</td>
+<td>0</td>
+<td>30.0000</td>
+<td>First</td>
+<td>Southampton</td>
+<td>0</td>
+<td>False</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">888</th>
+<td>c89d25cf-49ac-4aaf-a614-b2cf8754bc13</td>
+<td>0</td>
+<td>female</td>
+<td>NaN</td>
+<td>1</td>
+<td>2</td>
+<td>23.4500</td>
+<td>Third</td>
+<td>Southampton</td>
+<td>2</td>
+<td>False</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">889</th>
+<td>2094390f-10db-4ca3-9693-ef5795da5446</td>
+<td>1</td>
+<td>male</td>
+<td>26.0</td>
+<td>0</td>
+<td>0</td>
+<td>30.0000</td>
+<td>First</td>
+<td>Cherbourg</td>
+<td>0</td>
+<td>False</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">890</th>
+<td>b64de32c-dfbc-4e27-a2dc-a2af3e5597c5</td>
+<td>0</td>
+<td>male</td>
+<td>32.0</td>
+<td>0</td>
+<td>0</td>
+<td>7.7500</td>
+<td>Third</td>
+<td>Queenstown</td>
+<td>2</td>
+<td>False</td>
+</tr>
+</tbody>
+</table>
+
+<p>880 rows × 11 columns</p>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div id="d106133f" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>np.where(</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    passengers_df[<span class="st">"age_outlier"</span>], </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    np.nan, <span class="co"># remove the outlier and letting it be missing</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    passengers_df[<span class="st">"age"</span>] <span class="co"># keep the original value</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>array([22.  , 38.  , 26.  , 35.  , 35.  ,   nan, 54.  ,  2.  , 27.  ,
+       14.  ,  4.  , 58.  , 20.  , 39.  , 14.  , 55.  ,  2.  ,   nan,
+       31.  ,   nan, 35.  , 34.  , 15.  , 28.  ,  8.  , 38.  ,   nan,
+       19.  ,   nan,   nan, 40.  ,   nan,   nan,   nan, 28.  , 42.  ,
+         nan, 21.  , 18.  , 14.  , 40.  , 27.  ,   nan,  3.  , 19.  ,
+         nan,   nan,   nan,   nan, 18.  ,  7.  , 21.  , 49.  , 29.  ,
+         nan,   nan, 21.  , 28.5 ,  5.  , 11.  , 22.  , 38.  , 45.  ,
+        4.  ,   nan,   nan, 29.  , 19.  , 17.  , 26.  , 32.  , 16.  ,
+       21.  , 26.  , 32.  , 25.  ,   nan,   nan,  0.83, 30.  , 22.  ,
+       29.  ,   nan, 28.  , 17.  , 33.  , 16.  ,   nan, 23.  , 24.  ,
+       29.  , 20.  , 46.  , 26.  , 59.  ,   nan,   nan, 23.  , 34.  ,
+       34.  , 28.  ,   nan, 21.  , 33.  , 37.  , 28.  , 21.  ,   nan,
+       38.  ,   nan, 47.  , 14.5 , 22.  , 20.  , 17.  , 21.  ,   nan,
+       29.  , 24.  ,  2.  , 21.  ,   nan, 32.5 , 32.5 , 54.  , 12.  ,
+         nan, 24.  ,   nan, 45.  , 33.  , 20.  , 47.  , 29.  , 25.  ,
+       23.  , 19.  , 37.  , 16.  , 24.  ,   nan, 22.  , 24.  , 19.  ,
+       18.  , 19.  , 27.  ,  9.  , 36.5 , 42.  , 51.  , 22.  , 55.5 ,
+       40.5 ,   nan, 51.  , 16.  , 30.  ,   nan,   nan, 44.  , 40.  ,
+       26.  , 17.  ,  1.  ,  9.  ,   nan, 45.  ,   nan, 28.  , 61.  ,
+        4.  ,  1.  , 21.  , 56.  , 18.  ,   nan, 50.  , 30.  , 36.  ,
+         nan,   nan,  9.  ,  1.  ,  4.  ,   nan,   nan, 45.  , 40.  ,
+       36.  , 32.  , 19.  , 19.  ,  3.  , 44.  , 58.  ,   nan, 42.  ,
+         nan, 24.  , 28.  ,   nan, 34.  , 45.5 , 18.  ,  2.  , 32.  ,
+       26.  , 16.  , 40.  , 24.  , 35.  , 22.  , 30.  ,   nan, 31.  ,
+       27.  , 42.  , 32.  , 30.  , 16.  , 27.  , 51.  ,   nan, 38.  ,
+       22.  , 19.  , 20.5 , 18.  ,   nan, 35.  , 29.  , 59.  ,  5.  ,
+       24.  ,   nan, 44.  ,  8.  , 19.  , 33.  ,   nan,   nan, 29.  ,
+       22.  , 30.  , 44.  , 25.  , 24.  , 37.  , 54.  ,   nan, 29.  ,
+       62.  , 30.  , 41.  , 29.  ,   nan, 30.  , 35.  , 50.  ,   nan,
+        3.  , 52.  , 40.  ,   nan, 36.  , 16.  , 25.  , 58.  , 35.  ,
+         nan, 25.  , 41.  , 37.  ,   nan, 63.  , 45.  ,   nan,  7.  ,
+       35.  ,   nan, 28.  , 16.  , 19.  ,   nan, 33.  , 30.  , 22.  ,
+       42.  , 22.  , 26.  , 19.  , 36.  , 24.  , 24.  ,   nan, 23.5 ,
+        2.  ,   nan, 50.  ,   nan,   nan, 19.  ,   nan,   nan,  0.92,
+         nan, 17.  , 30.  , 30.  , 24.  , 18.  , 26.  , 28.  , 43.  ,
+       26.  , 24.  , 54.  , 31.  , 40.  , 22.  , 27.  , 30.  , 22.  ,
+         nan, 36.  , 61.  , 36.  , 31.  , 16.  ,   nan, 45.5 , 38.  ,
+       16.  ,   nan,   nan, 29.  , 41.  , 45.  , 45.  ,  2.  , 24.  ,
+       28.  , 25.  , 36.  , 24.  , 40.  ,   nan,  3.  , 42.  , 23.  ,
+         nan, 15.  , 25.  ,   nan, 28.  , 22.  , 38.  ,   nan,   nan,
+       40.  , 29.  , 45.  , 35.  ,   nan, 30.  , 60.  ,   nan,   nan,
+       24.  , 25.  , 18.  , 19.  , 22.  ,  3.  ,   nan, 22.  , 27.  ,
+       20.  , 19.  , 42.  ,  1.  , 32.  , 35.  ,   nan, 18.  ,  1.  ,
+       36.  ,   nan, 17.  , 36.  , 21.  , 28.  , 23.  , 24.  , 22.  ,
+       31.  , 46.  , 23.  , 28.  , 39.  , 26.  , 21.  , 28.  , 20.  ,
+       34.  , 51.  ,  3.  , 21.  ,   nan,   nan,   nan, 33.  ,   nan,
+       44.  ,   nan, 34.  , 18.  , 30.  , 10.  ,   nan, 21.  , 29.  ,
+       28.  , 18.  ,   nan, 28.  , 19.  ,   nan, 32.  , 28.  ,   nan,
+       42.  , 17.  , 50.  , 14.  , 21.  , 24.  , 64.  , 31.  , 45.  ,
+       20.  , 25.  , 28.  ,   nan,  4.  , 13.  , 34.  ,  5.  , 52.  ,
+       36.  ,   nan, 30.  , 49.  ,   nan, 29.  ,   nan,   nan, 50.  ,
+         nan, 48.  , 34.  , 47.  , 48.  ,   nan, 38.  ,   nan, 56.  ,
+         nan,  0.75,   nan, 38.  , 33.  , 23.  , 22.  ,   nan, 34.  ,
+       29.  , 22.  ,  2.  ,  9.  ,   nan, 50.  , 63.  , 25.  ,   nan,
+       35.  , 58.  , 30.  ,  9.  ,   nan, 21.  , 55.  ,   nan, 21.  ,
+         nan, 54.  ,   nan, 25.  , 24.  , 17.  , 21.  ,   nan, 37.  ,
+       16.  , 18.  , 33.  ,   nan, 28.  , 26.  , 29.  ,   nan, 36.  ,
+       54.  , 24.  , 47.  , 34.  ,   nan, 36.  , 32.  , 30.  , 22.  ,
+         nan, 44.  ,   nan, 40.5 , 50.  ,   nan, 39.  , 23.  ,  2.  ,
+         nan, 17.  ,   nan, 30.  ,  7.  , 45.  , 30.  ,   nan, 22.  ,
+       36.  ,  9.  , 11.  , 32.  , 50.  , 64.  , 19.  ,   nan, 33.  ,
+        8.  , 17.  , 27.  ,   nan, 22.  , 22.  , 62.  , 48.  ,   nan,
+       39.  , 36.  ,   nan, 40.  , 28.  ,   nan,   nan, 24.  , 19.  ,
+       29.  ,   nan, 32.  , 62.  , 53.  , 36.  ,   nan, 16.  , 19.  ,
+       34.  , 39.  ,   nan, 32.  , 25.  , 39.  , 54.  , 36.  ,   nan,
+       18.  , 47.  , 60.  , 22.  ,   nan, 35.  , 52.  , 47.  ,   nan,
+       37.  , 36.  ,   nan, 49.  ,   nan, 49.  , 24.  ,   nan,   nan,
+       44.  , 35.  , 36.  , 30.  , 27.  , 22.  , 40.  , 39.  ,   nan,
+         nan,   nan, 35.  , 24.  , 34.  , 26.  ,  4.  , 26.  , 27.  ,
+       42.  , 20.  , 21.  , 21.  , 61.  , 57.  , 21.  , 26.  ,   nan,
+         nan, 51.  , 32.  ,   nan,  9.  , 28.  , 32.  , 31.  , 41.  ,
+         nan, 20.  , 24.  ,  2.  ,   nan,  0.75, 48.  , 19.  , 56.  ,
+         nan, 23.  ,   nan, 18.  , 21.  ,   nan, 18.  , 24.  ,   nan,
+       32.  , 23.  , 58.  , 50.  , 40.  , 47.  , 36.  , 20.  , 32.  ,
+       25.  ,   nan, 43.  ,   nan, 40.  , 31.  ,   nan, 31.  ,   nan,
+       18.  , 24.5 , 18.  , 43.  , 36.  ,   nan, 27.  , 20.  , 14.  ,
+       60.  , 25.  , 14.  , 19.  , 18.  , 15.  , 31.  ,  4.  ,   nan,
+       25.  , 60.  , 52.  , 44.  ,   nan, 49.  , 42.  , 18.  , 35.  ,
+       18.  , 25.  , 26.  , 39.  , 45.  , 42.  , 22.  ,   nan, 24.  ,
+         nan, 48.  , 29.  , 52.  , 19.  , 38.  , 27.  ,   nan, 33.  ,
+        6.  , 17.  , 34.  , 50.  , 27.  , 20.  , 30.  ,   nan, 25.  ,
+       25.  , 29.  , 11.  ,   nan, 23.  , 23.  , 28.5 , 48.  , 35.  ,
+         nan,   nan,   nan, 36.  , 21.  , 24.  , 31.  ,   nan, 16.  ,
+       30.  , 19.  , 31.  ,  4.  ,  6.  , 33.  , 23.  , 48.  ,  0.67,
+       28.  , 18.  , 34.  , 33.  ,   nan, 41.  , 20.  , 36.  , 16.  ,
+       51.  ,   nan, 30.5 ,   nan, 32.  , 24.  , 48.  , 57.  ,   nan,
+       54.  , 18.  ,   nan,  5.  ,   nan, 43.  , 13.  , 17.  , 29.  ,
+         nan, 25.  , 25.  , 18.  ,  8.  ,  1.  , 46.  ,   nan, 16.  ,
+         nan,   nan, 25.  , 39.  , 49.  , 31.  , 30.  , 30.  , 34.  ,
+       31.  , 11.  ,  0.42, 27.  , 31.  , 39.  , 18.  , 39.  , 33.  ,
+       26.  , 39.  , 35.  ,  6.  , 30.5 ,   nan, 23.  , 31.  , 43.  ,
+       10.  , 52.  , 27.  , 38.  , 27.  ,  2.  ,   nan,   nan,  1.  ,
+         nan, 62.  , 15.  ,  0.83,   nan, 23.  , 18.  , 39.  , 21.  ,
+         nan, 32.  ,   nan, 20.  , 16.  , 30.  , 34.5 , 17.  , 42.  ,
+         nan, 35.  , 28.  ,   nan,  4.  ,   nan,  9.  , 16.  , 44.  ,
+       18.  , 45.  , 51.  , 24.  ,   nan, 41.  , 21.  , 48.  ,   nan,
+       24.  , 42.  , 27.  , 31.  ,   nan,  4.  , 26.  , 47.  , 33.  ,
+       47.  , 28.  , 15.  , 20.  , 19.  ,   nan, 56.  , 25.  , 33.  ,
+       22.  , 28.  , 25.  , 39.  , 27.  , 19.  ,   nan, 26.  , 32.  ])</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<p>This is useful if you believe the data is simply wrong and you need to keep other information that is good from the observation.</p>
+<p>Imagine if the variable was age and the value was 224. It would be an outlier, but it is not a believable outlier. Perhaps it was a typo that should have been 24. Instead of trying to guess what it should have been, you could also impute a value based upon data you have more faith in.</p>
+<p>For instance, you could replace missing values with the median of the series - which is a more robust summary statistic.</p>
+<p>Here we use <code>np.where</code> that says where something is True, do something. If not, do something else.</p>
+<div id="af99a14e" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>passengers_df[<span class="st">"age_clean"</span>] <span class="op">=</span> np.where(</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    passengers_df[<span class="st">"age_outlier"</span>], </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    passengers_df[<span class="st">"age"</span>].median(), <span class="co"># use the median</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    passengers_df[<span class="st">"age"</span>] <span class="co"># keep the original value</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>passengers_df.query(<span class="st">"age_outlier == True"</span>)[[<span class="st">"age"</span>, <span class="st">"age_clean"</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">age</th>
+<th data-quarto-table-cell-role="th">age_clean</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">33</th>
+<td>66.0</td>
+<td>28.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">54</th>
+<td>65.0</td>
+<td>28.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">96</th>
+<td>71.0</td>
+<td>28.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">116</th>
+<td>70.5</td>
+<td>28.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">280</th>
+<td>65.0</td>
+<td>28.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">456</th>
+<td>65.0</td>
+<td>28.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">493</th>
+<td>71.0</td>
+<td>28.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">630</th>
+<td>80.0</td>
+<td>28.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">672</th>
+<td>70.0</td>
+<td>28.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">745</th>
+<td>70.0</td>
+<td>28.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">851</th>
+<td>74.0</td>
+<td>28.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>I would not do this here since these ages do not seem like bad data, just outlier ages relative to the overall dataset.</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="missing-data" class="level2">
+<h2 class="anchored" data-anchor-id="missing-data">Missing Data</h2>
+<p>As with outliers, missing data requires us to make a decision.</p>
+<section id="identify" class="level3">
+<h3 class="anchored" data-anchor-id="identify">Identify</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href="">isna()</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href="">not.na()</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<p>Return <code>True</code> if value is missing.</p>
+<div id="34195477" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>passengers_df[<span class="st">"age"</span>].isna()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>0      False
+1      False
+2      False
+3      False
+4      False
+       ...  
+886    False
+887    False
+888     True
+889    False
+890    False
+Name: age, Length: 891, dtype: bool</code></pre>
+</div>
+</div>
+<p>Count the number of missing data values with <code>isna().sum()</code>.</p>
+<div id="5ca17094" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>passengers_df[<span class="st">"age"</span>].isna().<span class="bu">sum</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>np.int64(177)</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<p>Return True if value is not missing</p>
+<div id="8bde7392" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>passengers_df[<span class="st">"age"</span>].notna()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>0       True
+1       True
+2       True
+3       True
+4       True
+       ...  
+886     True
+887     True
+888    False
+889     True
+890     True
+Name: age, Length: 891, dtype: bool</code></pre>
+</div>
+</div>
+<p>Count the number of non-missing data values with <code>notna().sum()</code>.</p>
+<div id="ea1f7e4c" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>passengers_df[<span class="st">"age"</span>].notna().<span class="bu">sum</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<pre><code>np.int64(714)</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="remove" class="level3">
+<h3 class="anchored" data-anchor-id="remove">Remove</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" href="">.dropna()</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false" href="">.dropna(subset=)</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<p>Drop any row that has a missing data point in <em>any</em> column.</p>
+<div id="b7837cfb" class="cell" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(passengers_df.dropna())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<pre><code>712</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<p>Drop any row that has a missing data point in one or more specific columns.</p>
+<div id="335fe459" class="cell" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(passengers_df.dropna(subset <span class="op">=</span> <span class="st">"age"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<pre><code>714</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="replace" class="level3">
+<h3 class="anchored" data-anchor-id="replace">Replace</h3>
+<p>Replace specific missing values with something new (e.g., the median).</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true" href="">.fillna()</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<div id="36291a86" class="cell" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>median_age <span class="op">=</span> passengers_df[<span class="st">"age"</span>].median()</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>passengers_df[<span class="st">"filled_age"</span>] <span class="op">=</span> passengers_df[<span class="st">"age"</span>].fillna(median_age)</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>passengers_df[[<span class="st">"age"</span>,<span class="st">"filled_age"</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">age</th>
+<th data-quarto-table-cell-role="th">filled_age</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>22.0</td>
+<td>22.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>38.0</td>
+<td>38.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>26.0</td>
+<td>26.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>35.0</td>
+<td>35.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>35.0</td>
+<td>35.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">...</th>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">886</th>
+<td>27.0</td>
+<td>27.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">887</th>
+<td>19.0</td>
+<td>19.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">888</th>
+<td>NaN</td>
+<td>28.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">889</th>
+<td>26.0</td>
+<td>26.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">890</th>
+<td>32.0</td>
+<td>32.0</td>
+</tr>
+</tbody>
+</table>
+
+<p>891 rows × 2 columns</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../pandas/multiple-variable-analysis.html" class="pagination-link" aria-label="Analyzing Multiple Variable">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Analyzing Multiple Variable</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../pandas/merging-data.html" class="pagination-link" aria-label="Merging Data">
+        <span class="nav-page-text">Merging Data</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -1,0 +1,30 @@
+# Project Setup  {.unnumbered}
+
+```{python}
+import pandas as pd
+import numpy as np # np.where()
+import seaborn as sns # advanced visualization
+```
+
+## Read in data 
+
+```{python}
+
+passengers_df = pd.read_csv("../data/titanic.csv")
+type(passengers_df)
+
+```
+
+## Peek at data
+
+```{python}
+passengers_df
+```
+
+
+```{python}
+#| echo: false
+#| output: false
+# note: can't use _save_processed in chapter 1 for some scoping reason
+passengers_df.to_parquet("../data/processed_passengers.parquet")
+```

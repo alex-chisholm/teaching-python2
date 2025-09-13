@@ -1,0 +1,566 @@
+# bool Details  {.unnumbered}
+
+## Setup
+
+```{python}
+euro = True
+not_euro = False
+print(f"Working with boolean True: {euro}")
+print(f"Working with boolean False: {not_euro}")
+```
+
+# Built-in Functions
+
+## str()
+
+Converts the boolean to its string representation.
+
+```{python}
+str(euro)
+```
+
+## str() with False
+
+```{python}
+str(not_euro)
+```
+
+## repr()
+
+Returns the "official" string representation. For booleans, this is identical to `str()`.
+
+```{python}
+repr(euro)
+```
+
+## type()
+
+Returns the type/class of the object. Note that bool is a subclass of int in Python.
+
+```{python}
+type(euro)
+```
+
+## bool()
+
+Converting a boolean to boolean returns the same value (redundant but sometimes used for clarity).
+
+```{python}
+bool(euro)
+```
+
+## bool() with False
+
+```{python}
+bool(not_euro)
+```
+
+## hash()
+
+Returns a hash value for the boolean. True and False have predictable hash values.
+
+```{python}
+hash(euro)
+```
+
+## hash() with False
+
+```{python}
+hash(not_euro)
+```
+
+## id()
+
+Returns the memory address. Python reuses the same objects for True and False throughout the program.
+
+```{python}
+id(euro)
+```
+
+## id() consistency
+
+All True values reference the same object in memory.
+
+```{python}
+another_true = True
+print(f"euro id: {id(euro)}")
+print(f"another_true id: {id(another_true)}")
+print(f"Same object? {euro is another_true}")
+```
+
+## int()
+
+Converts boolean to integer. True becomes 1, False becomes 0.
+
+```{python}
+int(euro)
+```
+
+## int() with False
+
+```{python}
+int(not_euro)
+```
+
+## float()
+
+Converts boolean to floating-point number.
+
+```{python}
+float(euro)
+```
+
+## float() with False
+
+```{python}
+float(not_euro)
+```
+
+## complex()
+
+Converts boolean to complex number.
+
+```{python}
+complex(euro)
+```
+
+# Boolean as Integer (Inheritance)
+
+## Arithmetic operations
+
+Since bool inherits from int, booleans can be used in arithmetic operations.
+
+```{python}
+euro + 5  # True + 5 = 1 + 5 = 6
+```
+
+## Arithmetic with False
+
+```{python}
+not_euro + 10  # False + 10 = 0 + 10 = 10
+```
+
+## Multiplication
+
+```{python}
+euro * 100  # True * 100 = 1 * 100 = 100
+```
+
+## Division
+
+```{python}
+euro / 2  # True / 2 = 1 / 2 = 0.5
+```
+
+## Exponentiation
+
+```{python}
+euro ** 5  # True ** 5 = 1 ** 5 = 1
+```
+
+## Sum of booleans
+
+Useful for counting True values in a collection.
+
+```{python}
+sum([True, False, True, True])  # Counts True values
+```
+
+# Logical Operations
+
+## Logical AND
+
+```{python}
+euro and True
+```
+
+## Logical AND with False
+
+```{python}
+euro and False
+```
+
+## Logical OR
+
+```{python}
+euro or False
+```
+
+## Logical OR with both False
+
+```{python}
+not_euro or False
+```
+
+## Logical NOT
+
+```{python}
+not euro
+```
+
+## Logical NOT with False
+
+```{python}
+not not_euro
+```
+
+## Complex logical expression
+
+```{python}
+euro and (not not_euro) or False
+```
+
+# Comparison Operations
+
+## Equality with boolean
+
+```{python}
+euro == True
+```
+
+## Equality with integer
+
+Booleans can be compared with integers due to inheritance.
+
+```{python}
+euro == 1
+```
+
+## Equality False with integer
+
+```{python}
+not_euro == 0
+```
+
+## Identity comparison
+
+```{python}
+euro is True
+```
+
+## Identity vs equality
+
+```{python}
+print(f"euro == 1: {euro == 1}")
+print(f"euro is 1: {euro is 1}")  # False because they're different objects
+```
+
+## Comparison with other booleans
+
+```{python}
+euro != not_euro
+```
+
+## Ordering comparisons
+
+Booleans can be ordered: False < True.
+
+```{python}
+not_euro < euro
+```
+
+## Ordering with integers
+
+```{python}
+euro > 0
+```
+
+# Bitwise Operations (Inherited from int)
+
+## Bitwise AND
+
+```{python}
+euro & True  # 1 & 1 = 1
+```
+
+## Bitwise OR
+
+```{python}
+euro | not_euro  # 1 | 0 = 1
+```
+
+## Bitwise XOR
+
+```{python}
+euro ^ not_euro  # 1 ^ 0 = 1
+```
+
+## Bitwise NOT
+
+```{python}
+~euro  # ~1 = -2 (bitwise complement)
+```
+
+## Left shift
+
+```{python}
+euro << 2  # 1 << 2 = 4
+```
+
+## Right shift
+
+```{python}
+euro >> 1  # 1 >> 1 = 0
+```
+
+# Boolean Context and Truthiness
+
+## if statements
+
+Booleans are primarily used in conditional statements.
+
+```{python}
+if euro:
+    result = "Uses Euro currency"
+else:
+    result = "Does not use Euro currency"
+result
+```
+
+## Truthiness of other types
+
+Python converts other types to boolean in boolean contexts.
+
+```{python}
+bool(0)  # False
+```
+
+## Truthiness of non-zero numbers
+
+```{python}
+bool(42)  # True
+```
+
+## Truthiness of strings
+
+```{python}
+bool("")  # Empty string is False
+```
+
+## Truthiness of non-empty strings
+
+```{python}
+bool("hello")  # Non-empty string is True
+```
+
+## Truthiness of collections
+
+```{python}
+bool([])  # Empty list is False
+```
+
+## Truthiness of non-empty collections
+
+```{python}
+bool([1, 2, 3])  # Non-empty list is True
+```
+
+## Truthiness of None
+
+```{python}
+bool(None)  # None is False
+```
+
+# Short-Circuit Evaluation
+
+## AND short-circuit
+
+If first operand is False, second operand is not evaluated.
+
+```{python}
+result = not_euro and print("This won't print")
+print(f"Result: {result}")
+```
+
+## OR short-circuit
+
+If first operand is True, second operand is not evaluated.
+
+```{python}
+result = euro or print("This won't print either")
+print(f"Result: {result}")
+```
+
+## Practical short-circuit example
+
+```{python}
+safe_division = euro and (10 / (int(euro)))  # Won't divide by zero
+safe_division
+```
+
+# Boolean Functions and Methods
+
+## all()
+
+Returns True if all elements in iterable are True (or if iterable is empty).
+
+```{python}
+all([euro, True, 1, "hello"])  # All truthy values
+```
+
+## all() with False
+
+```{python}
+all([euro, False, True])  # Contains False
+```
+
+## any()
+
+Returns True if any element in iterable is True.
+
+```{python}
+any([not_euro, False, 0])  # All falsy values
+```
+
+## any() with True
+
+```{python}
+any([not_euro, euro, False])  # Contains True
+```
+
+# Formatting and Display
+
+## String formatting
+
+```{python}
+f"Euro currency: {euro}"
+```
+
+## Conditional formatting
+
+```{python}
+f"Currency: {'Euro' if euro else 'Other'}"
+```
+
+## Uppercase/lowercase formatting
+
+```{python}
+f"Uses Euro: {str(euro).upper()}"
+```
+
+# Boolean in Data Structures
+
+## List indexing
+
+Booleans can be used as indices (True=1, False=0).
+
+```{python}
+currencies = ["USD", "EUR"]
+currencies[euro]  # True = 1, so gets "EUR"
+```
+
+## Dictionary keys
+
+```{python}
+currency_map = {True: "Euro", False: "Other"}
+currency_map[euro]
+```
+
+## Set operations
+
+```{python}
+bool_set = {True, False, 1, 0}  # Only {False, True} due to equality
+bool_set
+```
+
+# Type Checking and Validation
+
+## isinstance() with bool
+
+```{python}
+isinstance(euro, bool)
+```
+
+## isinstance() with int
+
+Since bool inherits from int, this is also True.
+
+```{python}
+isinstance(euro, int)
+```
+
+## Type hierarchy check
+
+```{python}
+issubclass(bool, int)
+```
+
+## Specific boolean check
+
+To check for specifically boolean type (not int).
+
+```{python}
+type(euro) is bool
+```
+
+# Boolean Constants and Special Values
+
+## True constant
+
+```{python}
+True
+```
+
+## False constant
+
+```{python}
+False
+```
+
+## Boolean literals comparison
+
+```{python}
+print(f"True is True: {True is True}")
+print(f"False is False: {False is False}")
+print(f"True is not False: {True is not False}")
+```
+
+# Common Boolean Patterns
+
+## Flag toggling
+
+```{python}
+toggled = not euro
+toggled
+```
+
+## Boolean accumulation
+
+```{python}
+conditions = [True, False, True, True]
+total_true = sum(conditions)  # Count of True values
+total_true
+```
+
+## Conditional assignment
+
+```{python}
+status = "active" if euro else "inactive"
+status
+```
+
+## Default value pattern
+
+```{python}
+value = euro or "default_value"  # If euro is False, use default
+value
+```
+
+# Boolean with Pandas-style Operations
+
+## Simulating boolean indexing
+
+```{python}
+data = [10, 20, 30, 40]
+mask = [True, False, True, False]
+filtered = [x for x, m in zip(data, mask) if m]
+filtered
+```
+
+## Boolean aggregation
+
+```{python}
+results = [True, False, True, True, False]
+success_rate = sum(results) / len(results)
+success_rate
+```

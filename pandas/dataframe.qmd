@@ -1,0 +1,122 @@
+# DataFrame {.unnumbered}
+
+{{< include _load_processed.qmd >}}
+
+## Evaluation
+
+::: {.panel-tabset}
+
+## .columns
+
+```{python}
+passengers_df.columns
+```
+
+## .info()
+
+```{python}
+passengers_df.info()
+```
+
+## .shape
+
+```{python}
+passengers_df.shape
+```
+
+This returns `(rows, columns`) and can be slices to get one or the other by its index. For example, the number of rows:
+
+```{python}
+passengers_df.shape[0]
+```
+
+## .dtypes
+
+```{python}
+passengers_df.dtypes
+```
+
+:::
+
+## Modification
+
+
+::: {.panel-tabset}
+
+## .rename()
+
+Rename columns by passing `"old_name":"new_name"` to the columns argument of `.rename()`. Remember to use `inplace=True` to store the changes in the existing DataFrame.
+
+```{python}
+
+passengers_df.rename(columns={
+    "sibsp":"sibling_spouse_count",
+    "parch":"parents_children_count"
+}, inplace=True)
+
+passengers_df.columns
+
+```
+
+
+## pd.Categorical()
+
+Define categorical ordering by passing desired label ordering into `pd.Categorical`.
+
+```{python}
+
+desired_ordering = ["First", "Second", "Third"]
+
+passengers_df["class"] = pd.Categorical(
+    passengers_df["class"],
+    categories=desired_ordering,
+    ordered=True
+)
+
+passengers_df.info()
+
+```
+
+Calling the variable shows that it looks the same as before, but now pandas knows the correct ordering `['First' < 'Second' < 'Third']`.
+
+```{python}
+passengers_df["class"]
+```
+
+Defining the variable as an ordered categorical series stores a numeric representation of the data labels.
+
+```{python}
+passengers_df["class"].cat.codes
+```
+
+These can be accessed for further analysis, if desired.
+
+```{python}
+passengers_df["class"].cat.codes.median()
+```
+
+:::
+
+## Summarization
+
+::: {.panel-tabset}
+
+## .describe()
+
+```{python}
+
+passengers_df.describe()
+
+```
+
+## .describe(include=["object", "category"])
+
+```{python}
+
+passengers_df.describe(include=["object", "category"])
+
+```
+
+:::
+
+{{< include _save_processed.qmd >}}

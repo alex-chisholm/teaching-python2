@@ -1,0 +1,34 @@
+project:
+  type: book
+
+book:
+  title: "Python Programming II for Data Analysis"
+  author: "Alex Chisholm"
+  date: last-modified
+  chapters:
+    - index.qmd
+    - part: "Python Fundamentals"
+      chapters:
+      - python-fundamentals/basics.qmd
+      - python-fundamentals/str.qmd
+      - python-fundamentals/number.qmd
+      - python-fundamentals/bool.qmd
+      - python-fundamentals/type-functions.qmd
+      - python-fundamentals/list-functions.qmd
+    - part: "Pandas"
+      chapters:
+      - pandas/project-setup.qmd
+      - pandas/dataframe.qmd
+      - pandas/one-variable-analysis.qmd
+      - pandas/multiple-variable-analysis.qmd
+      - pandas/data-cleaning.qmd
+      - pandas/merging-data.qmd
+
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+
+
+

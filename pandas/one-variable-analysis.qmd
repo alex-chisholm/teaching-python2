@@ -1,0 +1,201 @@
+# Analyzing One Variable  {.unnumbered}
+
+{{< include _load_processed.qmd >}}
+
+You can get to a specific variable in your DataFrame in two ways:
+
+1. Bracket notation: `passengers_df["embark_town"]` 
+2. Dot notation: `passengers_df.embark_town`
+
+Dot notation is often quicker, especially if your variable names are well constructed. However, be aware that if the variable name is the same as a reserved name in Python (e.g., `class`) or pandas, that you might hit errors.
+
+## Categorical
+
+```{python}
+
+passengers_df["embark_town"]
+
+```
+
+### Value Counts
+
+::: {.panel-tabset}
+
+## .value_counts()
+
+```{python}
+
+passengers_df["embark_town"].value_counts()
+
+```
+
+## sort
+
+Value counts are sorted by frequency (top to bottom) by default. You can turn this off with `sort`.
+
+```{python}
+
+passengers_df["embark_town"].value_counts(sort = False)
+
+```
+
+You can also use `ascending` to change the sort order.
+
+```{python}
+
+passengers_df["embark_town"].value_counts(sort = True, ascending=True)
+
+```
+
+## normalize
+
+The `normalize` argument returns relative frequencies, which is the percent of total observations.
+
+```{python}
+
+passengers_df["embark_town"].value_counts(normalize = True)
+
+```
+
+:::
+
+### Visualization
+
+::: {.panel-tabset}
+
+## .plot.bar()
+
+```{python}
+passengers_df["embark_town"].value_counts().plot.bar()
+```
+
+## .plot.barh()
+
+```{python}
+passengers_df["embark_town"].value_counts().plot.barh()
+```
+
+## .plot.pie()
+
+Although it is generally better to avoid pie charts, using them with few data points and clear labels can be ok. 
+
+```{python}
+passengers_df["embark_town"].value_counts().plot.pie()
+```
+
+:::
+
+
+
+## Numeric
+
+```{python}
+
+passengers_df["age"]
+
+```
+
+### Summary and Subsetting
+
+::: {.panel-tabset}
+
+## .describe
+
+```{python}
+passengers_df["age"].describe()
+```
+
+## .nlargest()
+
+```{python}
+passengers_df["age"].nlargest()
+```
+
+## .nsmallest()
+
+```{python}
+passengers_df["age"].nsmallest()
+```
+
+## math methods
+
+```{python}
+passengers_df["age"].mean()
+```
+
+:::
+
+### Rank
+
+Add a rank for each value relative to all observations. The method defaults to `ascending=False`, but this can be changed to `True` when you want lower values to earn higher ranks.
+
+::: {.panel-tabset}
+
+## average
+
+Ties get the average of their rank positions (default)
+
+```{python}
+passengers_df["age"].rank(method = "average").sort_values()
+```
+
+## min
+
+Ties all get the lowest possible rank
+
+```{python}
+passengers_df["age"].rank(method="min").sort_values()
+```
+
+## max
+
+Ties all get the highest possible rank
+
+```{python}
+passengers_df["age"].rank(method="max").sort_values()
+```
+
+## first
+
+Ties ranked by order they appear in data
+
+```{python}
+passengers_df["age"].rank(method="first").sort_values()
+```
+
+## dense
+
+Like min, but no gaps created in ranking sequence
+
+```{python}
+passengers_df["age"].rank(method="dense").sort_values()
+```
+
+:::
+
+### Visualization
+
+::: {.panel-tabset}
+
+## .plot.hist()
+
+```{python}
+passengers_df["age"].plot.hist()
+```
+
+## .plot.hist(bins=)
+
+```{python}
+passengers_df["age"].plot.hist(bins=80)
+```
+
+## .plot.box()
+
+```{python}
+passengers_df["age"].plot.box()
+```
+
+:::
+
+
+{{< include _save_processed.qmd >}}

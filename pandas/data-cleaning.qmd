@@ -1,0 +1,220 @@
+# Data Cleaning  {.unnumbered}
+
+{{< include _load_processed.qmd >}}
+
+## Outliers
+
+Outliers are extreme observations that can have an impact on summary statistics. 
+
+### Identification
+
+A common approach to identifying them is by examining each data point relative to a lower and upper bound.
+
+1. Lower bound: 25th percentile - (1.5 x IQR)
+2. Upper bound: 75th percentile + (1.5 x IQR)
+
+> IQR: Interquartile Range = 75th Percentile - 25th Percentile
+
+An value below less than the lower bound or more than the upper bound can be considered an outlier. 
+
+Let's examine the age variable from `passengers_df` which had the following descriptive statistics.
+
+```{python}
+passengers_df["age"].describe()
+
+```
+
+We can calculate the information needed to generate a lower and upper cutoff bound.
+
+```{python}
+
+p25 = passengers_df["age"].quantile(0.25)
+p75 = passengers_df["age"].quantile(0.75)
+iqr = p75 - p25
+lower_bound = p25 - 1.5 * iqr
+upper_bound = p75 + 1.5 * iqr
+print(f"""
+25th Percentile: {p25}\n75th Percentile: {p75}\nIQR: {iqr}\nLower Bound: {lower_bound}\nUpper Bound: {upper_bound}"""
+)
+
+```
+
+### Assignment
+
+With this information, we can check the data series. Let's assign True/False values to a new variable to track this
+
+```{python}
+
+passengers_df["age_outlier"] = (passengers_df["age"] < lower_bound) | (passengers_df["age"] > upper_bound)
+passengers_df["age_outlier"] 
+```
+
+We can now count it:
+
+```{python}
+
+passengers_df["age_outlier"].value_counts()
+
+```
+
+### Decision
+
+Just because you have outliers in a number series doesn't mean you have to do anything about it. It depends on your goals and if you think the value is correct or now.
+
+You could do nothing and leave the outliers in the data. If so, it could be helpful to:
+
+1. Communicate their existence with explanation of values, if available.
+2. Lean on more robust summary statistics (e.g., Median) when communicating findings.
+
+You could also:
+ 
+### Crosstabs
+
+::: {.panel-tabset}
+
+## Remove the row
+
+```{python}
+
+passengers_df[passengers_df["age_outlier"] == False]
+
+```
+
+## Remove the  value
+
+```{python}
+
+np.where(
+    passengers_df["age_outlier"], 
+    np.nan, # remove the outlier and letting it be missing
+    passengers_df["age"] # keep the original value
+)
+
+```
+
+## Replace it
+
+This is useful if you believe the data is simply wrong and you need to keep other information that is good from the observation.
+
+Imagine if the variable was age and the value was 224. It would be an outlier, but it is not a believable outlier. Perhaps it was a typo that should have been 24. Instead of trying to guess what it should have been, you could also impute a value based upon data you have more faith in.
+
+For instance, you could replace missing values with the median of the series - which is a more robust summary statistic.
+
+Here we use `np.where` that says where something is True, do something. If not, do something else.
+
+```{python}
+
+passengers_df["age_clean"] = np.where(
+    passengers_df["age_outlier"], 
+    passengers_df["age"].median(), # use the median
+    passengers_df["age"] # keep the original value
+)
+
+passengers_df.query("age_outlier == True")[["age", "age_clean"]]
+```
+
+
+I would not do this here since these ages do not seem like bad data, just outlier ages relative to the overall dataset.
+
+
+:::
+
+
+
+## Missing Data
+
+As with outliers, missing data requires us to make a decision. 
+
+### Identify
+
+::: {.panel-tabset}
+
+## isna()
+
+Return `True` if value is missing.
+
+```{python}
+
+passengers_df["age"].isna()
+
+```
+
+Count the number of missing data values with `isna().sum()`.
+
+```{python}
+
+passengers_df["age"].isna().sum()
+
+```
+
+## not.na()
+
+Return True if value is not missing
+
+```{python}
+
+passengers_df["age"].notna()
+
+```
+
+Count the number of non-missing data values with `notna().sum()`.
+
+```{python}
+
+passengers_df["age"].notna().sum()
+
+```
+
+:::
+
+
+### Remove
+
+::: {.panel-tabset}
+
+## .dropna()
+
+Drop any row that has a missing data point in *any* column.
+
+```{python}
+
+len(passengers_df.dropna())
+
+```
+
+## .dropna(subset=)
+
+Drop any row that has a missing data point in one or more specific columns.
+
+
+```{python}
+
+len(passengers_df.dropna(subset = "age"))
+
+
+```
+
+:::
+
+
+### Replace
+
+Replace specific missing values with something new (e.g., the median).
+
+::: {.panel-tabset}
+
+## .fillna()
+
+```{python}
+
+median_age = passengers_df["age"].median()
+
+passengers_df["filled_age"] = passengers_df["age"].fillna(median_age)
+
+passengers_df[["age","filled_age"]]
+
+```
+
+:::
+
+{{< include _save_processed.qmd >}}

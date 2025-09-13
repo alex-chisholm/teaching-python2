@@ -1,0 +1,219 @@
+# Analyzing Multiple Variable  {.unnumbered}
+
+{{< include _load_processed.qmd >}}
+
+## Categorical
+
+We could pass the entire DataFrame into `value_counts` and use two categorical variables.
+
+```{python}
+passengers_df.value_counts(["sex", "class"])
+```
+
+However, this format isn't that easy to worth with and lacks the additional functionality of `.crosstab()`.
+
+### Crosstabs
+
+::: {.panel-tabset}
+
+## .crosstab()
+
+```{python}
+pd.crosstab(index = passengers_df["sex"], columns = passengers_df["class"])
+```
+
+## .crosstab(margins=True)
+
+```{python}
+pd.crosstab(index = passengers_df["sex"], columns = passengers_df["class"], margins=True)
+```
+
+## .crosstab(normalize=True)
+
+### Percent of Total
+
+All values sum to 100%
+
+```{python}
+pd.crosstab(index = passengers_df["sex"], columns = passengers_df["class"], normalize=True)
+```
+
+### Row Percents 
+
+Rows sum to 100%
+
+```{python}
+pd.crosstab(index = passengers_df["sex"], columns = passengers_df["class"], normalize="index")
+```
+
+### Column Percents
+
+Columns sum to 100%
+
+```{python}
+pd.crosstab(index = passengers_df["sex"], columns = passengers_df["class"], normalize="columns")
+```
+
+:::
+
+### Visualization
+
+::: {.panel-tabset}
+
+## .plot.bar()
+
+```{python}
+pd.crosstab(index = passengers_df["sex"], columns = passengers_df["class"]).plot.bar()
+```
+
+
+## .plot.barh()
+
+```{python}
+pd.crosstab(index = passengers_df["sex"], columns = passengers_df["class"]).plot.barh()
+```
+
+## sns.heatmap()
+
+```{python}
+
+ct = pd.crosstab(passengers_df["sex"], passengers_df["class"])
+sns.heatmap(ct, annot=True, fmt='d', cmap='Blues')
+
+```
+
+:::
+
+
+### More than two variables
+
+You can pass in more than one variable to either the index argument (e.g., rows) or the columns argument.
+
+```{python}
+
+pd.crosstab(index = [passengers_df["sex"], passengers_df["class"]], 
+            columns = passengers_df["embark_town"], 
+            margins = True)
+
+```
+
+
+## Numeric
+
+### Correlation
+
+::: {.panel-tabset}
+
+## Single .corr()
+
+```{python}
+
+passengers_df["age"].corr(passengers_df["fare"])
+
+```
+
+## Correlation Matrix
+
+
+```{python}
+passengers_df.corr(numeric_only=True)
+```
+
+## Correlation Matrix heatmap
+
+```{python}
+# add class codes that might be relevant
+passengers_df["class_codes"] = passengers_df["class"].cat.codes
+corr_matrix = passengers_df.corr(numeric_only=True)
+
+sns.heatmap(corr_matrix,
+            annot=True,           # Show correlation values
+            cmap="coolwarm",      # Color scheme (blue-white-red)
+            fmt=".2f")            # Format numbers to 2 decimal places
+```
+
+:::
+
+### Visualization
+
+::: {.panel-tabset}
+
+## .scatter()
+
+```{python}
+passengers_df.plot.scatter(x = "age", y = "fare")
+```
+
+:::
+
+
+## Mixed
+
+What if we wanted to explore the categorical `embark_town` variable with the numeric `age` and `fare` variables?
+
+```{python}
+passengers_df[["embark_town", "age", "fare"]]
+```
+
+### Grouping
+
+::: {.panel-tabset}
+
+## .groupby()
+
+```{python}
+
+passengers_df.groupby("embark_town")[["age", "fare"]].mean()
+
+```
+
+## .groupby().agg([list])
+
+```{python}
+
+passengers_df.groupby("embark_town")[["age", "fare"]].agg(["mean", "max"])
+
+```
+
+## .groupby().agg([dictionary])
+
+```{python}
+
+passengers_df.groupby("embark_town").agg({
+    "passenger_id": "count",
+    "fare": "sum",
+    "age": ["min", "median", "max"]
+    })
+
+```
+
+:::
+
+### Visualization
+
+You can also visualize the result from a `groupby()` workflow. For instance, 
+
+```{python}
+results = passengers_df.groupby("embark_town")[["age", "fare"]].mean()
+results
+```
+
+::: {.panel-tabset}
+
+## All results
+
+```{python}
+
+results.plot.bar()
+
+```
+
+## Subset of results
+
+```{python}
+results["age"].plot.bar()
+```
+
+:::
+
+{{< include _save_processed.qmd >}}

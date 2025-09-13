@@ -1,0 +1,5 @@
+# Preface {.unnumbered}
+
+This set of Python reference guides is based on material covered in the Fall 2025 semester class Python Programming II for Data Analysis.
+
+Created with [Quarto](https://quarto.org/docs/books).

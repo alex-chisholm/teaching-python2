@@ -1,0 +1,10 @@
+{
+  "name": "Netherlands",
+  "capital": "Amsterdam",
+  "population": 17441000,
+  "languages": [
+    "Dutch",
+    "English"
+  ],
+  "eu_member": true
+}

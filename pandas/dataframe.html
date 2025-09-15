@@ -105,6 +105,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<style>html{ scroll-behavior: smooth; }</style>
 <script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
@@ -224,13 +225,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="2">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
   <li><a href="#evaluation" id="toc-evaluation" class="nav-link active" data-scroll-target="#evaluation">Evaluation</a></li>
   <li><a href="#modification" id="toc-modification" class="nav-link" data-scroll-target="#modification">Modification</a></li>
   <li><a href="#summarization" id="toc-summarization" class="nav-link" data-scroll-target="#summarization">Summarization</a></li>
+  <li><a href="#subsetting" id="toc-subsetting" class="nav-link" data-scroll-target="#subsetting">Subsetting</a></li>
   </ul>
 </nav>
     </div>
@@ -262,7 +264,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">.columns</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">.info()</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">.shape</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false" href="">.dtypes</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<div id="cfee2016" class="cell" data-execution_count="2">
+<div id="d9ab4d95" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>passengers_df.columns</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>Index(['passenger_id', 'survived', 'sex', 'age', 'sibsp', 'parch', 'fare',
@@ -272,7 +274,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<div id="2cb4a4a1" class="cell" data-execution_count="3">
+<div id="eb1aa4e2" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>passengers_df.info()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
@@ -295,14 +297,14 @@ memory usage: 62.8+ KB</code></pre>
 </div>
 </div>
 <div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
-<div id="514c2fd0" class="cell" data-execution_count="4">
+<div id="70810c14" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>passengers_df.shape</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>(891, 9)</code></pre>
 </div>
 </div>
 <p>This returns <code>(rows, columns</code>) and can be slices to get one or the other by its index. For example, the number of rows:</p>
-<div id="54ccde78" class="cell" data-execution_count="5">
+<div id="ef054fb0" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>passengers_df.shape[<span class="dv">0</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>891</code></pre>
@@ -310,7 +312,7 @@ memory usage: 62.8+ KB</code></pre>
 </div>
 </div>
 <div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
-<div id="70f87792" class="cell" data-execution_count="6">
+<div id="de36e5d2" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>passengers_df.dtypes</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>passenger_id     object
@@ -336,7 +338,7 @@ dtype: object</code></pre>
 <div class="tab-content">
 <div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <p>Rename columns by passing <code>"old_name":"new_name"</code> to the columns argument of <code>.rename()</code>. Remember to use <code>inplace=True</code> to store the changes in the existing DataFrame.</p>
-<div id="625db013" class="cell" data-execution_count="7">
+<div id="9f507b18" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>passengers_df.rename(columns<span class="op">=</span>{</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"sibsp"</span>:<span class="st">"sibling_spouse_count"</span>,</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"parch"</span>:<span class="st">"parents_children_count"</span></span>
@@ -352,7 +354,7 @@ dtype: object</code></pre>
 </div>
 <div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
 <p>Define categorical ordering by passing desired label ordering into <code>pd.Categorical</code>.</p>
-<div id="80ef35a2" class="cell" data-execution_count="8">
+<div id="3935cfea" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>desired_ordering <span class="op">=</span> [<span class="st">"First"</span>, <span class="st">"Second"</span>, <span class="st">"Third"</span>]</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>passengers_df[<span class="st">"class"</span>] <span class="op">=</span> pd.Categorical(</span>
@@ -382,7 +384,7 @@ memory usage: 56.8+ KB</code></pre>
 </div>
 </div>
 <p>Calling the variable shows that it looks the same as before, but now pandas knows the correct ordering <code>['First' &lt; 'Second' &lt; 'Third']</code>.</p>
-<div id="c53b3800" class="cell" data-execution_count="9">
+<div id="6b3e4d7a" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>passengers_df[<span class="st">"class"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>0       Third
@@ -401,7 +403,7 @@ Categories (3, object): ['First' &lt; 'Second' &lt; 'Third']</code></pre>
 </div>
 </div>
 <p>Defining the variable as an ordered categorical series stores a numeric representation of the data labels.</p>
-<div id="88cbe2c6" class="cell" data-execution_count="10">
+<div id="2e3b2961" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>passengers_df[<span class="st">"class"</span>].cat.codes</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>0      2
@@ -419,7 +421,7 @@ Length: 891, dtype: int8</code></pre>
 </div>
 </div>
 <p>These can be accessed for further analysis, if desired.</p>
-<div id="2c97a4d5" class="cell" data-execution_count="11">
+<div id="9831ca9d" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>passengers_df[<span class="st">"class"</span>].cat.codes.median()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>np.float64(2.0)</code></pre>
@@ -432,10 +434,10 @@ Length: 891, dtype: int8</code></pre>
 <section id="summarization" class="level2">
 <h2 class="anchored" data-anchor-id="summarization">Summarization</h2>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" href="">.describe()</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false" href="">.describe(include=[“object”, “category”])</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" href="">.describe()</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false" href="">.describe(include=[“object”, “category”])</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" role="tab" aria-controls="tabset-3-3" aria-selected="false" href="">.nunique()</a></li></ul>
 <div class="tab-content">
 <div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
-<div id="7f364ec6" class="cell" data-execution_count="12">
+<div id="751cd541" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>passengers_df.describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <div>
@@ -525,7 +527,7 @@ Length: 891, dtype: int8</code></pre>
 </div>
 </div>
 <div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
-<div id="925e2f43" class="cell" data-execution_count="13">
+<div id="e28657f6" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>passengers_df.describe(include<span class="op">=</span>[<span class="st">"object"</span>, <span class="st">"category"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <div>
@@ -574,6 +576,885 @@ Length: 891, dtype: int8</code></pre>
 </table>
 
 </div>
+</div>
+</div>
+</div>
+<div id="tabset-3-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-3-tab">
+<p>Return the number of unique values for each variable in the dataset.</p>
+<div id="3113d4fc" class="cell" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>passengers_df.nunique()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<pre><code>passenger_id              891
+survived                    2
+sex                         2
+age                        88
+sibling_spouse_count        7
+parents_children_count      7
+fare                      248
+class                       3
+embark_town                 3
+dtype: int64</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="subsetting" class="level2">
+<h2 class="anchored" data-anchor-id="subsetting">Subsetting</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true" href="">Boolean Index</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false" href="">.query()</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-3" role="tab" aria-controls="tabset-4-3" aria-selected="false" href="">.iloc[]</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-4" role="tab" aria-controls="tabset-4-4" aria-selected="false" href="">.loc[]</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<p>Works by first checking if a column meets some condition (True/False). It filters the original dataset for those with <code>True</code>.</p>
+<div id="345df859" class="cell" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>passengers_df[passengers_df[<span class="st">"age"</span>] <span class="op">&gt;</span> <span class="dv">50</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">passenger_id</th>
+<th data-quarto-table-cell-role="th">survived</th>
+<th data-quarto-table-cell-role="th">sex</th>
+<th data-quarto-table-cell-role="th">age</th>
+<th data-quarto-table-cell-role="th">sibling_spouse_count</th>
+<th data-quarto-table-cell-role="th">parents_children_count</th>
+<th data-quarto-table-cell-role="th">fare</th>
+<th data-quarto-table-cell-role="th">class</th>
+<th data-quarto-table-cell-role="th">embark_town</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">6</th>
+<td>7972c206-6fc7-42bd-8329-8e7bed602cb8</td>
+<td>0</td>
+<td>male</td>
+<td>54.0</td>
+<td>0</td>
+<td>0</td>
+<td>51.8625</td>
+<td>First</td>
+<td>Southampton</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">11</th>
+<td>95f4c6e2-46fb-436f-b26c-8d8eff9ec158</td>
+<td>1</td>
+<td>female</td>
+<td>58.0</td>
+<td>0</td>
+<td>0</td>
+<td>26.5500</td>
+<td>First</td>
+<td>Southampton</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">15</th>
+<td>41b52864-e390-4d0b-8469-747c55b3c578</td>
+<td>1</td>
+<td>female</td>
+<td>55.0</td>
+<td>0</td>
+<td>0</td>
+<td>16.0000</td>
+<td>Second</td>
+<td>Southampton</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">33</th>
+<td>45d7967a-c215-4735-b145-5d9599102d06</td>
+<td>0</td>
+<td>male</td>
+<td>66.0</td>
+<td>0</td>
+<td>0</td>
+<td>10.5000</td>
+<td>Second</td>
+<td>Southampton</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">54</th>
+<td>6208f084-a12a-46e8-90b0-783bc25775e4</td>
+<td>0</td>
+<td>male</td>
+<td>65.0</td>
+<td>0</td>
+<td>1</td>
+<td>61.9792</td>
+<td>First</td>
+<td>Cherbourg</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">820</th>
+<td>f8deb905-5d4c-4f90-aec7-00eb525b2ef0</td>
+<td>1</td>
+<td>female</td>
+<td>52.0</td>
+<td>1</td>
+<td>1</td>
+<td>93.5000</td>
+<td>First</td>
+<td>Southampton</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">829</th>
+<td>a67cf024-c984-4ef8-b217-24ee64493c8d</td>
+<td>1</td>
+<td>female</td>
+<td>62.0</td>
+<td>0</td>
+<td>0</td>
+<td>80.0000</td>
+<td>First</td>
+<td>None</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">851</th>
+<td>14bbbc32-c261-4750-af12-70c60e304583</td>
+<td>0</td>
+<td>male</td>
+<td>74.0</td>
+<td>0</td>
+<td>0</td>
+<td>7.7750</td>
+<td>Third</td>
+<td>Southampton</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">857</th>
+<td>7e99aed3-d393-44da-b4c1-a33ea1fee2f7</td>
+<td>1</td>
+<td>male</td>
+<td>51.0</td>
+<td>0</td>
+<td>0</td>
+<td>26.5500</td>
+<td>First</td>
+<td>Southampton</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">879</th>
+<td>534a6106-c251-48b8-9604-6945329f181a</td>
+<td>1</td>
+<td>female</td>
+<td>56.0</td>
+<td>0</td>
+<td>1</td>
+<td>83.1583</td>
+<td>First</td>
+<td>Cherbourg</td>
+</tr>
+</tbody>
+</table>
+
+<p>64 rows × 9 columns</p>
+</div>
+</div>
+</div>
+<p>You can also multiple criteria using parentheses for each</p>
+<div id="d4c577d7" class="cell" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>passengers_df[(passengers_df[<span class="st">"age"</span>] <span class="op">&gt;</span> <span class="dv">50</span>) <span class="op">&amp;</span> (passengers_df[<span class="st">"sex"</span>] <span class="op">==</span> <span class="st">"female"</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="16">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">passenger_id</th>
+<th data-quarto-table-cell-role="th">survived</th>
+<th data-quarto-table-cell-role="th">sex</th>
+<th data-quarto-table-cell-role="th">age</th>
+<th data-quarto-table-cell-role="th">sibling_spouse_count</th>
+<th data-quarto-table-cell-role="th">parents_children_count</th>
+<th data-quarto-table-cell-role="th">fare</th>
+<th data-quarto-table-cell-role="th">class</th>
+<th data-quarto-table-cell-role="th">embark_town</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">11</th>
+<td>95f4c6e2-46fb-436f-b26c-8d8eff9ec158</td>
+<td>1</td>
+<td>female</td>
+<td>58.0</td>
+<td>0</td>
+<td>0</td>
+<td>26.5500</td>
+<td>First</td>
+<td>Southampton</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">15</th>
+<td>41b52864-e390-4d0b-8469-747c55b3c578</td>
+<td>1</td>
+<td>female</td>
+<td>55.0</td>
+<td>0</td>
+<td>0</td>
+<td>16.0000</td>
+<td>Second</td>
+<td>Southampton</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">195</th>
+<td>3661c590-c28d-419e-b1dd-a8584ded989d</td>
+<td>1</td>
+<td>female</td>
+<td>58.0</td>
+<td>0</td>
+<td>0</td>
+<td>146.5208</td>
+<td>First</td>
+<td>Cherbourg</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">268</th>
+<td>cb68c97c-4fc8-4621-9322-f80363cb3d5d</td>
+<td>1</td>
+<td>female</td>
+<td>58.0</td>
+<td>0</td>
+<td>1</td>
+<td>153.4625</td>
+<td>First</td>
+<td>Southampton</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">275</th>
+<td>4c038e5e-8b2f-44b5-8f47-5c7181f458d7</td>
+<td>1</td>
+<td>female</td>
+<td>63.0</td>
+<td>1</td>
+<td>0</td>
+<td>77.9583</td>
+<td>First</td>
+<td>Southampton</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">366</th>
+<td>a3ecdaf4-6dd1-47c0-a577-5d5add42b68a</td>
+<td>1</td>
+<td>female</td>
+<td>60.0</td>
+<td>1</td>
+<td>0</td>
+<td>75.2500</td>
+<td>First</td>
+<td>Cherbourg</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">483</th>
+<td>5e869e0b-85b6-427e-a946-9c8fbdf0e62d</td>
+<td>1</td>
+<td>female</td>
+<td>63.0</td>
+<td>0</td>
+<td>0</td>
+<td>9.5875</td>
+<td>Third</td>
+<td>Southampton</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">496</th>
+<td>fe237248-3145-49c3-873a-23103a548d48</td>
+<td>1</td>
+<td>female</td>
+<td>54.0</td>
+<td>1</td>
+<td>0</td>
+<td>78.2667</td>
+<td>First</td>
+<td>Cherbourg</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">513</th>
+<td>fb542ce8-af5b-49de-94d1-12e80b50f924</td>
+<td>1</td>
+<td>female</td>
+<td>54.0</td>
+<td>1</td>
+<td>0</td>
+<td>59.4000</td>
+<td>First</td>
+<td>Cherbourg</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">571</th>
+<td>addd7ae0-fdc3-4388-b741-799fceb880c9</td>
+<td>1</td>
+<td>female</td>
+<td>53.0</td>
+<td>2</td>
+<td>0</td>
+<td>51.4792</td>
+<td>First</td>
+<td>Southampton</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">591</th>
+<td>55696e7b-a45f-438c-afe0-d319481854a8</td>
+<td>1</td>
+<td>female</td>
+<td>52.0</td>
+<td>1</td>
+<td>0</td>
+<td>78.2667</td>
+<td>First</td>
+<td>Cherbourg</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">765</th>
+<td>287911f6-cba8-4efd-aa4c-f8ef77985e8c</td>
+<td>1</td>
+<td>female</td>
+<td>51.0</td>
+<td>1</td>
+<td>0</td>
+<td>77.9583</td>
+<td>First</td>
+<td>Southampton</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">772</th>
+<td>cba2ce18-3e49-499b-a674-03d0918433a6</td>
+<td>0</td>
+<td>female</td>
+<td>57.0</td>
+<td>0</td>
+<td>0</td>
+<td>10.5000</td>
+<td>Second</td>
+<td>Southampton</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">774</th>
+<td>a5562846-6e7c-4ef3-91ea-5c464112ea0e</td>
+<td>1</td>
+<td>female</td>
+<td>54.0</td>
+<td>1</td>
+<td>3</td>
+<td>23.0000</td>
+<td>Second</td>
+<td>Southampton</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">820</th>
+<td>f8deb905-5d4c-4f90-aec7-00eb525b2ef0</td>
+<td>1</td>
+<td>female</td>
+<td>52.0</td>
+<td>1</td>
+<td>1</td>
+<td>93.5000</td>
+<td>First</td>
+<td>Southampton</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">829</th>
+<td>a67cf024-c984-4ef8-b217-24ee64493c8d</td>
+<td>1</td>
+<td>female</td>
+<td>62.0</td>
+<td>0</td>
+<td>0</td>
+<td>80.0000</td>
+<td>First</td>
+<td>None</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">879</th>
+<td>534a6106-c251-48b8-9604-6945329f181a</td>
+<td>1</td>
+<td>female</td>
+<td>56.0</td>
+<td>0</td>
+<td>1</td>
+<td>83.1583</td>
+<td>First</td>
+<td>Cherbourg</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<div id="e5c3e729" class="cell" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>passengers_df.query(<span class="st">"age &gt; 50"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">passenger_id</th>
+<th data-quarto-table-cell-role="th">survived</th>
+<th data-quarto-table-cell-role="th">sex</th>
+<th data-quarto-table-cell-role="th">age</th>
+<th data-quarto-table-cell-role="th">sibling_spouse_count</th>
+<th data-quarto-table-cell-role="th">parents_children_count</th>
+<th data-quarto-table-cell-role="th">fare</th>
+<th data-quarto-table-cell-role="th">class</th>
+<th data-quarto-table-cell-role="th">embark_town</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">6</th>
+<td>7972c206-6fc7-42bd-8329-8e7bed602cb8</td>
+<td>0</td>
+<td>male</td>
+<td>54.0</td>
+<td>0</td>
+<td>0</td>
+<td>51.8625</td>
+<td>First</td>
+<td>Southampton</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">11</th>
+<td>95f4c6e2-46fb-436f-b26c-8d8eff9ec158</td>
+<td>1</td>
+<td>female</td>
+<td>58.0</td>
+<td>0</td>
+<td>0</td>
+<td>26.5500</td>
+<td>First</td>
+<td>Southampton</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">15</th>
+<td>41b52864-e390-4d0b-8469-747c55b3c578</td>
+<td>1</td>
+<td>female</td>
+<td>55.0</td>
+<td>0</td>
+<td>0</td>
+<td>16.0000</td>
+<td>Second</td>
+<td>Southampton</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">33</th>
+<td>45d7967a-c215-4735-b145-5d9599102d06</td>
+<td>0</td>
+<td>male</td>
+<td>66.0</td>
+<td>0</td>
+<td>0</td>
+<td>10.5000</td>
+<td>Second</td>
+<td>Southampton</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">54</th>
+<td>6208f084-a12a-46e8-90b0-783bc25775e4</td>
+<td>0</td>
+<td>male</td>
+<td>65.0</td>
+<td>0</td>
+<td>1</td>
+<td>61.9792</td>
+<td>First</td>
+<td>Cherbourg</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">820</th>
+<td>f8deb905-5d4c-4f90-aec7-00eb525b2ef0</td>
+<td>1</td>
+<td>female</td>
+<td>52.0</td>
+<td>1</td>
+<td>1</td>
+<td>93.5000</td>
+<td>First</td>
+<td>Southampton</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">829</th>
+<td>a67cf024-c984-4ef8-b217-24ee64493c8d</td>
+<td>1</td>
+<td>female</td>
+<td>62.0</td>
+<td>0</td>
+<td>0</td>
+<td>80.0000</td>
+<td>First</td>
+<td>None</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">851</th>
+<td>14bbbc32-c261-4750-af12-70c60e304583</td>
+<td>0</td>
+<td>male</td>
+<td>74.0</td>
+<td>0</td>
+<td>0</td>
+<td>7.7750</td>
+<td>Third</td>
+<td>Southampton</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">857</th>
+<td>7e99aed3-d393-44da-b4c1-a33ea1fee2f7</td>
+<td>1</td>
+<td>male</td>
+<td>51.0</td>
+<td>0</td>
+<td>0</td>
+<td>26.5500</td>
+<td>First</td>
+<td>Southampton</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">879</th>
+<td>534a6106-c251-48b8-9604-6945329f181a</td>
+<td>1</td>
+<td>female</td>
+<td>56.0</td>
+<td>0</td>
+<td>1</td>
+<td>83.1583</td>
+<td>First</td>
+<td>Cherbourg</td>
+</tr>
+</tbody>
+</table>
+
+<p>64 rows × 9 columns</p>
+</div>
+</div>
+</div>
+<p>Multiple conditions can go in the same statement.</p>
+<div id="48b8f84e" class="cell" data-execution_count="18">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>passengers_df.query(<span class="st">"age &gt; 50 and sex == 'female'"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="18">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">passenger_id</th>
+<th data-quarto-table-cell-role="th">survived</th>
+<th data-quarto-table-cell-role="th">sex</th>
+<th data-quarto-table-cell-role="th">age</th>
+<th data-quarto-table-cell-role="th">sibling_spouse_count</th>
+<th data-quarto-table-cell-role="th">parents_children_count</th>
+<th data-quarto-table-cell-role="th">fare</th>
+<th data-quarto-table-cell-role="th">class</th>
+<th data-quarto-table-cell-role="th">embark_town</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">11</th>
+<td>95f4c6e2-46fb-436f-b26c-8d8eff9ec158</td>
+<td>1</td>
+<td>female</td>
+<td>58.0</td>
+<td>0</td>
+<td>0</td>
+<td>26.5500</td>
+<td>First</td>
+<td>Southampton</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">15</th>
+<td>41b52864-e390-4d0b-8469-747c55b3c578</td>
+<td>1</td>
+<td>female</td>
+<td>55.0</td>
+<td>0</td>
+<td>0</td>
+<td>16.0000</td>
+<td>Second</td>
+<td>Southampton</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">195</th>
+<td>3661c590-c28d-419e-b1dd-a8584ded989d</td>
+<td>1</td>
+<td>female</td>
+<td>58.0</td>
+<td>0</td>
+<td>0</td>
+<td>146.5208</td>
+<td>First</td>
+<td>Cherbourg</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">268</th>
+<td>cb68c97c-4fc8-4621-9322-f80363cb3d5d</td>
+<td>1</td>
+<td>female</td>
+<td>58.0</td>
+<td>0</td>
+<td>1</td>
+<td>153.4625</td>
+<td>First</td>
+<td>Southampton</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">275</th>
+<td>4c038e5e-8b2f-44b5-8f47-5c7181f458d7</td>
+<td>1</td>
+<td>female</td>
+<td>63.0</td>
+<td>1</td>
+<td>0</td>
+<td>77.9583</td>
+<td>First</td>
+<td>Southampton</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">366</th>
+<td>a3ecdaf4-6dd1-47c0-a577-5d5add42b68a</td>
+<td>1</td>
+<td>female</td>
+<td>60.0</td>
+<td>1</td>
+<td>0</td>
+<td>75.2500</td>
+<td>First</td>
+<td>Cherbourg</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">483</th>
+<td>5e869e0b-85b6-427e-a946-9c8fbdf0e62d</td>
+<td>1</td>
+<td>female</td>
+<td>63.0</td>
+<td>0</td>
+<td>0</td>
+<td>9.5875</td>
+<td>Third</td>
+<td>Southampton</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">496</th>
+<td>fe237248-3145-49c3-873a-23103a548d48</td>
+<td>1</td>
+<td>female</td>
+<td>54.0</td>
+<td>1</td>
+<td>0</td>
+<td>78.2667</td>
+<td>First</td>
+<td>Cherbourg</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">513</th>
+<td>fb542ce8-af5b-49de-94d1-12e80b50f924</td>
+<td>1</td>
+<td>female</td>
+<td>54.0</td>
+<td>1</td>
+<td>0</td>
+<td>59.4000</td>
+<td>First</td>
+<td>Cherbourg</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">571</th>
+<td>addd7ae0-fdc3-4388-b741-799fceb880c9</td>
+<td>1</td>
+<td>female</td>
+<td>53.0</td>
+<td>2</td>
+<td>0</td>
+<td>51.4792</td>
+<td>First</td>
+<td>Southampton</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">591</th>
+<td>55696e7b-a45f-438c-afe0-d319481854a8</td>
+<td>1</td>
+<td>female</td>
+<td>52.0</td>
+<td>1</td>
+<td>0</td>
+<td>78.2667</td>
+<td>First</td>
+<td>Cherbourg</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">765</th>
+<td>287911f6-cba8-4efd-aa4c-f8ef77985e8c</td>
+<td>1</td>
+<td>female</td>
+<td>51.0</td>
+<td>1</td>
+<td>0</td>
+<td>77.9583</td>
+<td>First</td>
+<td>Southampton</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">772</th>
+<td>cba2ce18-3e49-499b-a674-03d0918433a6</td>
+<td>0</td>
+<td>female</td>
+<td>57.0</td>
+<td>0</td>
+<td>0</td>
+<td>10.5000</td>
+<td>Second</td>
+<td>Southampton</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">774</th>
+<td>a5562846-6e7c-4ef3-91ea-5c464112ea0e</td>
+<td>1</td>
+<td>female</td>
+<td>54.0</td>
+<td>1</td>
+<td>3</td>
+<td>23.0000</td>
+<td>Second</td>
+<td>Southampton</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">820</th>
+<td>f8deb905-5d4c-4f90-aec7-00eb525b2ef0</td>
+<td>1</td>
+<td>female</td>
+<td>52.0</td>
+<td>1</td>
+<td>1</td>
+<td>93.5000</td>
+<td>First</td>
+<td>Southampton</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">829</th>
+<td>a67cf024-c984-4ef8-b217-24ee64493c8d</td>
+<td>1</td>
+<td>female</td>
+<td>62.0</td>
+<td>0</td>
+<td>0</td>
+<td>80.0000</td>
+<td>First</td>
+<td>None</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">879</th>
+<td>534a6106-c251-48b8-9604-6945329f181a</td>
+<td>1</td>
+<td>female</td>
+<td>56.0</td>
+<td>0</td>
+<td>1</td>
+<td>83.1583</td>
+<td>First</td>
+<td>Cherbourg</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-4-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-3-tab">
+<p>Use <code>.iloc[row(s), column(s)]</code> to return index-based results.</p>
+<p>For example, the first row:</p>
+<div id="0eb21f8f" class="cell" data-execution_count="19">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># return first row from the top of the dataset</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>passengers_df.iloc[<span class="dv">0</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="19">
+<pre><code>passenger_id              af1089fa-c928-4719-94ec-4bdb0aa90e8a
+survived                                                     0
+sex                                                       male
+age                                                       22.0
+sibling_spouse_count                                         1
+parents_children_count                                       0
+fare                                                      7.25
+class                                                    Third
+embark_town                                        Southampton
+Name: 0, dtype: object</code></pre>
+</div>
+</div>
+<p>Or get the first row, along with only the first three columns.</p>
+<div id="2482724e" class="cell" data-execution_count="20">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># return first row from the top of the dataset</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>passengers_df.iloc[<span class="dv">0</span>, <span class="dv">0</span>:<span class="dv">4</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
+<pre><code>passenger_id    af1089fa-c928-4719-94ec-4bdb0aa90e8a
+survived                                           0
+sex                                             male
+age                                             22.0
+Name: 0, dtype: object</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-4-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-4-tab">
+<p>Use <code>iloc[row(s), column(s)]</code> to return label-based results.</p>
+<p>Let’s use the output from <code>.describe()</code> for the whole dataset.</p>
+<div id="b96ead34" class="cell" data-execution_count="21">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>summary_data <span class="op">=</span> passengers_df.describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Return the count for all columns.</p>
+<div id="94f52768" class="cell" data-execution_count="22">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>summary_data.loc[<span class="st">"count"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
+<pre><code>survived                  891.0
+age                       714.0
+sibling_spouse_count      891.0
+parents_children_count    891.0
+fare                      891.0
+Name: count, dtype: float64</code></pre>
+</div>
+</div>
+<p>Return the mean for fare and age.</p>
+<div id="56db142c" class="cell" data-execution_count="23">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>summary_data.loc[<span class="st">"mean"</span>, [<span class="st">"fare"</span>, <span class="st">"age"</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="23">
+<pre><code>fare    32.204208
+age     29.699118
+Name: mean, dtype: float64</code></pre>
 </div>
 </div>
 </div>
@@ -1001,4 +1882,5 @@ Length: 891, dtype: int8</code></pre>
 
 
 
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

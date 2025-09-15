@@ -10,8 +10,6 @@ book:
     - part: "Python Fundamentals"
       chapters:
       - python-fundamentals/basics.qmd
-      - python-fundamentals/type-functions.qmd
-      - python-fundamentals/list-functions.qmd
     - part: "EDA with Pandas"
       chapters:
       - pandas/project-setup.qmd
@@ -26,6 +24,8 @@ format:
     theme:
       - cosmo
       - brand
-
-
+    toc: true
+    toc-depth: 4
+    toc-expand: 2
+    smooth-scroll: true
 

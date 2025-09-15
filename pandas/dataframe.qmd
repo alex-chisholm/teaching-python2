@@ -117,6 +117,106 @@ passengers_df.describe(include=["object", "category"])
 
 ```
 
+## .nunique()
+
+Return the number of unique values for each variable in the dataset.
+
+```{python}
+
+passengers_df.nunique()
+
+```
+
 :::
+
+## Subsetting
+
+
+::: {.panel-tabset}
+
+## Boolean Index
+
+Works by first checking if a column meets some condition (True/False). It filters the original dataset for those with `True`.
+
+```{python}
+
+passengers_df[passengers_df["age"] > 50]
+
+```
+
+You can also multiple criteria using parentheses for each 
+
+```{python}
+
+passengers_df[(passengers_df["age"] > 50) & (passengers_df["sex"] == "female")]
+
+```
+
+## .query()
+
+```{python}
+
+passengers_df.query("age > 50")
+
+```
+
+Multiple conditions can go in the same statement.
+
+```{python}
+
+passengers_df.query("age > 50 and sex == 'female'")
+
+
+```
+
+## .iloc[]
+
+Use `.iloc[row(s), column(s)]` to return index-based results.
+
+For example, the first row:
+
+```{python}
+# return first row from the top of the dataset
+passengers_df.iloc[0]
+
+```
+
+Or get the first row, along with only the first three columns.
+
+```{python}
+# return first row from the top of the dataset
+passengers_df.iloc[0, 0:4]
+
+```
+
+## .loc[]
+
+Use `iloc[row(s), column(s)]` to return label-based results.
+
+Let's use the output from `.describe()` for the whole dataset.
+
+
+```{python}
+summary_data = passengers_df.describe()
+```
+
+Return the count for all columns.
+
+```{python}
+
+summary_data.loc["count"]
+```
+
+Return the mean for fare and age.
+
+```{python}
+
+summary_data.loc["mean", ["fare", "age"]]
+
+```
+
+:::
+
+
 
 {{< include _save_processed.qmd >}}

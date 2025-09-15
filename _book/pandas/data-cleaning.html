@@ -105,6 +105,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<style>html{ scroll-behavior: smooth; }</style>
 <script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
@@ -169,18 +170,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">General Overview</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../python-fundamentals/type-functions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Functions/Method by Type Matrix</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../python-fundamentals/list-functions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">List Operations Matrix</span></a>
-  </div>
-</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -236,19 +225,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="2">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
   <li><a href="#outliers" id="toc-outliers" class="nav-link active" data-scroll-target="#outliers">Outliers</a>
-  <ul class="collapse">
+  <ul>
   <li><a href="#identification" id="toc-identification" class="nav-link" data-scroll-target="#identification">Identification</a></li>
   <li><a href="#assignment" id="toc-assignment" class="nav-link" data-scroll-target="#assignment">Assignment</a></li>
   <li><a href="#decision" id="toc-decision" class="nav-link" data-scroll-target="#decision">Decision</a></li>
   <li><a href="#crosstabs" id="toc-crosstabs" class="nav-link" data-scroll-target="#crosstabs">Crosstabs</a></li>
   </ul></li>
   <li><a href="#missing-data" id="toc-missing-data" class="nav-link" data-scroll-target="#missing-data">Missing Data</a>
-  <ul class="collapse">
+  <ul>
   <li><a href="#identify" id="toc-identify" class="nav-link" data-scroll-target="#identify">Identify</a></li>
   <li><a href="#remove" id="toc-remove" class="nav-link" data-scroll-target="#remove">Remove</a></li>
   <li><a href="#replace" id="toc-replace" class="nav-link" data-scroll-target="#replace">Replace</a></li>
@@ -293,7 +282,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </blockquote>
 <p>An value below less than the lower bound or more than the upper bound can be considered an outlier.</p>
 <p>Let’s examine the age variable from <code>passengers_df</code> which had the following descriptive statistics.</p>
-<div id="16f0860f" class="cell" data-execution_count="2">
+<div id="a1040867" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>passengers_df[<span class="st">"age"</span>].describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>count    714.000000
@@ -308,7 +297,7 @@ Name: age, dtype: float64</code></pre>
 </div>
 </div>
 <p>We can calculate the information needed to generate a lower and upper cutoff bound.</p>
-<div id="df23722c" class="cell" data-execution_count="3">
+<div id="979df5fc" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>p25 <span class="op">=</span> passengers_df[<span class="st">"age"</span>].quantile(<span class="fl">0.25</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>p75 <span class="op">=</span> passengers_df[<span class="st">"age"</span>].quantile(<span class="fl">0.75</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>iqr <span class="op">=</span> p75 <span class="op">-</span> p25</span>
@@ -330,7 +319,7 @@ Upper Bound: 64.8125</code></pre>
 <section id="assignment" class="level3">
 <h3 class="anchored" data-anchor-id="assignment">Assignment</h3>
 <p>With this information, we can check the data series. Let’s assign True/False values to a new variable to track this</p>
-<div id="209eacd0" class="cell" data-execution_count="4">
+<div id="f4deb733" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>passengers_df[<span class="st">"age_outlier"</span>] <span class="op">=</span> (passengers_df[<span class="st">"age"</span>] <span class="op">&lt;</span> lower_bound) <span class="op">|</span> (passengers_df[<span class="st">"age"</span>] <span class="op">&gt;</span> upper_bound)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>passengers_df[<span class="st">"age_outlier"</span>] </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
@@ -349,7 +338,7 @@ Name: age_outlier, Length: 891, dtype: bool</code></pre>
 </div>
 </div>
 <p>We can now count it:</p>
-<div id="9f40f9f6" class="cell" data-execution_count="5">
+<div id="11c8369b" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>passengers_df[<span class="st">"age_outlier"</span>].value_counts()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>age_outlier
@@ -375,7 +364,7 @@ Name: count, dtype: int64</code></pre>
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Remove the row</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Remove the value</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">Replace it</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<div id="a6383c12" class="cell" data-execution_count="6">
+<div id="e694e690" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>passengers_df[passengers_df[<span class="st">"age_outlier"</span>] <span class="op">==</span> <span class="va">False</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <div>
@@ -394,6 +383,7 @@ Name: count, dtype: int64</code></pre>
 <th data-quarto-table-cell-role="th">fare</th>
 <th data-quarto-table-cell-role="th">class</th>
 <th data-quarto-table-cell-role="th">embark_town</th>
+<th data-quarto-table-cell-role="th">fare_range</th>
 <th data-quarto-table-cell-role="th">class_codes</th>
 <th data-quarto-table-cell-role="th">age_outlier</th>
 </tr>
@@ -410,6 +400,7 @@ Name: count, dtype: int64</code></pre>
 <td>7.2500</td>
 <td>Third</td>
 <td>Southampton</td>
+<td>0-20</td>
 <td>2</td>
 <td>False</td>
 </tr>
@@ -424,6 +415,7 @@ Name: count, dtype: int64</code></pre>
 <td>71.2833</td>
 <td>First</td>
 <td>Cherbourg</td>
+<td>50-100</td>
 <td>0</td>
 <td>False</td>
 </tr>
@@ -438,6 +430,7 @@ Name: count, dtype: int64</code></pre>
 <td>7.9250</td>
 <td>Third</td>
 <td>Southampton</td>
+<td>0-20</td>
 <td>2</td>
 <td>False</td>
 </tr>
@@ -452,6 +445,7 @@ Name: count, dtype: int64</code></pre>
 <td>53.1000</td>
 <td>First</td>
 <td>Southampton</td>
+<td>50-100</td>
 <td>0</td>
 <td>False</td>
 </tr>
@@ -466,11 +460,13 @@ Name: count, dtype: int64</code></pre>
 <td>8.0500</td>
 <td>Third</td>
 <td>Southampton</td>
+<td>0-20</td>
 <td>2</td>
 <td>False</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">...</th>
+<td>...</td>
 <td>...</td>
 <td>...</td>
 <td>...</td>
@@ -494,6 +490,7 @@ Name: count, dtype: int64</code></pre>
 <td>13.0000</td>
 <td>Second</td>
 <td>Southampton</td>
+<td>0-20</td>
 <td>1</td>
 <td>False</td>
 </tr>
@@ -508,6 +505,7 @@ Name: count, dtype: int64</code></pre>
 <td>30.0000</td>
 <td>First</td>
 <td>Southampton</td>
+<td>20-50</td>
 <td>0</td>
 <td>False</td>
 </tr>
@@ -522,6 +520,7 @@ Name: count, dtype: int64</code></pre>
 <td>23.4500</td>
 <td>Third</td>
 <td>Southampton</td>
+<td>20-50</td>
 <td>2</td>
 <td>False</td>
 </tr>
@@ -536,6 +535,7 @@ Name: count, dtype: int64</code></pre>
 <td>30.0000</td>
 <td>First</td>
 <td>Cherbourg</td>
+<td>20-50</td>
 <td>0</td>
 <td>False</td>
 </tr>
@@ -550,19 +550,20 @@ Name: count, dtype: int64</code></pre>
 <td>7.7500</td>
 <td>Third</td>
 <td>Queenstown</td>
+<td>0-20</td>
 <td>2</td>
 <td>False</td>
 </tr>
 </tbody>
 </table>
 
-<p>880 rows × 11 columns</p>
+<p>880 rows × 12 columns</p>
 </div>
 </div>
 </div>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<div id="ea56ddf2" class="cell" data-execution_count="7">
+<div id="055509d0" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>np.where(</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    passengers_df[<span class="st">"age_outlier"</span>], </span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    np.nan, <span class="co"># remove the outlier and letting it be missing</span></span>
@@ -676,7 +677,7 @@ Name: count, dtype: int64</code></pre>
 <p>Imagine if the variable was age and the value was 224. It would be an outlier, but it is not a believable outlier. Perhaps it was a typo that should have been 24. Instead of trying to guess what it should have been, you could also impute a value based upon data you have more faith in.</p>
 <p>For instance, you could replace missing values with the median of the series - which is a more robust summary statistic.</p>
 <p>Here we use <code>np.where</code> that says where something is True, do something. If not, do something else.</p>
-<div id="239a5d51" class="cell" data-execution_count="8">
+<div id="7ca8fd79" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>passengers_df[<span class="st">"age_clean"</span>] <span class="op">=</span> np.where(</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    passengers_df[<span class="st">"age_outlier"</span>], </span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    passengers_df[<span class="st">"age"</span>].median(), <span class="co"># use the median</span></span>
@@ -774,7 +775,7 @@ Name: count, dtype: int64</code></pre>
 <div class="tab-content">
 <div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <p>Return <code>True</code> if value is missing.</p>
-<div id="14fd63af" class="cell" data-execution_count="9">
+<div id="4a3bccc4" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>passengers_df[<span class="st">"age"</span>].isna()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>0      False
@@ -792,7 +793,7 @@ Name: age, Length: 891, dtype: bool</code></pre>
 </div>
 </div>
 <p>Count the number of missing data values with <code>isna().sum()</code>.</p>
-<div id="f28f42e5" class="cell" data-execution_count="10">
+<div id="11a646ad" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>passengers_df[<span class="st">"age"</span>].isna().<span class="bu">sum</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>np.int64(177)</code></pre>
@@ -801,7 +802,7 @@ Name: age, Length: 891, dtype: bool</code></pre>
 </div>
 <div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
 <p>Return True if value is not missing</p>
-<div id="bebf68c2" class="cell" data-execution_count="11">
+<div id="f4d649aa" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>passengers_df[<span class="st">"age"</span>].notna()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>0       True
@@ -819,7 +820,7 @@ Name: age, Length: 891, dtype: bool</code></pre>
 </div>
 </div>
 <p>Count the number of non-missing data values with <code>notna().sum()</code>.</p>
-<div id="0f40e308" class="cell" data-execution_count="12">
+<div id="46c0aa43" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>passengers_df[<span class="st">"age"</span>].notna().<span class="bu">sum</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>np.int64(714)</code></pre>
@@ -836,7 +837,7 @@ Name: age, Length: 891, dtype: bool</code></pre>
 <div class="tab-content">
 <div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
 <p>Drop any row that has a missing data point in <em>any</em> column.</p>
-<div id="c5c8b63d" class="cell" data-execution_count="13">
+<div id="343343eb" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(passengers_df.dropna())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>712</code></pre>
@@ -845,7 +846,7 @@ Name: age, Length: 891, dtype: bool</code></pre>
 </div>
 <div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
 <p>Drop any row that has a missing data point in one or more specific columns.</p>
-<div id="d5bc4608" class="cell" data-execution_count="14">
+<div id="f63774e2" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(passengers_df.dropna(subset <span class="op">=</span> <span class="st">"age"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <pre><code>714</code></pre>
@@ -862,7 +863,7 @@ Name: age, Length: 891, dtype: bool</code></pre>
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true" href="">.fillna()</a></li></ul>
 <div class="tab-content">
 <div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
-<div id="01b0564d" class="cell" data-execution_count="15">
+<div id="77f3b424" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>median_age <span class="op">=</span> passengers_df[<span class="st">"age"</span>].median()</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>passengers_df[<span class="st">"filled_age"</span>] <span class="op">=</span> passengers_df[<span class="st">"age"</span>].fillna(median_age)</span>
@@ -1369,4 +1370,5 @@ Name: age, Length: 891, dtype: bool</code></pre>
 
 
 
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

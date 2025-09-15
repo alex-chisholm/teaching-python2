@@ -85,7 +85,56 @@ passengers_df["embark_town"].value_counts().plot.pie()
 
 :::
 
+### String Methods
 
+Because categorical variables have data labels that are strings, we can use a lot of the built-in Python functionality to extract additional information from them.
+
+For example:
+
+::: {.panel-tabset}
+
+## str.len()
+
+```{python}
+
+passengers_df["embark_town"].str.len()
+
+```
+
+## str.upper()
+
+```{python}
+passengers_df["embark_town"].str.upper()
+
+```
+
+## .str[]
+
+Get partial text by slicing. For example, the first three characters.
+
+```{python}
+passengers_df["embark_town"].str[0:3]
+```
+
+:::
+
+
+### Other
+
+::: {.panel-tabset}
+
+## .nunique()
+
+Return the number of unique data labels
+
+```{python}
+
+passengers_df["embark_town"].nunique()
+
+```
+
+
+:::
 
 ## Numeric
 
@@ -196,6 +245,76 @@ passengers_df["age"].plot.box()
 ```
 
 :::
+
+### Binning into categories
+
+Sometimes you want to break a numeric variable into a set of defined categories or bucketed ranges. For example, instead of analyzing the raw numeric data for `fare` you might want to group those into buckets to show the distribution in a different way.
+
+
+::: {.panel-tabset}
+
+## You choose the bins
+
+Let's say you want to define the following binning based on your understanding of the data.
+
+1. Zero to 20 
+2. 20 to 50
+3. 50 to 100
+4. More than 100
+
+First we need to define bins and their associated labels.
+
+```{python}
+bins = [0, 20, 50, 100, float('inf')]
+labels = ['0-20', '20-50', '50-100', 'more than 100']
+```
+
+Next, we need to apply this information to the dataframe.
+
+```{python}
+passengers_df['fare_range'] = pd.cut(passengers_df['fare'], 
+                         bins=bins, 
+                         labels=labels, 
+                         right=False,
+                         ordered=True
+                         )
+```
+
+Then we can call the variables and see which data was assigned to which bucket.
+
+```{python}
+
+passengers_df[["passenger_id", "fare", "fare_range"]]
+
+```
+
+Let's check the data type of the new variable.
+
+```{python}
+passengers_df["fare_range"].info()
+```
+
+And then make frequency counts to see the distribution.
+
+```{python}
+
+passengers_df["fare_range"].value_counts()
+```
+
+## Auto binning
+
+```{python}
+
+(
+passengers_df["fare"],
+pd.cut(passengers_df["fare"], bins=5)
+)
+```
+
+:::
+
+
+
 
 
 {{< include _save_processed.qmd >}}
